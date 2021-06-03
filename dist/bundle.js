@@ -10,13 +10,53 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/frequentQuestions/FrequentQuestions.js":
+/*!****************************************************!*\
+  !*** ./src/frequentQuestions/FrequentQuestions.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction FrequentQuestions() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, \"Freqent Questions: Fab\");\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FrequentQuestions);\n\n//# sourceURL=webpack://catwalk/./src/frequentQuestions/FrequentQuestions.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"Hello!!\");\n}\n\n(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), document.getElementById('react-root'));\n\n//# sourceURL=webpack://catwalk/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _frequentQuestions_FrequentQuestions_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frequentQuestions/FrequentQuestions.js */ \"./src/frequentQuestions/FrequentQuestions.js\");\n/* harmony import */ var _overview_Overview_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overview/Overview.js */ \"./src/overview/Overview.js\");\n/* harmony import */ var _ratings_Ratings_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ratings/Ratings.js */ \"./src/ratings/Ratings.js\");\n/* harmony import */ var _relatedItems_RelatedItems_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./relatedItems/RelatedItems.js */ \"./src/relatedItems/RelatedItems.js\");\n\n\n\n\n\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_overview_Overview_js__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_relatedItems_RelatedItems_js__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_frequentQuestions_FrequentQuestions_js__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ratings_Ratings_js__WEBPACK_IMPORTED_MODULE_4__.default, null));\n}\n\n(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), document.getElementById('react-root'));\n\n//# sourceURL=webpack://catwalk/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/overview/Overview.js":
+/*!**********************************!*\
+  !*** ./src/overview/Overview.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction Overview() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, \"Overview: Zack\");\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview);\n\n//# sourceURL=webpack://catwalk/./src/overview/Overview.js?");
+
+/***/ }),
+
+/***/ "./src/ratings/Ratings.js":
+/*!********************************!*\
+  !*** ./src/ratings/Ratings.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction Ratings() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, \"Ratings: Sam\");\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Ratings);\n\n//# sourceURL=webpack://catwalk/./src/ratings/Ratings.js?");
+
+/***/ }),
+
+/***/ "./src/relatedItems/RelatedItems.js":
+/*!******************************************!*\
+  !*** ./src/relatedItems/RelatedItems.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction RelatedItems() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, \"RelatedItems: Edgar\");\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RelatedItems);\n\n//# sourceURL=webpack://catwalk/./src/relatedItems/RelatedItems.js?");
 
 /***/ }),
 
@@ -137,6 +177,23 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports

@@ -1,8 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
+import FrequentQuestions from './frequentQuestions/FrequentQuestions.js';
+import Overview from './overview/Overview.js';
+import Ratings from './ratings/Ratings.js';
+import RelatedItems from './relatedItems/RelatedItems.js';
 
 function App() {
-  return <h1>Hello!!</h1>
+
+  return (
+    <>
+    <Overview />
+    <RelatedItems />
+    <FrequentQuestions />
+    <Ratings />
+    </>
+    )
+
 }
 
 render (<App />, document.getElementById('react-root'));
