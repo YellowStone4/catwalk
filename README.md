@@ -8,6 +8,8 @@ Clone repo down to local machine, then run:
 2. npm build
 3. npm start
 
-Create a config.js to add your Github token
+Create a config.js to add your Github token:
+    const API_KEY = '';
+    export { API_KEY };
 
 Enjoy!
