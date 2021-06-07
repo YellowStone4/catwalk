@@ -1,13 +1,14 @@
 const path = require('path');
+
 module.exports = {
-  entry: './src/index.js',
-  mode: "development",
+  entry: './src/index',
+  mode: 'development',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'), //this is the folder you want to save your bundle in - feel free to change
+    path: path.resolve(__dirname, 'dist'),
   },
 
- module: {
+  module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -15,10 +16,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
-          }
-        }
-      }
-    ]
-  }
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 };
