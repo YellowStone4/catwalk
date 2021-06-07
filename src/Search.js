@@ -47,6 +47,7 @@ const svgStyle = {
 
 function Search() {
   return (
+    <>
     <header style={headerStyle}>
       <p style={pStyle}> Cat Walk</p>
       <div style={searchWrapper}>
@@ -57,6 +58,10 @@ function Search() {
         </svg>
       </div>
     </header>
+    <div>
+      <p style={{textAlign: 'center'}}>SITE-WIDE ANNOUNCEMENT MESSAGE! — SALE / DISCOUNT <b>OFFER</b> — <u>NEW PRODUCT HIGHLIGHT</u></p>
+    </div>
+    </>
   )
 };
 
