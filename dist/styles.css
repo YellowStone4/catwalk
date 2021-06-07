@@ -3,3 +3,10 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+.container {
+  height: 80vh;
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: minmax(200px, 80%) 1fr;
+}
