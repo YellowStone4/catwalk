@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import QuestionList from './QuestionList.jsx'
+import Search from './Search.jsx'
 import { API_KEY } from '../../config';
 
 function FrequentQuestions({product}) {
@@ -19,9 +21,8 @@ function FrequentQuestions({product}) {
   return (
     <>
       <h1>Frequent Questions</h1>
-      <ul>
-        {questions.map((question) => <li key={question.question_id}>{question.question_body}</li>)}
-      </ul>
+      <Search />
+      <QuestionList questions={questions}/>
     </>
   );
 }
