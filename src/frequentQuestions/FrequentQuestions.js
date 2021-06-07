@@ -1,7 +1,8 @@
 import React from 'react';
 
-function FrequentQuestions() {
-  return <h2>Freqent Questions: Fab</h2>
+function FrequentQuestions(props) {
+  console.log(props)
+  return <h2>Freqent Questions:</h2>
 }
 
 
