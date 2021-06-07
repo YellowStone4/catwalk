@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './overviewStyles.js';
-import ProductDetails from './components/ProductDetails';
-import Gallery from './components/Gallery';
-import Selection from './components/Selection';
-
+import ProductDetails from './components/ProductDetails.js';
+import Gallery from './components/Gallery.js';
+import Selection from './components/Selection.js';
 
 function Overview() {
   return (
@@ -16,8 +15,7 @@ function Overview() {
       <ProductDetails />
 
     </section>
-  )
+  );
 }
-
 
 export default Overview;

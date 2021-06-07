@@ -42,29 +42,31 @@ const svgStyle = {
   strokeLinecap: 'round',
   strokeLinejoin: 'round',
   strokeWidth: '2',
-}
-
+};
 
 function Search() {
   return (
     <>
-    <header style={headerStyle}>
-      <p style={pStyle}> Cat Walk</p>
-      <div style={searchWrapper}>
-        <input style = {searchInput} type="text" placeholder="Search" />
-        <svg style = {svgStyle} viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="M21 21l-4.35-4.35"></path>
-        </svg>
+      <header style={headerStyle}>
+        <p style={pStyle}> Cat Walk</p>
+        <div style={searchWrapper}>
+          <input style={searchInput} type="text" placeholder="Search" />
+          <svg style={svgStyle} viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21l-4.35-4.35" />
+          </svg>
+        </div>
+      </header>
+      <div>
+        <p style={{ textAlign: 'center' }}>
+          SITE-WIDE ANNOUNCEMENT MESSAGE! — SALE / DISCOUNT
+          <b>OFFER</b>
+          —
+          <u>NEW PRODUCT HIGHLIGHT</u>
+        </p>
       </div>
-    </header>
-    <div>
-      <p style={{textAlign: 'center'}}>SITE-WIDE ANNOUNCEMENT MESSAGE! — SALE / DISCOUNT <b>OFFER</b> — <u>NEW PRODUCT HIGHLIGHT</u></p>
-    </div>
     </>
-  )
-};
-
-
+  );
+}
 
 export default Search;

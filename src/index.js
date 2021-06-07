@@ -7,17 +7,15 @@ import RelatedItems from './relatedItems/RelatedItems.js';
 import Search from './Search.js';
 
 function App() {
-
   return (
     <>
-    <Search />
-    <Overview />
-    <RelatedItems />
-    <FrequentQuestions />
-    <Ratings />
+      <Search />
+      <Overview />
+      <RelatedItems />
+      <FrequentQuestions />
+      <Ratings />
     </>
-    )
-
+  );
 }
 
-render (<App />, document.getElementById('react-root'));
+render(<App />, document.getElementById('react-root'));
