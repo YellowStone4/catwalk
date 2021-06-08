@@ -5,6 +5,7 @@ import { faExpand } from '@fortawesome/free-solid-svg-icons'
 const containerStyle = {
   backgroundColor: '#d1d9d9',
   position:'relative',
+  height: '100%'
 };
 
 const iconStyle = {

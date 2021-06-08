@@ -16,24 +16,21 @@ class Overview extends React.Component {
 
  render() {
   let drawerClasses = 'side-drawer';
-  let productContainerClasses = 'productContainer'
+  let galleryContainerClasses = 'galleryContainer'
 
-  if (!this.state.sliderOpen) {
-    drawerClasses = 'slide-drawer open';
-    productContainerClasses = 'productContainer grow';
-  } else {
-    drawerClasses = 'slide-drawer';
-    productContainerClasses = 'productContainer';
+  if (this.state.sliderOpen === false) {
+    drawerClasses = 'close';
+    galleryContainerClasses = 'galleryContainer grow';
   }
 
    return (
      <section className='overviewContainer'>
-       <div className={productContainerClasses}>
-         <div className='galleryContainer'>
-         <Gallery toggle={this.sliderToggleClickHandler}/>
+       <div className='productContainer'>
+         <div className={galleryContainerClasses}>
+            <Gallery toggle={this.sliderToggleClickHandler}/>
          </div>
          <div className = {drawerClasses}>
-         <Selection show={this.state.sliderOpen} />
+            <Selection show={this.state.sliderOpen} />
          </div>
        </div>
 

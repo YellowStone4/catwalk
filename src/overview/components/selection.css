@@ -2,12 +2,11 @@
   padding: 20px;
   background-color: #fff5eb;
   height: 100%;
-
 }
 
 .circleContainer {
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
+  grid-template-columns: 75px 75px 75px 75px;
   grid-gap: 5px;
   margin-bottom: 30px;
 }
