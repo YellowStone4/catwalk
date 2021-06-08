@@ -1,0 +1,38 @@
+.sectionContainer {
+  padding: 20px;
+  background-color: #fff5eb;
+  height: 100%;
+
+}
+
+.circleContainer {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px;
+  grid-gap: 5px;
+  margin-bottom: 30px;
+}
+
+.circle {
+  background-color: lightblue;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+
+.cartContainer {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-gap: 30px;
+}
+
+.btn {
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #c4c4c4;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+}
+
