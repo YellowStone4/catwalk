@@ -6,7 +6,7 @@ import Gallery from './components/Gallery.js';
 import Selection from './components/Selection.js';
 
 class Overview extends React.Component {
- state = {sliderOpen: true }
+ state = {sliderOpen: true, styles: [1, 2, 3, 4, 5] }
 
  sliderToggleClickHandler = () => {
    this.setState({
