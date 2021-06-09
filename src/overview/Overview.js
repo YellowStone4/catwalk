@@ -1,43 +1,22 @@
 import React, { useState } from 'react';
-import './overview.css';
+import ProductDisplay from './ProductDisplay.js';
+import ProductDescription from './ProductDescription.js';
 
-import ProductDetails from './components/ProductDetails.js';
-import Gallery from './components/Gallery.js';
-import Selection from './components/Selection.js';
+const style = {
+    height: '80vh',
+    border: '1px solid black',
+    display: 'grid',
+    gridTemplateRows: 'minmax(200px, 80%) 1fr',
+    height: '100%',
+}
 
-class Overview extends React.Component {
- state = {sliderOpen: true, styles: [1, 2, 3, 4, 5] }
-
- sliderToggleClickHandler = () => {
-   this.setState({
-     sliderOpen: !this.state.sliderOpen
-   });
- }
-
- render() {
-  let drawerClasses = 'side-drawer';
-  let galleryContainerClasses = 'galleryContainer'
-
-  if (this.state.sliderOpen === false) {
-    drawerClasses = 'close';
-    galleryContainerClasses = 'galleryContainer grow';
-  }
-
+function Overview() {
    return (
-     <section className='overviewContainer'>
-       <div className='productContainer'>
-         <div className={galleryContainerClasses}>
-            <Gallery toggle={this.sliderToggleClickHandler}/>
-         </div>
-         <div className = {drawerClasses}>
-            <Selection show={this.state.sliderOpen} />
-         </div>
-       </div>
-
-       <ProductDetails />
+     <section style={style}>
+       <ProductDisplay />
+       <ProductDescription />
     </section>
   );
- }
 }
 
 export default Overview;
