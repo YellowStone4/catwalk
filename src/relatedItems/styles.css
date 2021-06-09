@@ -1,0 +1,67 @@
+
+.card {
+  display: grid;
+  grid-template-rows: 280px 28px 28px 28px 28px;
+  row-gap: 2px;
+  position: relative;
+  height: 400px;
+  width: 300px;
+  border: 1px solid black;
+  background: lightcoral;
+  left: 100px;
+}
+
+.carousel {
+  display: inline-block;
+  height: 400px;
+  width: 100%;
+  background: lightgrey;
+  position: relative;
+}
+
+.carousel_button {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+.carousel_button--right {
+  right: 10px;
+}
+
+.carousel_button--left {
+  left: 10px;
+}
+
+.carousel_button img {
+  width: 20px;
+}
+
+.testImage {
+  height: 300px;
+  width: 300px;
+  /* padding: 10px; */
+  position: relative;
+  /* object-fit: cover; */
+}
+
+.carousel_track {
+  white-space: nowrap;
+  padding: 50px;
+  margin: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.carousel_slide {
+  position: relative;
+  display: inline-block;
+  padding-left: 5%;
+  width: 300px;
+}
+
+
+

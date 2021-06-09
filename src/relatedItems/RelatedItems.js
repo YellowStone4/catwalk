@@ -1,12 +1,12 @@
 import React from 'react';
 import Card from './components/Card.js';
-//import '/dist/styles.css';
+import Carousel from './components/Carousel.js';
 
 const RelatedItems = () => {
   return (
     <div>
       <h1>Related Items</h1>
-      <Card/>
+      <Carousel/>
       {/* <Card/> */}
     </div>
   )
