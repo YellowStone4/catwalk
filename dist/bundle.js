@@ -345,7 +345,7 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar API_KEY = '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';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  API_KEY: API_KEY\n});\n\n//# sourceURL=webpack://catwalk/./config.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"API_KEY\": () => (/* binding */ API_KEY)\n/* harmony export */ });\nvar API_KEY = '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';\n\n\n//# sourceURL=webpack://catwalk/./config.js?");
 
 /***/ }),
 
