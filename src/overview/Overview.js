@@ -1,19 +1,20 @@
-import React from 'react';
-import styles from './overviewStyles.js';
-import ProductDetails from './components/ProductDetails.js';
-import Gallery from './components/Gallery.js';
-import Selection from './components/Selection.js';
+import React, { useState } from 'react';
+import ProductDisplay from './ProductDisplay.js';
+import ProductDescription from './ProductDescription.js';
+
+const style = {
+    height: '80vh',
+    border: '1px solid black',
+    display: 'grid',
+    gridTemplateRows: 'minmax(200px, 80%) 1fr',
+    height: '100%',
+}
 
 function Overview() {
-  return (
-    <section style={styles.sectionElement}>
-      <div style={styles.productContainer} id="productContainer">
-        <Gallery />
-        <Selection />
-
-      </div>
-      <ProductDetails />
-
+   return (
+     <section style={style}>
+       <ProductDisplay />
+       <ProductDescription />
     </section>
   );
 }
