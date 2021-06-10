@@ -1,5 +1,5 @@
 
-.card {
+.cardGrid {
   display: grid;
   grid-template-rows: 280px 28px 28px 28px 28px;
   row-gap: 2px;
@@ -7,15 +7,14 @@
   height: 400px;
   width: 300px;
   border: 1px solid black;
-  background: lightcoral;
-  left: 100px;
+  background: white;
 }
 
 .carousel {
   display: inline-block;
   height: 400px;
   width: 100%;
-  background: lightgrey;
+  /* background: lightgrey; */
   position: relative;
 }
 
@@ -41,7 +40,7 @@
 }
 
 .testImage {
-  height: 300px;
+  height: 280px;
   width: 300px;
   /* padding: 10px; */
   position: relative;
@@ -50,9 +49,9 @@
 
 .carousel_track {
   white-space: nowrap;
-  padding: 50px;
   margin: 0;
   list-style: none;
+  display: inline-flex;
   align-items: center;
 }
 
@@ -61,6 +60,13 @@
   display: inline-block;
   padding-left: 5%;
   width: 300px;
+}
+
+.card_slide {
+  position: relative;
+  padding-right: 50px;
+  padding-left: 50px;
+  width: 100%;
 }
 
 
