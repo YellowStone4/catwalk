@@ -9,9 +9,9 @@ const Reviews = (props) => {
   return (
     <div>
       <h2>Reviews</h2>
-      <ReviewSort metaData={props.metaData} reviews={props.reviews}/>
+      <ReviewSort changeSort={props.changeSort} metaData={props.metaData} reviews={props.reviews}/>
       <ListOfReviews reviews={props.reviews} product={props.product}/>
-      <ReviewButtons />
+      <ReviewButtons changeCount={props.changeCount}/>
     </div>
   )
 

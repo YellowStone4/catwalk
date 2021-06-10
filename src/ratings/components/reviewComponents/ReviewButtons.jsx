@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
 
 const ReviewButtons = (props) => {
+  const addCount = () => {
+    props.changeCount();
+
+  }
+
   return (
     <div>
-      <h3>Review Buttons</h3>
+      <button onClick={addCount}>MORE REVIEWS</button>
     </div>
   )
 }
