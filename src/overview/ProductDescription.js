@@ -11,7 +11,7 @@ const articleStyle = {
   padding: '5px 10px',
 }
 
-function ProductDetails() {
+function ProductDescription() {
   return (
     <div style={containerStyle}>
       <article style={articleStyle}>
@@ -31,4 +31,4 @@ function ProductDetails() {
   )
 }
 
-export default ProductDetails;
+export default ProductDescription;
