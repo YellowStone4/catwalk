@@ -1,9 +1,10 @@
+const {API_KEY} = require('../../config.js');
 import React, {useState, useEffect} from 'react';
 import Stars from './components/Stars.jsx';
 import Reviews from './components/Reviews.jsx';
 import styles from './ratingsStyles.js';
 import axios from 'axios';
-import key from '../../config.js';
+
 
 
 const Ratings = ({product}) => {
@@ -13,13 +14,12 @@ const Ratings = ({product}) => {
   const [reviewSort, setReviewSort] = useState('relevant');
 
   //Need to have a function that will
-
   //Get 5 reviews
   useEffect(() => {
     var options = {
       method: 'get',
       headers: {
-        'Authorization': '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'
+        'Authorization': API_KEY
       },
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=19089&count=30'
     }
@@ -36,7 +36,7 @@ const Ratings = ({product}) => {
     var options = {
       method: 'get',
       headers: {
-        'Authorization': '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'
+        'Authorization': API_KEY
       },
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=19089'
     }
