@@ -1,10 +1,10 @@
 import React from 'react';
 
 const containerStyle = {
-  padding: '10px',
   backgroundColor: 'whitesmoke',
   display: 'grid',
-  gridTemplateColumns: 'minmax(150px, 75%) 1fr'
+  gridTemplateColumns: 'minmax(150px, 75%) 1fr',
+  height: '100%'
 }
 
 const articleStyle = {

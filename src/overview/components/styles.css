@@ -4,7 +4,9 @@
 .productContainer {
   display: grid;
   grid-template-columns: minmax(50%, 60%) 1fr;
-  height: 100%;
+  height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 /********************************************
@@ -14,6 +16,7 @@
 .galleryContainer {
   background-color: #d1d9d9;
   height: 100%;
+  overflow: hidden;
 }
 
 .galleryContainer.grow{
@@ -25,11 +28,10 @@
 .container {
   position: relative;
   height: 100%;
-  background-image: url('./images/p1.jpg');
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: space-between;
+  background-position: center;
+  background-size: cover;
 }
 
 .icon {
