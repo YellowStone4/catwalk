@@ -10,11 +10,11 @@ const style = {
     height: '100%',
 }
 
-function Overview() {
+function Overview({product, ...rest}) {
    return (
      <section style={style}>
-       <ProductDisplay />
-       <ProductDescription />
+       <ProductDisplay product={product} />
+       <ProductDescription product={product}/>
     </section>
   );
 }
