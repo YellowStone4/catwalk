@@ -1,43 +1,25 @@
-import React from 'react';
-
-const carouselContainer = {
-  height: '450px',
-  background: 'lightyellow',
-  paddingLeft: '10px',
-  paddingTop: '30px'
-}
-
-
-const cardContainer = {
-  display: 'grid',
-  gridTemplateRows: '280px 28px 28px 28px 28px',
-  rowGap: '2px',
-  padding: '10px',
-  position: 'relative',
-  height: '400px',
-  width: '300px',
-  border: '1px solid black',
-  background: 'pink',
-  alignment: 'center'
-}
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const cardGrid = {
-  background: 'lightBlue',
+  //background: 'lightBlue',
   padding: '3px',
 }
 
-const Card = () => {
+const Card = (props) => {
+
   return (
-    <div style={carouselContainer}>
-      <div style={cardContainer}>
-        <div style={cardGrid}>IMAGE</div>
-        <div style={cardGrid}>Product Image</div>
-        <div style={cardGrid}>Product Name</div>
-        <div style={cardGrid}>Product Price</div>
+    // <div className='container_slider'>
+      <div className="cardGrid">
+        {console.log(props.products)}
+        <div><img className="testImage" src="/images/dog.jpeg" alt=""/></div>
+        <div style={cardGrid}>{props.products.category}</div>
+        <div style={cardGrid}>{props.products.name}</div>
+        <div style={cardGrid}>{props.products.default_price}</div>
         <div style={cardGrid}>Star Rating</div>
       </div>
-    </div>
+    // </div>
   )
 }
 
