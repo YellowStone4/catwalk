@@ -26,7 +26,7 @@ const Question = ({question}) => {
   return (
     <section>
       <strong>Q: {question.question_body} </strong>
-      <span><a href=""> Add Answer</a>  |  Helpful? <a href="">Yes</a> ({question.question_helpfulness})</span>
+      <span> Helpful? <a href="">Yes</a> ({question.question_helpfulness}) | <a href=""> Add Answer</a></span>
       {answers.length > 0 &&
         <section>
           <strong>A: </strong>{visibleAnswers.map(answer => <Answer key={answer.id} answer={answer}/>)}
