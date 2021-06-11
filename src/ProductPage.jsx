@@ -13,9 +13,9 @@ function ProductPage({ product }) {
       <>
         <Search />
         <Overview product={product} />
-        {/* <RelatedItems product={product} />
+        <RelatedItems product={product} />
         <FrequentQuestions product={product} />
-        <Ratings product={product} /> */}
+        <Ratings product={product} />
       </>
     );
   } return null;

@@ -3,7 +3,6 @@ import SelectedStyle from './SelectedStyle.js';
 import './styles.css';
 
 function CartSelection({setCurrentStyle, ...rest}) {
-  console.log('productStyles in prop: ', rest.productstyles)
 
   return (
     <div {...rest}>
