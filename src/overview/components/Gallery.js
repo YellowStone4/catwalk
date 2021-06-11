@@ -2,45 +2,70 @@ import React, {useState, useEffect} from 'react';
 import './styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faArrowDown, faArrowUp, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
 
 function Gallery({className, style, toggle, ...rest}) {
   let photos = style.photos.map(photo => [photo.thumbnail_url, photo.url]);
   let [currentIndex, setIndex] = useState(0);
-  let [currentBackground, setBackground] = useState(photos[currentIndex][1]);
-  let [goalPosts, setGoalPosts] = useState([0, 4]);
+  let [currentBackground, setBackground] = useState(style.photos[0].url);
+  let [[start, end], setGoalPosts] = useState([0, 4]);
+  let [isActiveIndex, setIsActiveIndex] = useState(0);
 
-  let handleClick = (index) => {
-    if (index < 0) index = photos.length - 1;
-    if (index >= photos.length) index = 0;
+  useEffect(() => {
+    setBackground(style.photos[0].url)
+  }, [style])
 
-    if (index < goalPosts[0]) {
-      goalPosts[0]--
-      goalPosts[1]--;
-    } else if (index > goalPosts[1]) {
-      goalPosts[0]++;
-      goalPosts[1]++;
+  let prevArrClsx = clsx('arrow', {'hidden': start === 0 });
+  let nextArrClsx = clsx('arrow', {'hidden': !(end < photos.length - 1)});
+
+  let handleClick = (index, direction) => {
+    // A flag to make sure that carouselController does not run after resetting goal posts to initial state.
+    let isInRange = true;
+    if (index < 0) {
+      index = photos.length - 1;
+      setGoalPosts([1, 5])
+      isInRange = false;
+      console.log('[start, end', [0, 4])
     }
 
-    setIndex(index);
-    setBackground(photos[index][1]);
+    if (index === photos.length) {
+      index = 0;
+      setGoalPosts([0, 4])
+      isInRange = false;
+    }
+
+    if ((index > end || index < start) && isInRange) {
+      carouselController(direction)
+    }
+
+      setIndex(index);
+      setBackground(photos[index][1]);
+      setIsActiveIndex(index);
   }
+
+  let carouselController = (direction) => setGoalPosts([start + direction, end + direction]);
+
 
   return (
     <div className={`container ${className}`} style={{backgroundImage: `url(${currentBackground})`}}>
 
       <div className='thumbnailContainer'>
-        <FontAwesomeIcon className='arrow' onClick={() => handleClick(currentIndex - 1)} icon={faArrowUp} />
+
+         <FontAwesomeIcon className={prevArrClsx} onClick={() => carouselController(-1)} icon={faArrowUp} />
+
         {photos.map((photo, index) => {
-          if (index < goalPosts[0] || index > goalPosts[1]) return;
-          let className = index === currentIndex ? 'img active' : 'img';
+          if (index < start || index > end) return;
+          let className = index === isActiveIndex ? 'img active' : 'img';
           return <img onClick={() => handleClick(index)} key={Math.random()} className={className} src={photo[0]} />
         })}
-        <FontAwesomeIcon className='arrow' onClick={() => handleClick(currentIndex + 1)} icon={faArrowDown} />
+
+          <FontAwesomeIcon className={nextArrClsx} onClick={() => carouselController(1)} icon={faArrowDown} />
       </div>
 
+
       <div className='carouselControlContainer'>
-        <FontAwesomeIcon className='arrow' onClick={() => handleClick(currentIndex + 1)} icon={faArrowLeft} />
-        <FontAwesomeIcon className='arrow' onClick={() => handleClick(currentIndex + 1)} icon={faArrowRight} />
+        <FontAwesomeIcon className='arrow' onClick={() => handleClick(currentIndex - 1, -1)} icon={faArrowLeft} />
+        <FontAwesomeIcon className='arrow' onClick={() => handleClick(currentIndex + 1, 1)} icon={faArrowRight} />
       </div>
 
 

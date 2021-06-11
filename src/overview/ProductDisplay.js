@@ -9,6 +9,8 @@ import axios from 'axios';
 function ProductDisplay({product, ...rest}) {
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
+  const [sliderOpen, setSlider] = useState(true);
+  const toggleSlider = () => setSlider(!sliderOpen);
 
   useEffect(() => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product.id}/styles`;
@@ -22,8 +24,6 @@ function ProductDisplay({product, ...rest}) {
   }, []);
 
   // Sliding Drawer State and Functionality
-   const [sliderOpen, setSlider] = useState(true);
-   const toggleSlider = () => setSlider(!sliderOpen);
    let drawerClasses = clsx('side-drawer', {'close': !sliderOpen});
    let galleryClasses = clsx('galleryContainer', {'grow': !sliderOpen});
 
@@ -32,7 +32,7 @@ function ProductDisplay({product, ...rest}) {
    return (
      <div className='productContainer'>
        <Gallery style={currentStyle} className={galleryClasses} toggle={toggleSlider}/>
-       <CartSelection productstyles={productStyles} className={drawerClasses}/>
+       <CartSelection productstyles={productStyles} setCurrentStyle={setCurrentStyle} className={drawerClasses}/>
      </div>
    );
 }
