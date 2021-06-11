@@ -1,5 +1,7 @@
 import React from 'react';
-import Card from './Card.js';
+import Card from './Card.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import '../styles.css';
 
 const Carousel = (props) => {
@@ -7,22 +9,20 @@ const Carousel = (props) => {
     <div className="carousel">
       {console.log(props.products)}
       <button className="carousel_button carousel_button--left" >
-        <img src="/images/left.png" atl=""/>
+      <FontAwesomeIcon icon={ faAngleLeft } size = '4x'/>
+        {/* <img src="/images/left.png" atl=""/> */}
       </button>
 
       <ul className="carousel_track">
-        <li className="card_slide"> <Card products={props.products}/></li>
-        {/* <li className="card_slide"> <Card /></li>
-        <li className="card_slide"> <Card /></li>
-        <li className="card_slide"> <Card /></li> */}
-        {/* <li className="carousel_slide"><img className="testImage" src="/images/dog.jpeg" alt=""/></li>
-        <li className="carousel_slide"><img className="testImage" src="/images/cat.jpeg" alt=""/></li>
-        <li className="carousel_slide"><img className="testImage" src="/images/bird.jpeg" alt=""/></li> */}
+        {props.products.map((item) => {
+          // console.log(item.style_id);
+          return <li key={item.style_id} className="card_slide"> <Card product={item}/></li>
+        })}
       </ul>
 
-      {/* <Card/> */}
       <button className="carousel_button carousel_button--right" >
-        <img src="/images/right.png" atl=""/>
+        <FontAwesomeIcon icon={ faAngleRight } size = '4x'/>
+        {/* <img src="/images/right.png" atl=""/> */}
       </button>
     </div>
   )
