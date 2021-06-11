@@ -7,7 +7,14 @@ export default ({answer, update}) => {
   const [votedHelpful, setVotedHelpful] = useState(false)
 
   const handleReported = () => {
-    setReported(true)
+    axios({
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${answer.id}/report`,
+      headers: {
+        Authorization: API_KEY
+      }
+    })
+    .then(setReported(true))
   }
 
   function handleHelpful(e) {
