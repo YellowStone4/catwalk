@@ -83,6 +83,10 @@
   background: rgba(#d3d9f3, .8);
 }
 
+.arrow.hidden {
+  display: none;
+}
+
 .thumbnailContainer {
   display: flex;
   justify-content: space-around;
