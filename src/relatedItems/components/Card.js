@@ -12,7 +12,7 @@ const Card = (props) => {
   return (
     // <div className='container_slider'>
       <div className="cardGrid">
-        {console.log(props.products)}
+        {/* {console.log(props.products)} */}
         <div><img className="testImage" src="/images/dog.jpeg" alt=""/></div>
         <div style={cardGrid}>{props.products.category}</div>
         <div style={cardGrid}>{props.products.name}</div>

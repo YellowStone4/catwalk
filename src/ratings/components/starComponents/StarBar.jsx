@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 const StarBar = (props) => {
-  console.log('props in StarBar: props.ratings', props.ratings)
+//   console.log('props in StarBar: props.ratings', props.ratings)
 
   return (
     <div>

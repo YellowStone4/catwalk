@@ -7,6 +7,7 @@ import RelatedItems from './relatedItems/RelatedItems';
 import Search from './Search.jsx';
 
 function ProductPage({ product }) {
+
   if (product) {
     return (
       <>

@@ -30,7 +30,7 @@ const RelatedItems = (props) => {
 
   return (
     <div>
-      {console.log(props.product)}
+      {/* {console.log(props.product)} */}
       <h1>Related Items</h1>
       <Carousel products={props.product}/>
     </div>

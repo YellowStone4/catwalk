@@ -3,7 +3,7 @@ import Gallery from './components/Gallery.js';
 import CartSelection from './components/CartSelection.js';
 import './components/styles.css';
 import clsx from 'clsx';
-import API_KEY from '../../config.js';
+import {API_KEY} from '../../config.js';
 import axios from 'axios';
 
 function ProductDisplay({product, ...rest}) {
@@ -27,11 +27,11 @@ function ProductDisplay({product, ...rest}) {
    let drawerClasses = clsx('side-drawer', {'close': !sliderOpen});
    let galleryClasses = clsx('galleryContainer', {'grow': !sliderOpen});
 
-   if (currentStyle === '') return <div />
+   if (currentStyle === '') return <div className='productContainer'/>
 
    return (
      <div className='productContainer'>
-       <Gallery currentstyle={currentStyle} className={galleryClasses} toggle={toggleSlider}/>
+       <Gallery style={currentStyle} className={galleryClasses} toggle={toggleSlider}/>
        <CartSelection productstyles={productStyles} className={drawerClasses}/>
      </div>
    );
