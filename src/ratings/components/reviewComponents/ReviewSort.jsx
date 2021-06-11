@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import SortSelection from './SortSelection.jsx';
 
 const ReviewSort = (props) => {
-  console.log('ReviewSort props: ', props);
+  // console.log('ReviewSort props: ', props);
   const countReviews = (recommendings) => {
     var total = 0;
     for (var key in recommendings) {
@@ -12,6 +13,7 @@ const ReviewSort = (props) => {
   return (
     <div>
       <h3>{countReviews(props.metaData.recommended)} reviews, sorted by </h3>
+      <SortSelection changeSort={props.changeSort} />
     </div>
   )
 }
