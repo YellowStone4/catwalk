@@ -2,11 +2,10 @@ import React from 'react';
 import SelectedStyle from './SelectedStyle.js';
 import './styles.css';
 
-function CartSelection(props) {
-  // console.log('productStyles in prop: ', props.productstyles)
+function CartSelection({setCurrentStyle, ...rest}) {
 
   return (
-    <div {...props}>
+    <div {...rest}>
       <div className='basicInfo'>
         <p>***** <a href='#'>Read all reviews</a></p>
         <p>CATEGORY</p>
@@ -14,7 +13,7 @@ function CartSelection(props) {
         <p>$369</p>
       </div>
 
-      <SelectedStyle />
+      <SelectedStyle productStyles={rest.productstyles} setCurrentStyle={setCurrentStyle}/>
 
       <div className='cartContainer'>
         <button className='btn'> SELECT SIZE V </button> <button className='btn'> 1 v </button>
