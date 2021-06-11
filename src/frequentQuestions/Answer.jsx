@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { API_KEY } from '../../config.js'
 import axios from 'axios'
 
-export default ({answer}) => {
+export default ({answer, update}) => {
   const [reported, setReported] = useState(false)
   const [votedHelpful, setVotedHelpful] = useState(false)
 
@@ -19,6 +19,7 @@ export default ({answer}) => {
         Authorization: API_KEY,
       },
     })
+    .then(update())
   }
   const username = answer.answerer_name === 'Seller' ? <strong>Seller</strong> : answer.answerer_name
   const helpfulLink = <span> Helpful? <a href="#" onClick={handleHelpful}>Yes</a> ({answer.helpfulness})</span>
