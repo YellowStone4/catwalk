@@ -4,7 +4,7 @@ import StarBar from './StarBar.jsx';
 
 
 const StarSort = (props) => {
-  console.log('Metadata ratings in StarSort: ', props.metaData.ratings);
+  // console.log('Metadata ratings in StarSort: ', props.metaData.ratings);
   const [starPercentage, setStarPercentage] = useState(0);
 
   const calculatePercentage = (percentages) => {

@@ -5,7 +5,7 @@ import '../styles.css';
 const Carousel = (props) => {
   return (
     <div className="carousel">
-      {console.log(props.products)}
+      {/* {console.log(props.products)} */}
       <button className="carousel_button carousel_button--left" >
         <img src="/images/left.png" atl=""/>
       </button>
