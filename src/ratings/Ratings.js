@@ -31,10 +31,10 @@ const Ratings = ({product}) => {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=19089&count=' + reviewCount  + '&sort=' + reviewSort
     }
     axios(options).then((response) => {
-      console.log('Response from request for reviews: ', response.data);
+      // console.log('Response from request for reviews: ', response.data);
       setReviewData(response.data);
     }).catch((err) => {
-      console.log('Err from requesting reviews: ', err);
+      // console.log('Err from requesting reviews: ', err);
     })
   }, [reviewSort, reviewCount]);
 
@@ -48,10 +48,10 @@ const Ratings = ({product}) => {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=19089'
     }
     axios(options).then((response) => {
-      console.log('Response from axios request for metadata: ', response.data);
+      // console.log('Response from axios request for metadata: ', response.data);
       setMetaData(response.data);
     }).catch((err) => {
-      console.log('Error from getting metadata: ', err);
+      // console.log('Error from getting metadata: ', err);
     })
   }, []);
 

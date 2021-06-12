@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Answer from './Answer.jsx'
 
-const Question = ({question}) => {
+const Question = ({question, update}) => {
   const [numberOfVisibleAnswers, setNumberOfVisibleAnswers] = useState(2)
   const answers = Object.values(question.answers)
   answers.sort((a, b) => {
@@ -11,7 +11,6 @@ const Question = ({question}) => {
     if( b.answerer_name === 'Seller' || b.helpfulness > a.helpfulness) {
       return 1
     }
-
   })
   let visibleAnswers = answers.slice(0, numberOfVisibleAnswers)
 
@@ -26,12 +25,14 @@ const Question = ({question}) => {
   return (
     <section>
       <strong>Q: {question.question_body} </strong>
-      <span><a href=""> Add Answer</a>  |  Helpful? <a href="">Yes</a> ({question.question_helpfulness})</span>
+      <span> Helpful? <a href="">Yes</a> ({question.question_helpfulness}) | <a href=""> Add Answer</a></span>
+
       {answers.length > 0 &&
         <section>
-          <strong>A: </strong>{visibleAnswers.map(answer => <Answer key={answer.id} answer={answer}/>)}
+          <strong>A: </strong>{visibleAnswers.map(answer => <Answer key={answer.id} answer={answer} update={update}/>)}
         </section>
       }
+
       {visibleAnswers.length < answers.length &&
         <strong onClick={loadMoreAnswers}>Load More Answers</strong>
       }
