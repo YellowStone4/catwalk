@@ -8,11 +8,11 @@ import axios from 'axios';
 
 
 const Ratings = ({product}) => {
-
   const [metaData, setMetaData] = useState({});
   const [reviewData, setReviewData] = useState({});
   const [reviewSort, setReviewSort] = useState('');
   const [reviewCount, setCountReview] = useState(2);
+  const [productId , setProductId] = useState(19089);
 
   const changeSort = (sortMethod) => {
     setReviewSort(sortMethod);
@@ -23,12 +23,17 @@ const Ratings = ({product}) => {
   }
 
   useEffect(() => {
+    setProductId(product.id)
+
+  }, [product.id])
+
+  useEffect(() => {
     var options = {
       method: 'get',
       headers: {
         'Authorization': API_KEY
       },
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=19089&count=' + reviewCount  + '&sort=' + reviewSort
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=' + productId + '&count=' + reviewCount  + '&sort=' + reviewSort
     }
     axios(options).then((response) => {
       console.log('Response from request for reviews: ', response.data);
@@ -48,7 +53,6 @@ const Ratings = ({product}) => {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=19089'
     }
     axios(options).then((response) => {
-      console.log('Response from axios request for metadata: ', response.data);
       setMetaData(response.data);
     }).catch((err) => {
       console.log('Error from getting metadata: ', err);

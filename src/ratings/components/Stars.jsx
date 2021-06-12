@@ -6,7 +6,7 @@ import StarSliders from './starComponents/StarSliders.jsx';
 const Stars = (props) => {
 
   useEffect(() => {
-    console.log('These are the passed down props: ', props);
+    console.log('Stars in stars,jsx: '. props)
 
   });
 

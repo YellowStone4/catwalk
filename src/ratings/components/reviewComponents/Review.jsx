@@ -10,7 +10,7 @@ const Review = (props) => {
     <div style={{margin: '30px'}}>
       <div style={{clear: 'both'}}>
         <div style={{float: 'left'}}>
-          <StarCount starNumber={props.review.rating}/>
+          <StarCount id={props.review.review_id} starNumber={props.review.rating}/>
         </div>
         <div style={{float: 'right'}}>
           <ReviewDate date={props.review.date}/>
