@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Carousel from './components/Carousel.js';
+import Carousel from './components/Carousel.jsx';
 import axios from 'axios';
 import { API_KEY } from '/config.js'
 
@@ -25,7 +25,7 @@ const RelatedItems = (props) => {
       };
       axios.get(url, config)
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
           let promises = res.data.map(item => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${item}/styles`, config)
           .then((res) => {
             styles.push(res.data.results[0]);
@@ -37,7 +37,7 @@ const RelatedItems = (props) => {
     //  notInitialRender.current = true
     //}
 
-  }, []);
+  }, [props.products]);
 
 
   return (
