@@ -175,11 +175,52 @@ img:hover {
   transform: scale(1.05);
 }
 
+.styleIconWrapper {
+  position: relative;
+}
+
+.selectedInput {
+  position: absolute;
+  display:inline-block;
+  transform: rotate(45deg);
+  top: 0;
+  right: 7px;
+}
+
+.checkCircle {
+  position: absolute;
+  width:22px;
+  height:22px;
+  background-color: #9691F4;
+  border-radius: 11px;
+  left:0;
+  top:0;
+}
+
+.checkStem {
+  position: absolute;
+  width:3px;
+  height:9px;
+  background-color:#fff;
+  left:11px;
+  top:6px;
+}
+
+ .checkKick {
+  position: absolute;
+  width:3px;
+  height:3px;
+  background-color:#fff;
+  left:8px;
+  top:12px;
+}
+
 .cartContainer {
   display: grid;
   grid-template-columns: 200px 200px;
   grid-gap: 30px;
 }
+
 
 .btn {
   background-color: #343f56;
