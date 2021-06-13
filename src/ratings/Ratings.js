@@ -20,6 +20,7 @@ const Ratings = ({product}) => {
 
   const changeCount = () => {
     setCountReview(reviewCount + 2);
+    console.log('Review count: ', reviewCount);
   }
 
   useEffect(() => {
@@ -37,11 +38,12 @@ const Ratings = ({product}) => {
     }
     axios(options).then((response) => {
       console.log('Response from request for reviews: ', response.data);
+      console.log('Review count inside axios: ', options.url);
       setReviewData(response.data);
     }).catch((err) => {
       console.log('Err from requesting reviews: ', err);
     })
-  }, [reviewSort, reviewCount]);
+  }, [reviewSort, reviewCount, productId]);
 
   //Get Meta Data
   useEffect(() => {
@@ -50,14 +52,14 @@ const Ratings = ({product}) => {
       headers: {
         'Authorization': API_KEY
       },
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=19089'
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=' + productId
     }
     axios(options).then((response) => {
       setMetaData(response.data);
     }).catch((err) => {
       console.log('Error from getting metadata: ', err);
     })
-  }, []);
+  }, [productId]);
 
   return (
     <div>

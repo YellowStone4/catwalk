@@ -12,8 +12,8 @@ const StarBar = (props) => {
 
   const insideBar = {
     backgroundColor: 'grey',
-    width: '25%',
     height: '24px',
+    width: props.ratings + '%'
   };
 
 
