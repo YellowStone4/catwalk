@@ -6,9 +6,10 @@ html {
 }
 
 body {
-  background-color: aliceblue;
   margin: 0px;
   padding: 0px;
+  /* position: fixed; */
+  /* overflow: hidden; */
 }
 
 .container {

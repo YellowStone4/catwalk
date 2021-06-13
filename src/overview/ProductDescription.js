@@ -1,15 +1,18 @@
 import React from 'react';
 
 const containerStyle = {
-  backgroundColor: 'whitesmoke',
+  backgroundColor: '#fb9300',
   display: 'grid',
   gridTemplateColumns: 'minmax(150px, 75%) 1fr',
-  height: '100%'
+  height: '100%',
+  padding: '20px',
+  paddingRight: '30px',
+  fontSize: '1.3rem'
 }
 
 const articleStyle = {
   borderRight: '1px solid black',
-  padding: '5px 10px',
+  width: '90%',
 }
 
 function ProductDescription({product, ...rest}) {
@@ -22,7 +25,7 @@ function ProductDescription({product, ...rest}) {
       </article>
       <aside>
         <ul style={{paddingTop: '10px'}}>
-         {product.features.map(item => <li key={Math.random()}  style={{margin:'10px'}}>{item.feature}: {item.value}</li>)}
+         {product.features.map(item => <li key={Math.random()}>{item.feature}: {item.value}</li>)}
         </ul>
       </aside>
     </div>

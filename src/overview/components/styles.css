@@ -16,7 +16,6 @@
 .galleryContainer {
   background-color: #d1d9d9;
   height: 100%;
-  overflow: hidden;
 }
 
 .galleryContainer.grow{
@@ -44,6 +43,9 @@
   cursor: pointer;
   transition: all .1s ease-out;
   color: purple;
+  background: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .icon:hover {
@@ -58,7 +60,7 @@
 }
 .carouselControlContainer .arrow:nth-child(1) {
   position: absolute;
-  left: 100px;
+  left: 120px;
 }
 
 .carouselControlContainer .arrow:nth-child(2){
@@ -97,8 +99,10 @@
 }
 
 img {
-  height: 100px;
-  border: 1px solid black;
+  width: 125px;
+  height: 125px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
   background-position: center;
   margin: 5px;
   opacity: 100%;
@@ -128,10 +132,13 @@ img:hover {
 
 .side-drawer {
   padding: 20px;
-  background-color: #fff5eb;
+  background-color: #f54748;
   height: 100%;
   transform: translateX(0);
   right: 0;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
 }
 
 .side-drawer.close {
@@ -140,17 +147,32 @@ img:hover {
   transform: translateX(100%);
 }
 
+.cartSelectionContainer {
+  background-color: #f5e6ca;
+  padding: 10px 40px;
+  border-radius: 10px;
+  display: inline-block;
+  height: 90%;
+}
+
 .productStyles {
   display: grid;
   grid-template-columns: 75px 75px 75px 75px;
   grid-gap: 5px;
   margin-bottom: 30px;
 }
-.productStyles div {
-  background-color: lightblue;
+.styleIcons {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  border: 1px solid black;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  background-size: cover;
+  margin: 3px;
+}
+
+.styleIcons:hover {
+  transform: scale(1.05);
 }
 
 .cartContainer {
@@ -160,13 +182,12 @@ img:hover {
 }
 
 .btn {
-  background: #ededed;
-  padding: 5px;
-  background-color: #fff;
-  border-radius: 3px;
+  background-color: #343f56;
+  color: whitesmoke;
+  padding: 10px;
+  border-radius: 10px;
   border: 1px solid #c4c4c4;
   font-size: 1.5rem;
-  color: #333;
   cursor: pointer;
 }
 

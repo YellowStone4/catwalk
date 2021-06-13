@@ -4,15 +4,16 @@ const headerStyle = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  background: 'pink',
+  background: '#343f56'
 };
 
 const pStyle = {
   flexGrow: '1',
   marginLeft: '10px',
   fontSize: '2rem',
-  textDecoration: 'underline 2px black solid',
+  textDecoration: 'underline 2px whitesmoke solid',
   textUnderlineOffset: '20%',
+  color: 'whitesmoke'
 };
 
 const searchWrapper = {
