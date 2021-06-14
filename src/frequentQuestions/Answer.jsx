@@ -19,14 +19,17 @@ export default ({answer, update}) => {
 
   function handleHelpful(e) {
     e.preventDefault()
-    axios({
-      method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${answer.id}/helpful`,
-      headers: {
-        Authorization: API_KEY,
-      },
-    })
-    .then(update())
+    !votedHelpful && (
+      axios({
+        method: 'put',
+        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${answer.id}/helpful`,
+        headers: {
+          Authorization: API_KEY,
+        },
+      })
+      .then(update)
+      .then(setVotedHelpful(true))
+    )
   }
   const username = answer.answerer_name === 'Seller' ? <strong>Seller</strong> : answer.answerer_name
   const helpfulLink = <span> Helpful? <a href="#" onClick={handleHelpful}>Yes</a> ({answer.helpfulness})</span>

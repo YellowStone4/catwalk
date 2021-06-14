@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Question from './Question.jsx'
+import QuestionList from './QuestionList.jsx'
 import Search from './Search.jsx'
 import { API_KEY } from '../../config';
 
 function FrequentQuestions({product}) {
   const [questions, setQuestions] = useState([]);
+  let searchedQuestions = questions.filter(() =>true)
 
   useEffect(() => {
     fetchQuestions()
@@ -28,9 +29,7 @@ function FrequentQuestions({product}) {
     <>
       <h1>Frequent Questions</h1>
       <Search />
-      <section>
-        {questions.map((question) => <Question key={question.question_id} question={question} update={fetchQuestions}/>)}
-      </section>
+      <QuestionList questions={searchedQuestions} update={fetchQuestions}/>
     </>
   );
 }
