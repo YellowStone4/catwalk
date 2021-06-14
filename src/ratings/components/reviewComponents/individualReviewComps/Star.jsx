@@ -7,7 +7,9 @@ const Star = (props) => {
 
 
   return (
-    <FontAwesomeIcon key={Math.random()} icon={faStar} />
+    <div style={{display: 'inline'}} key={Math.random()}>
+      <FontAwesomeIcon key={props.giveKey} icon={faStar} />
+    </div>
 
   )
 };
