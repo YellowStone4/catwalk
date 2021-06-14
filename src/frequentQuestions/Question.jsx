@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import Answer from './Answer.jsx'
+import { API_KEY } from '../../config'
 
 const Question = ({question, update}) => {
+  const [votedHelpful, setVotedHelpful] = useState(false)
   const [numberOfVisibleAnswers, setNumberOfVisibleAnswers] = useState(2)
   const answers = Object.values(question.answers)
   answers.sort((a, b) => {
@@ -14,31 +16,37 @@ const Question = ({question, update}) => {
   })
   let visibleAnswers = answers.slice(0, numberOfVisibleAnswers)
 
-  function loadMoreAnswers() {
-    setNumberOfVisibleAnswers(numberOfVisibleAnswers + 2)
-  }
+  const loadMoreAnswers = () => setNumberOfVisibleAnswers(numberOfVisibleAnswers + 2)
+  const collapseAnswers = () => setNumberOfVisibleAnswers(2)
+  const collapse = <strong onClick={collapseAnswers}>Collapse Answers</strong>
+  const loadMore = <strong onClick={loadMoreAnswers}>Load More Answers</strong>
 
-  function collapseAnswers() {
-    setNumberOfVisibleAnswers(2)
+  const handleHelpful = () => {
+    if(!votedHelpful) {
+      fetch(new Request(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/helpful`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: API_KEY
+        }
+      }))
+      .then(update)
+      .then(setVotedHelpful(true))
+    }
   }
 
   return (
     <section>
       <strong>Q: {question.question_body} </strong>
-      <span> Helpful? <a href="">Yes</a> ({question.question_helpfulness}) | <a href=""> Add Answer</a></span>
+      <span> Helpful? <a onClick={handleHelpful}>Yes</a> ({question.question_helpfulness}) | <a> Add Answer</a></span>
 
       {answers.length > 0 &&
         <section>
           <strong>A: </strong>{visibleAnswers.map(answer => <Answer key={answer.id} answer={answer} update={update}/>)}
         </section>
       }
-
-      {visibleAnswers.length < answers.length &&
-        <strong onClick={loadMoreAnswers}>Load More Answers</strong>
-      }
-      {visibleAnswers.length > 2 && visibleAnswers.length === answers.length &&
-        <strong onClick={collapseAnswers}>Collapse Answers</strong>
-      }
+      {visibleAnswers.length < answers.length && loadMore}
+      {visibleAnswers.length > 2 && visibleAnswers.length === answers.length && collapse}
       <hr />
     </section>
   )
