@@ -1,10 +1,10 @@
 import React from 'react'
 import Question from './Question.jsx'
 
-const QuestionList = ({questions}) => {
+const QuestionList = ({questions, update}) => {
   return (
     <section>
-      {questions.map((question) => <Question key={question.question_id} question={question} />)}
+      {questions.map((question) => <Question key={question.question_id} question={question} update={update} />)}
     </section>
   )
 }

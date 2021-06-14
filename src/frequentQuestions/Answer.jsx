@@ -19,14 +19,17 @@ export default ({answer, update}) => {
 
   function handleHelpful(e) {
     e.preventDefault()
-    axios({
-      method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${answer.id}/helpful`,
-      headers: {
-        Authorization: API_KEY,
-      },
-    })
-    .then(update())
+    !votedHelpful && (
+      axios({
+        method: 'put',
+        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${answer.id}/helpful`,
+        headers: {
+          Authorization: API_KEY,
+        },
+      })
+      .then(update)
+      .then(setVotedHelpful(true))
+    )
   }
   const username = answer.answerer_name === 'Seller' ? <strong>Seller</strong> : answer.answerer_name
   const helpfulLink = <span> Helpful? <a href="#" onClick={handleHelpful}>Yes</a> ({answer.helpfulness})</span>
@@ -36,7 +39,7 @@ export default ({answer, update}) => {
     <>
       {answer.body} <br />
       {answer.photos.length > 0 &&
-        answer.photos.map(photo => <img key={answer.id} src={photo} alt="" />)
+        answer.photos.map((photo, index) => <img key={index} src={photo} alt="" />)
       }
       <p>by {answer.answerer_name}, {new Date(answer.date).toDateString()} | {helpfulLink} | {report}</p>
     </>
