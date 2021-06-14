@@ -13,8 +13,6 @@ const Stars = (props) => {
 
   return (
     <div>
-      <h2>Stars</h2>
-
       <AvgStar />
       <StarSort  changeStarSort={props.changeStarSort} metaData={props.metaData}/>
       <StarSliders metaData={props.metaData}/>

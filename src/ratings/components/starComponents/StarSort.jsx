@@ -34,13 +34,12 @@ const StarSort = (props) => {
 
   const starSortClick = (event) => {
     props.changeStarSort(event.target.value);
-    console.log('TARGET OF BUTTON: ', event.target.value);
+
     // console.log('STAR DOUBLE CLICK: ', setStarDoubleClick);
   }
 
   return (
     <div>
-      <h3>Star List Here:</h3>
       <ul>
         <li><button onClick={starSortClick} value={5}>5 Stars:</button> <StarBar number={5} ratings={percentFive} /> </li>
         <li><button onClick={starSortClick} value={4}>4 Stars:</button> <StarBar number={4} ratings={percentFour}/></li>

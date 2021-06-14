@@ -8,7 +8,6 @@ const barStyle = {
 
 const StarBar = (props) => {
   //console.log('props in StarBar: props.ratings', props.ratings)
-  console.log('Rating percentage in StarBar.jsx: ', props.ratings, props.number);
 
   const insideBar = {
     backgroundColor: 'grey',

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-
+import Slider from './Slider.jsx';
 
 const StarSliders = (props) => {
 
@@ -49,27 +49,44 @@ const StarSliders = (props) => {
     };
   }, [props.metaData]);
 
-  useEffect(() => {
-    console.log('Props in StarSliders: ', props);
-  });
+  const h4Style = {
+    margin: '0 auto',
+    position: 'relative'
+  }
+
+
 
   return (
     <div>
-      <h3>StarSliders</h3>
       {comfort !== null &&
-        <h4>Comfort: {props.metaData.characteristics.Comfort.value}</h4>
+        <div>
+          <h4 style={h4Style}>Comfort</h4>
+          <Slider val={props.metaData.characteristics.Comfort.value}/>
+        </div>
       }
       {fit !== null &&
-        <h4>Fit: {props.metaData.characteristics.Fit.value}</h4>
+        <div>
+          <h4>Fit</h4>
+          <Slider val={props.metaData.characteristics.Fit.value}/>
+        </div>
       }
       {length !== null &&
-        <h4>Length: {props.metaData.characteristics.Length.value}</h4>
+        <div>
+          <h4>Length</h4>
+          <Slider val={props.metaData.characteristics.Length.value}/>
+        </div>
       }
       {quality !== null &&
-        <h4>Quality: {props.metaData.characteristics.Quality.value}</h4>
+        <div>
+          <h4>Quality</h4>
+          <Slider val={props.metaData.characteristics.Quality.value}/>
+        </div>
       }
       {width !== null &&
-        <h4>Width: {props.metaData.characteristics.Width.value}</h4>
+        <div>
+          <h4>Width</h4>
+          <Slider val={props.metaData.characteristics.Width.value}/>
+        </div>
       }
     </div>
   )

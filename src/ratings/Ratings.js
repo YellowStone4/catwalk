@@ -10,6 +10,7 @@ import axios from 'axios';
 const Ratings = ({product}) => {
   const [metaData, setMetaData] = useState({});
   const [reviewData, setReviewData] = useState({});
+
   const [reviewSort, setReviewSort] = useState('');
   const [reviewCount, setCountReview] = useState(2);
   const [productId , setProductId] = useState(19089);
@@ -17,7 +18,6 @@ const Ratings = ({product}) => {
 
   const changeStarSort = (starCount) => {
     setStarSort(starCount);
-    console.log('change star sort: ', starCount);
   }
 
   const changeSort = (sortMethod) => {
@@ -26,7 +26,6 @@ const Ratings = ({product}) => {
 
   const changeCount = () => {
     setCountReview(reviewCount + 2);
-    console.log('Review count: ', reviewCount);
   }
 
   useEffect(() => {
@@ -43,8 +42,6 @@ const Ratings = ({product}) => {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=' + productId + '&count=' + reviewCount  + '&sort=' + reviewSort
     }
     axios(options).then((response) => {
-      console.log('Response from request for reviews: ', response.data);
-      console.log('Review count inside axios: ', options.url);
       setReviewData(response.data);
     }).catch((err) => {
       console.log('Err from requesting reviews: ', err);

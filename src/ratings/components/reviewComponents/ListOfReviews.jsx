@@ -3,7 +3,6 @@ import Review from './Review.jsx';
 
 const ListOfReviews = (props) => {
   const [reviewArray, setReviewArray] = useState([]);
-  console.log('prop review in ListofReviews: ', props.reviews);
 
 
   useEffect(() => {
@@ -14,7 +13,6 @@ const ListOfReviews = (props) => {
 
   return (
     <div>
-      <h5>List of reviews here: </h5>
       {reviewArray.map((review) => {
         return <Review key={review.review_id} review={review}/>;
       })}
