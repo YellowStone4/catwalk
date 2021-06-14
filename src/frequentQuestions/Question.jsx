@@ -39,6 +39,7 @@ const Question = ({question, update}) => {
       {visibleAnswers.length > 2 && visibleAnswers.length === answers.length &&
         <strong onClick={collapseAnswers}>Collapse Answers</strong>
       }
+      <hr />
     </section>
   )
 }
