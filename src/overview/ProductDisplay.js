@@ -32,7 +32,7 @@ function ProductDisplay({product, ...rest}) {
    return (
      <div className='productContainer'>
        <Gallery style={currentStyle} className={galleryClasses} toggle={toggleSlider}/>
-       <CartSelection productstyles={productStyles} setCurrentStyle={setCurrentStyle} className={drawerClasses}/>
+       <CartSelection product={product} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} className={drawerClasses}/>
      </div>
    );
 }
