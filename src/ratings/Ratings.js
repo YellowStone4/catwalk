@@ -8,11 +8,17 @@ import axios from 'axios';
 
 
 const Ratings = ({product}) => {
-
   const [metaData, setMetaData] = useState({});
   const [reviewData, setReviewData] = useState({});
+
   const [reviewSort, setReviewSort] = useState('');
   const [reviewCount, setCountReview] = useState(2);
+  const [productId , setProductId] = useState(19089);
+  const [starSort, setStarSort] = useState(null);
+
+  const changeStarSort = (starCount) => {
+    setStarSort(starCount);
+  }
 
   const changeSort = (sortMethod) => {
     setReviewSort(sortMethod);
@@ -23,20 +29,24 @@ const Ratings = ({product}) => {
   }
 
   useEffect(() => {
+    setProductId(product.id)
+
+  }, [product.id])
+
+  useEffect(() => {
     var options = {
       method: 'get',
       headers: {
         'Authorization': API_KEY
       },
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=19089&count=' + reviewCount  + '&sort=' + reviewSort
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=' + productId + '&count=' + reviewCount  + '&sort=' + reviewSort
     }
     axios(options).then((response) => {
-      // console.log('Response from request for reviews: ', response.data);
       setReviewData(response.data);
     }).catch((err) => {
       // console.log('Err from requesting reviews: ', err);
     })
-  }, [reviewSort, reviewCount]);
+  }, [reviewSort, reviewCount, productId]);
 
   //Get Meta Data
   useEffect(() => {
@@ -45,22 +55,21 @@ const Ratings = ({product}) => {
       headers: {
         'Authorization': API_KEY
       },
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=19089'
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta?product_id=' + productId
     }
     axios(options).then((response) => {
-      // console.log('Response from axios request for metadata: ', response.data);
       setMetaData(response.data);
     }).catch((err) => {
       // console.log('Error from getting metadata: ', err);
     })
-  }, []);
+  }, [productId]);
 
   return (
     <div>
       <h4>RATINGS & REVIEWS</h4>
       <div style={styles.ratingsStyle}>
-        <Stars metaData={metaData} product={product}/>
-        <Reviews changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
+        <Stars changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
+        <Reviews setStarSort={setStarSort} starSort={starSort} changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
       </div>
     </div>
   )

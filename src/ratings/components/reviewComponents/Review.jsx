@@ -10,7 +10,7 @@ const Review = (props) => {
     <div style={{margin: '30px'}}>
       <div style={{clear: 'both'}}>
         <div style={{float: 'left'}}>
-          <StarCount starNumber={props.review.rating}/>
+          <StarCount id={props.review.review_id} starNumber={props.review.rating}/>
         </div>
         <div style={{float: 'right'}}>
           <ReviewDate date={props.review.date}/>
@@ -28,7 +28,7 @@ const Review = (props) => {
 
       <div style={{backgroundColor: 'grey', padding: '5px'}}>
         <h4>Response:</h4>
-        <p>I'm so sorry that this product was so bad! Sorry about that!</p>
+        <p>Convert to stateful</p>
       </div>
       <div>
         <span>Was this review helpful? </span>

@@ -13,7 +13,6 @@ const ListOfReviews = (props) => {
 
   return (
     <div>
-      <h5>List of reviews here: </h5>
       {reviewArray.map((review) => {
         return <Review key={review.review_id} review={review}/>;
       })}

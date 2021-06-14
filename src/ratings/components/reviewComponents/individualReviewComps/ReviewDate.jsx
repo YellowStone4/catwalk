@@ -13,7 +13,6 @@ const ReviewDate = (props) => {
     setPostedDate(getFormattedDate(props.date).toString());
   }, [props.date]);
 
-  console.log('Posted date: ', postedDate);
 
   return (
     <div>

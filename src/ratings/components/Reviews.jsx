@@ -8,9 +8,8 @@ const Reviews = (props) => {
 
   return (
     <div>
-      <h2>Reviews</h2>
       <ReviewSort changeSort={props.changeSort} metaData={props.metaData} reviews={props.reviews}/>
-      <ListOfReviews reviews={props.reviews} product={props.product}/>
+      <ListOfReviews starSort={props.starSort} reviews={props.reviews} product={props.product}/>
       <ReviewButtons changeCount={props.changeCount}/>
     </div>
   )
