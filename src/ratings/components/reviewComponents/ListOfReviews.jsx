@@ -3,6 +3,7 @@ import Review from './Review.jsx';
 
 const ListOfReviews = (props) => {
   const [reviewArray, setReviewArray] = useState([]);
+  console.log('prop review in ListofReviews: ', props.reviews);
 
 
   useEffect(() => {

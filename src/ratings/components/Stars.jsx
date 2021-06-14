@@ -6,7 +6,8 @@ import StarSliders from './starComponents/StarSliders.jsx';
 const Stars = (props) => {
 
   useEffect(() => {
-    console.log('Stars in stars,jsx: '. props)
+
+
 
   });
 
@@ -15,8 +16,8 @@ const Stars = (props) => {
       <h2>Stars</h2>
 
       <AvgStar />
-      <StarSort metaData={props.metaData}/>
-      <StarSliders />
+      <StarSort  changeStarSort={props.changeStarSort} metaData={props.metaData}/>
+      <StarSliders metaData={props.metaData}/>
     </div>
   )
 }

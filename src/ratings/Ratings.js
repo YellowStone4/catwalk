@@ -13,6 +13,12 @@ const Ratings = ({product}) => {
   const [reviewSort, setReviewSort] = useState('');
   const [reviewCount, setCountReview] = useState(2);
   const [productId , setProductId] = useState(19089);
+  const [starSort, setStarSort] = useState(null);
+
+  const changeStarSort = (starCount) => {
+    setStarSort(starCount);
+    console.log('change star sort: ', starCount);
+  }
 
   const changeSort = (sortMethod) => {
     setReviewSort(sortMethod);
@@ -65,8 +71,8 @@ const Ratings = ({product}) => {
     <div>
       <h4>RATINGS & REVIEWS</h4>
       <div style={styles.ratingsStyle}>
-        <Stars metaData={metaData} product={product}/>
-        <Reviews changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
+        <Stars changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
+        <Reviews setStarSort={setStarSort} starSort={starSort} changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
       </div>
     </div>
   )
