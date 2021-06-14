@@ -27,6 +27,7 @@
 .container {
   position: relative;
   height: 100%;
+  width: 100%;
   display: flex;
   align-items: flex-start;
   background-position: center;
@@ -136,9 +137,10 @@ img:hover {
   height: 100%;
   transform: translateX(0);
   right: 0;
-  font-size: 1.4rem;
+  font-size: 130%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly
 }
 
 .side-drawer.close {
@@ -153,7 +155,17 @@ img:hover {
   border-radius: 10px;
   display: inline-block;
   height: 90%;
+  flex-shrink: 2;
 }
+
+a {
+  color: #343f56;
+  text-decoration: none;
+}
+
+a:hover { color: #f54748 }
+
+a:active { color: #f547f8 }
 
 .productStyles {
   display: grid;
@@ -215,14 +227,18 @@ img:hover {
   top:12px;
 }
 
-.cartContainer {
+/* CART BUTTONS */
+
+.cartButtonContainer {
+  position: relative;
   display: grid;
-  grid-template-columns: 200px 200px;
-  grid-gap: 30px;
+  grid-template-columns: 250px 100px;
+  grid-gap: 20px;
+  flex-shrink: 2;
 }
 
 
-.btn {
+.cartButtonContainer .btn {
   background-color: #343f56;
   color: whitesmoke;
   padding: 10px;
@@ -230,14 +246,21 @@ img:hover {
   border: 1px solid #c4c4c4;
   font-size: 1.5rem;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
-.btn:hover {
+.cartButtonContainer .btn.star {
+  margin: 0 auto;
+}
+
+.cartButtonContainer .btn:hover {
  transform: scale(1.05);
 }
 
-.btn:active {
-  box-shadow: inset 0px 0px 5px #c1c1c1;
+.cartButtonContainer .btn:active {
+  box-shadow: inset 0px 0px 5px #000;
   outline: none;
-  background-color: #e5e5e5;
+  background-color: #f54748;
+  transform: scale(1);
 }
