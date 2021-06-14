@@ -44,7 +44,7 @@ const Ratings = ({product}) => {
     axios(options).then((response) => {
       setReviewData(response.data);
     }).catch((err) => {
-      console.log('Err from requesting reviews: ', err);
+      // console.log('Err from requesting reviews: ', err);
     })
   }, [reviewSort, reviewCount, productId]);
 
@@ -60,7 +60,7 @@ const Ratings = ({product}) => {
     axios(options).then((response) => {
       setMetaData(response.data);
     }).catch((err) => {
-      console.log('Error from getting metadata: ', err);
+      // console.log('Error from getting metadata: ', err);
     })
   }, [productId]);
 

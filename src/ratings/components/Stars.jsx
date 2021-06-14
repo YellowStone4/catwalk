@@ -7,8 +7,6 @@ const Stars = (props) => {
 
   useEffect(() => {
 
-
-
   });
 
   return (

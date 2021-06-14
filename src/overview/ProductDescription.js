@@ -1,30 +1,31 @@
 import React from 'react';
 
 const containerStyle = {
-  backgroundColor: 'whitesmoke',
+  backgroundColor: '#fb9300',
   display: 'grid',
-  gridTemplateColumns: 'minmax(150px, 75%) 1fr'
+  gridTemplateColumns: 'minmax(150px, 75%) 1fr',
+  height: '100%',
+  padding: '20px',
+  paddingRight: '30px',
+  fontSize: '1.3rem'
 }
 
 const articleStyle = {
   borderRight: '1px solid black',
-  padding: '5px 10px',
+  width: '90%',
 }
 
-function ProductDescription() {
+function ProductDescription({product, ...rest}) {
+
   return (
     <div style={containerStyle}>
       <article style={articleStyle}>
-        <h3>Prouct Slogan. Pithy Description or Catchphrase.</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quisquam laborum excepturi. Ipsum sunt rerum ea adipisci dicta repudiandae, quos magnam ipsam earum distinctio amet? Iste veritatis voluptatem est corrupti!</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem saepe quaerat eius tenetur quasi! Ducimus soluta dolorem, repellendus vel obcaecati beatae.</p>
+        <h3>{product.slogan}</h3>
+        <p>{product.description}</p>
       </article>
       <aside>
-        <ul>
-          <li>GMO and Pesticide-free</li>
-          <li>Made with 100% Genetic Modification</li>
-          <li>This is made up</li>
-          <li>It doesn't matter</li>
+        <ul style={{paddingTop: '10px'}}>
+         {product.features.map(item => <li key={Math.random()}>{item.feature}: {item.value}</li>)}
         </ul>
       </aside>
     </div>
