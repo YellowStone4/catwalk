@@ -18,7 +18,6 @@ export default ({answer, update}) => {
   }
 
   function handleHelpful(e) {
-    e.preventDefault()
     !votedHelpful && (
       axios({
         method: 'put',
@@ -32,7 +31,7 @@ export default ({answer, update}) => {
     )
   }
   const username = answer.answerer_name === 'Seller' ? <strong>Seller</strong> : answer.answerer_name
-  const helpfulLink = <span> Helpful? <a href="#" onClick={handleHelpful}>Yes</a> ({answer.helpfulness})</span>
+  const helpfulLink = <span> Helpful? <a onClick={handleHelpful}>Yes</a> ({answer.helpfulness})</span>
   const report = reported ? <span> Reported </span> : <span onClick={handleReported}> Report </span>
 
   return (
