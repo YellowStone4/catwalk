@@ -23,13 +23,15 @@ const Question = ({question, update}) => {
 
   const handleHelpful = () => {
     if(!votedHelpful) {
-      fetch(new Request(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/helpful`,
-      {
-        method: 'PUT',
-        headers: {
-          Authorization: API_KEY
-        }
-      }))
+      fetch(
+        new Request(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/helpful`,
+        {
+          method: 'PUT',
+          headers: {
+            Authorization: API_KEY
+          }
+        })
+      )
       .then(update)
       .then(setVotedHelpful(true))
     }
