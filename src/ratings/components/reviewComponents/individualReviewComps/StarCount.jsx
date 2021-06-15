@@ -6,31 +6,27 @@ import Star from './Star.jsx';
 
 
 const StarCount = (props) => {
-  const [listArray, setListArray] = useState(['fill']);
+  const [listArray, setListArray] = useState([]);
 
   useEffect(() => {
     var arrayCounter = []
     for (var i = 0; i < props.starNumber; i++) {
-      arrayCounter.push('fill');
+      arrayCounter.push(i);
     }
     setListArray(arrayCounter);
+
+
   }, [props.starNumber]);
 
-  // const returnStar = (count) => {
-  //   var arrayCounter = []
-  //   for (var i = 0; i < count; i++) {
-  //     arrayCounter.push('fill');
-  //   }
-  // }
   const starStyle = {
     display: 'inliine'
   }
 
   return (
-    <div style={starStyle} key={Math.random()}>
+    <div style={starStyle}>
       {listArray.map(ele => {
       return (
-        <Star style={starStyle} key={Math.random()} giveKey={Math.random()}/>
+        <Star style={starStyle} key={ele}/>
       )
       })}
 
@@ -40,9 +36,3 @@ const StarCount = (props) => {
 }
 
 export default StarCount;
-
-//<Star key={Math.random()} giveKey={Math.random()}/>
-
-// {arrayCounter.map(ele => {
-//   return ()
-// })}
