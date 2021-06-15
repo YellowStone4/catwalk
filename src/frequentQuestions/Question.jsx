@@ -18,8 +18,8 @@ const Question = ({question, update}) => {
 
   const loadMoreAnswers = () => setNumberOfVisibleAnswers(numberOfVisibleAnswers + 2)
   const collapseAnswers = () => setNumberOfVisibleAnswers(2)
-  const collapse = <strong onClick={collapseAnswers}>Collapse Answers</strong>
-  const loadMore = <strong onClick={loadMoreAnswers}>Load More Answers</strong>
+  const loadMoreAnswersBtn = <strong onClick={loadMoreAnswers}>Load More Answers</strong>
+  const collapseAnswersBtn = <strong onClick={collapseAnswers}>Collapse Answers</strong>
 
   const handleHelpful = () => {
     if(!votedHelpful) {
@@ -47,8 +47,8 @@ const Question = ({question, update}) => {
           <strong>A: </strong>{visibleAnswers.map(answer => <Answer key={answer.id} answer={answer} update={update}/>)}
         </section>
       }
-      {visibleAnswers.length < answers.length && loadMore}
-      {visibleAnswers.length > 2 && visibleAnswers.length === answers.length && collapse}
+      {visibleAnswers.length < answers.length && loadMoreAnswersBtn}
+      {visibleAnswers.length > 2 && visibleAnswers.length === answers.length && collapseAnswersBtn}
       <hr />
     </section>
   )

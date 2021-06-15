@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './style.css'
 import QuestionList from './QuestionList.jsx'
 import Search from './Search.jsx'
 import { API_KEY } from '../../config';
@@ -30,7 +31,7 @@ function FrequentQuestions({product}) {
     <>
       <h1>Frequent Questions</h1>
       <Search search={setSearchInput}/>
-      <QuestionList questions={searchedQuestions} update={fetchQuestions}/>
+      <QuestionList questions={searchedQuestions} update={fetchQuestions} product={product}/>
     </>
   );
 }
