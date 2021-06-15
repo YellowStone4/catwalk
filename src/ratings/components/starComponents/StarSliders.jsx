@@ -3,51 +3,40 @@ import Slider from './Slider.jsx';
 
 const StarSliders = (props) => {
 
-  const [comfort, setComfort] = useState(null);
-  const [fit, setFit] = useState(null);
-  const [length, setLength] = useState(null);
-  const [quality, setQuality] = useState(null);
-  const [width, setWidth] = useState(null);
+  const [charsList, setCharsList] = useState([]);
+  const [charObj, setCharObj] = useState({});
+
+  const [comfort, setComfort] = useState(false);
+  const [fit, setFit] = useState(false);
+  const [length, setLength] = useState(false);
+  const [quality, setQuality] = useState(false);
+  const [width, setWidth] = useState(false);
 
   useEffect(() => {
     if (props.metaData.characteristics !== undefined) {
-      if (Object.keys(props.metaData.characteristics).includes('Comfort')) {
-        setComfort(props.metaData.characteristics.Comfort);
+      var theseChars = [];
+      for (var key in props.metaData.characteristics) {
+        if (props.metaData.characteristics[key] !== null) {
+          theseChars.push(key);
+        }
       }
-    };
+      setCharsList(theseChars);
+    }
   }, [props.metaData]);
 
   useEffect(() => {
-    if (props.metaData.characteristics !== undefined) {
-      if (Object.keys(props.metaData.characteristics).includes('Fit')) {
-        setFit(props.metaData.characteristics.Fit);
-      }
-    };
-  }, [props.metaData]);
+    if (charsList.length) {
 
-  useEffect(() => {
-    if (props.metaData.characteristics !== undefined) {
-      if (Object.keys(props.metaData.characteristics).includes('Length')) {
-        setLength(props.metaData.characteristics.Length);
-      }
-    };
-  }, [props.metaData]);
+      var charObjectList = {};
+        for (var i = 0; i < charsList.length; i++) {
+          if (props.metaData.characteristics[charsList[i]] !== undefined) {
+            charObjectList[charsList[i]] = props.metaData.characteristics[charsList[i]].value;
+          }
+        }
+        setCharObj(charObjectList);
+    }
+  }, [charsList]);
 
-  useEffect(() => {
-    if (props.metaData.characteristics !== undefined) {
-      if (Object.keys(props.metaData.characteristics).includes('Quality')) {
-        setQuality(props.metaData.characteristics.Quality);
-      }
-    };
-  }, [props.metaData]);
-
-  useEffect(() => {
-    if (props.metaData.characteristics !== undefined) {
-      if (Object.keys(props.metaData.characteristics).includes('Width')) {
-        setWidth(props.metaData.characteristics.Width);
-      }
-    };
-  }, [props.metaData]);
 
   const h4Style = {
     margin: '0 auto',
@@ -58,36 +47,29 @@ const StarSliders = (props) => {
 
   return (
     <div>
-      {comfort !== null &&
-        <div>
-          <h4 style={h4Style}>Comfort</h4>
-          <Slider val={props.metaData.characteristics.Comfort.value}/>
-        </div>
+      <div>
+        <h4 style={h4Style}>Comfort</h4>
+        <Slider val={charObj.Comfort}/>
+      </div>
+      <div>
+        <h4>Fit</h4>
+        <Slider val={charObj.Fit}/>
+      </div>
+      <div>
+        <h4>Length</h4>
+        <Slider val={charObj.Length}/>
+      </div>
+      <div>
+        <h4>Quality</h4>
+        <Slider val={charObj.Quality}/>
+      </div>
+      {
+      <div>
+        <h4>Width</h4>
+        <Slider val={charObj.Width}/>
+      </div>
       }
-      {fit !== null &&
-        <div>
-          <h4>Fit</h4>
-          <Slider val={props.metaData.characteristics.Fit.value}/>
-        </div>
-      }
-      {length !== null &&
-        <div>
-          <h4>Length</h4>
-          <Slider val={props.metaData.characteristics.Length.value}/>
-        </div>
-      }
-      {quality !== null &&
-        <div>
-          <h4>Quality</h4>
-          <Slider val={props.metaData.characteristics.Quality.value}/>
-        </div>
-      }
-      {width !== null &&
-        <div>
-          <h4>Width</h4>
-          <Slider val={props.metaData.characteristics.Width.value}/>
-        </div>
-      }
+
     </div>
   )
 }
