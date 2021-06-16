@@ -63,7 +63,7 @@
   margin: 0;
   list-style: none;
   display: inline-flex;
-  width: 100%;
+  width:100%;
   align-items: center;
   justify-content: center;
 
@@ -73,7 +73,8 @@
 .card_slide {
   position: relative;
   /* width: 100%; */
-  padding: 0 50px;
+  /* padding: 0 10px; */
+  padding-right: 3%;
 }
 
 .starIcon {
@@ -177,3 +178,48 @@
   /* text-align: right; */
 }
 
+
+
+
+.outfit-card {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  border: 1px solid black;
+  left: 120px;
+  text-align: center;
+  /* align-self: left; */
+  /* left: 100px; */
+}
+
+.add-button {
+  background: transparent;
+  border: 0;
+  position: absolute;
+  top: 40%;
+  left: 105px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  opacity: 50%;
+}
+
+.outfit-text {
+  position: absolute;
+  font-size: larger;
+  left: 95px;
+  top: 65%;
+}
+
+.carousel_track-outfit {
+  white-space: nowrap;
+  margin: 0;
+  list-style: none;
+  display: inline-flex;
+  width: 1100px;
+  transform: translateX(450px);
+  /* align-items: left; */
+  justify-content: left;
+  background: coral;
+}

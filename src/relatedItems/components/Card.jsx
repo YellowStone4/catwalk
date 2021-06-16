@@ -39,7 +39,7 @@ const Card = ({ currentProduct, product, setProduct }) => {
       <div className="cardGrid" >
         <FontAwesomeIcon className="starIcon" icon={ faStar } onClick={() => setShowModal(true)} />
         <div>
-          <img className="testImage" src={stylePhoto} alt="" onClick={() => setProduct(productId)}/>
+          <img className="testImage" src={stylePhoto} alt="" onClick={() => setProduct(currentProduct)}/>
         </div>
         <div className="row-text">{currentProduct.category}</div>
         <div className="row-text">{currentProduct.name}</div>

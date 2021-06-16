@@ -6,10 +6,11 @@ import { API_KEY } from '../config.js'
 import ProductPage from './ProductPage.jsx';
 
 const Index = () => {
-  const [product, setProduct] = useState()
+  const [product, setProduct] = useState({})
 
   useEffect(()=> {
-    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19094'
+    product.id = '19089'
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product.id}`
     const config = {
       headers: {
         Authorization: API_KEY,
@@ -18,6 +19,10 @@ const Index = () => {
     axios.get(url, config)
     .then(res => setProduct(res.data))
   }, [])
+
+  if (product.id === undefined) {
+    return <div></div>
+  }
 
   return <ProductPage product={product} setProduct={setProduct}/>
 }

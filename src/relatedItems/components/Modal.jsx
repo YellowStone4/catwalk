@@ -13,11 +13,11 @@ const Modal = ( { currentProduct, product, showModal, setShowModal } ) => {
         <div className='modal-main-title'>COMPARISON</div>
         <div className='modal-product-name-left modal-product-name'>{product.name}</div>
         <div className='modal-product-features-left'>
-          {product.features.map(item => (<div >{item.feature}: {item.value}</div>))}
+          {product.features.map(item => (<div key={Math.random() * 100} >{item.feature}: {item.value}</div>))}
         </div>
         <div className='modal-product-name-right modal-product-name' >{currentProduct.name}</div>
         <div className='modal-product-features-right'>
-          {currentProduct.features.map(item => (<div >{item.feature}: {item.value}</div>))}
+          {currentProduct.features.map(item => (<div key={Math.random() * 100}>{item.feature}: {item.value}</div>))}
         </div>
         <button className='buttonModal' onClick ={() => setShowModal(false)}>
           x
