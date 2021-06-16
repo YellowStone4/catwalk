@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './styles.css';
+import './Sass/styles.scss';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight} from '@fortawesome/free-solid-svg-icons';
