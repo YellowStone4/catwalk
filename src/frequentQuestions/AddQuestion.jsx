@@ -13,21 +13,24 @@ export default ({submit, cancel, product}) => {
   // const [email, setEmail] = useState('')
   const [emailIsValid, setEmailIsValid] = useState(true)
 
-  const validate = () => {
-    if (question.length === 0) {
+  const validateQuestion = () => {
+    if (formData.question.length === 0) {
       setQuestionIsValid(false)
     }
-    if (nickname.length === 0) {
+    else setQuestionIsValid(true)
+  }
+  const validateNickname = () => {
+    if (formData.nickname.length === 0) {
       setNicknameIsValid(false)
     }
-    if (!validateEmail(email)) {
-      return setEmailIsValid(false)
-    }
-    submit()
+    else setNicknameIsValid(true)
   }
-
-  const validateEmail = (email) => {
-    return false
+  const validateEmail = (e) => {
+    const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(e.target.value.match(mailformat)){
+      setEmailIsValid(true)
+    }
+     else setEmailIsValid(false)
   }
 
   const onChange = (e) => {
@@ -52,6 +55,7 @@ export default ({submit, cancel, product}) => {
               value={formData.question}
               maxLength="1000"
               onChange={onChange}
+              onBlur={validateQuestion}
             />
             {!questionIsValid && <span className="alert">Question cannot be empty</span>}
           </label>
@@ -65,8 +69,9 @@ export default ({submit, cancel, product}) => {
               value={formData.nickname}
               maxLength="60"
               onChange={onChange}
+              onBlur={validateNickname}
             />
-            {!nicknameIsValid && <p className="alert">Nickname cannot be empty</p>}
+            {!nicknameIsValid && <span className="alert">Nickname cannot be empty</span>}
             <p>For privacy reasons, do not use your full name or email address</p>
           </label>
           <label>
@@ -78,12 +83,13 @@ export default ({submit, cancel, product}) => {
               value={formData.email}
               maxLength="60"
               onChange={onChange}
+              onBlur={validateEmail}
             />
-            {!emailIsValid && <p className="alert">email is not valid</p>}
+            {!emailIsValid && <span className="alert">email is not valid</span>}
             <p>For authentication reasons, you will not be emailed</p>
           </label>
 
-          <button onClick={validate}>submit</button>
+          <button onClick={submit}>submit</button>
           <button>cancel</button>
         </form>
       </div>
