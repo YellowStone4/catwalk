@@ -6,11 +6,8 @@ export default ({submit, cancel, product}) => {
     nickname: '',
     email: ''
   })
-  // const [question, setQuestion] = useState('')
   const [questionIsValid, setQuestionIsValid] = useState(true)
-  // const [nickname, setNickname] = useState('')
   const [nicknameIsValid, setNicknameIsValid] = useState(true)
-  // const [email, setEmail] = useState('')
   const [emailIsValid, setEmailIsValid] = useState(true)
 
   const validateQuestion = () => {
