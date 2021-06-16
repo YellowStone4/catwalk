@@ -14,8 +14,9 @@ const Ratings = ({product}) => {
   const [productId , setProductId] = useState(19089);
 
   //State to manage star sorting
-  const [reviewData, setReviewData] = useState({});
-  const [postSort, setPostSort] = useState([]);
+  const [reviewData, setReviewData] = useState({results: []});
+  const [postSortData, setPostSortData] = useState([]);
+  const [counter, setCounter] = useState(1);
   const [starSort, setStarSort] = useState({
     '1': false,
     '2': false,
@@ -24,21 +25,48 @@ const Ratings = ({product}) => {
     '5': false
   });
 
-  console.log('review data: ', reviewData);
-
   const changeStarSort = (starCount) => {
+    setCounter(counter+1);
     if (starSort[starCount] === true) {
       var newSort = starSort;
       newSort[starCount] = false;
       setStarSort(newSort);
+      console.log(starSort);
     } else {
       var newSort = starSort;
       newSort[starCount] = true;
       setStarSort(newSort);
+      console.log(starSort);
     }
-
-    console.log(starSort);
   }
+
+  useEffect(() => {
+    //determine if there is a filter or not. If not, don't change the data
+    if (reviewData.results.length === 0) {
+      var sortedReviews = reviewData.results;
+    }
+    var sortNeeded = false;
+    var selectedStars = [];
+    for (var key in starSort) {
+      if (starSort[key] === true) {
+        sortNeeded = true;
+        selectedStars.push(parseInt(key));
+      }
+    }
+    if (sortNeeded) {
+      var sortedReviews = reviewData.results.filter(review => selectedStars.includes(review.rating));
+    } else {
+      var sortedReviews = reviewData.results;
+    }
+    var dataCopy = reviewData;
+    dataCopy.reviews = sortedReviews.slice(counter);
+    setPostSortData(dataCopy);
+
+    // var finalData = newData.slice(counter);
+    // setPostSortData(finalData);
+    console.log('Post sort data: ', postSortData);
+
+  }, [reviewData, starSort, counter])
 
   const changeSort = (sortMethod) => {
     setReviewSort(sortMethod);
