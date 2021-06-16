@@ -10,20 +10,13 @@ import axios from 'axios';
 const Ratings = ({product}) => {
   const [metaData, setMetaData] = useState({});
   const [reviewSort, setReviewSort] = useState('');
-  const [reviewCount, setCountReview] = useState(2);
   const [productId , setProductId] = useState(19089);
 
   //State to manage star sorting
   const [reviewData, setReviewData] = useState({results: []});
   const [postSortData, setPostSortData] = useState([]);
   const [counter, setCounter] = useState(1);
-  const [starSort, setStarSort] = useState({
-    '1': false,
-    '2': false,
-    '3': false,
-    '4': false,
-    '5': false
-  });
+  const [starSort, setStarSort] = useState({'1': false, '2': false, '3': false, '4': false, '5': false});
 
   const changeStarSort = (starCount) => {
     setCounter(counter+1);
@@ -31,45 +24,20 @@ const Ratings = ({product}) => {
       var newSort = starSort;
       newSort[starCount] = false;
       setStarSort(newSort);
-      //console.log(starSort);
+      console.log(starSort);
     } else {
       var newSort = starSort;
       newSort[starCount] = true;
       setStarSort(newSort);
-      //console.log(starSort);
+      console.log(starSort);
     }
   }
-
-  useEffect(() => {
-    if (reviewData.results.length === 0) {
-      var sortedReviews = reviewData.results;
-    }
-    var sortNeeded = false;
-    for (var key in starSort) {
-      if (starSort[key] === true) {
-        sortNeeded = true;
-      }
-    }
-    if (sortNeeded) {
-      var sortedReviews = reviewData.results.filter((review) => {
-        return starSort[review.rating] === true;
-      });
-    } else {
-      var sortedReviews = reviewData.results;
-    }
-    var dataCopy = reviewData;
-    dataCopy.results = sortedReviews.slice(counter);
-    setPostSortData(dataCopy);
-    //console.log('Post sort data: ', postSortData);
-  }, [reviewData, starSort, counter])
 
   const changeSort = (sortMethod) => {
     setReviewSort(sortMethod);
   }
 
-  const changeCount = () => {
-    setCountReview(reviewCount + 2);
-  }
+
 
   useEffect(() => {
     setProductId(product.id)
@@ -88,7 +56,7 @@ const Ratings = ({product}) => {
     }).catch((err) => {
       // console.log('Err from requesting reviews: ', err);
     })
-  }, [reviewSort, reviewCount, productId]);
+  }, [reviewSort, productId]);
 
   //Get Meta Data
   useEffect(() => {
@@ -102,7 +70,7 @@ const Ratings = ({product}) => {
     axios(options).then((response) => {
       setMetaData(response.data);
     }).catch((err) => {
-      // console.log('Error from getting metadata: ', err);
+      console.log('Error from getting metadata: ', err);
     })
   }, [productId]);
 
@@ -111,7 +79,7 @@ const Ratings = ({product}) => {
       <h4>RATINGS & REVIEWS</h4>
       <div style={styles.ratingsStyle}>
         <Stars changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
-        <Reviews setStarSort={setStarSort} starSort={starSort} changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
+        <Reviews counter={counter} setStarSort={setStarSort} starSort={starSort}  changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
       </div>
     </div>
   )
