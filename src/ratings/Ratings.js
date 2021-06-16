@@ -17,13 +17,7 @@ const Ratings = ({product}) => {
   const [reviewData, setReviewData] = useState({results: []});
   const [postSortData, setPostSortData] = useState([]);
   const [counter, setCounter] = useState(1);
-  const [starSort, setStarSort] = useState({
-    '1': false,
-    '2': false,
-    '3': false,
-    '4': false,
-    '5': false
-  });
+  const [starSort, setStarSort] = useState({'1': false, '2': false, '3': false, '4': false, '5': false});
 
   const changeStarSort = (starCount) => {
     setCounter(counter+1);
@@ -31,12 +25,12 @@ const Ratings = ({product}) => {
       var newSort = starSort;
       newSort[starCount] = false;
       setStarSort(newSort);
-      //console.log(starSort);
+      console.log(starSort);
     } else {
       var newSort = starSort;
       newSort[starCount] = true;
       setStarSort(newSort);
-      //console.log(starSort);
+      console.log(starSort);
     }
   }
 
@@ -60,7 +54,7 @@ const Ratings = ({product}) => {
     var dataCopy = reviewData;
     dataCopy.results = sortedReviews.slice(counter);
     setPostSortData(dataCopy);
-    //console.log('Post sort data: ', postSortData);
+    console.log('Post sort data: ', postSortData);
   }, [reviewData, starSort, counter])
 
   const changeSort = (sortMethod) => {
@@ -84,6 +78,7 @@ const Ratings = ({product}) => {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=' + productId + '&count=' + 3000  + '&sort=' + reviewSort
     }
     axios(options).then((response) => {
+      console.log('Response data: ', response.data);
       setReviewData(response.data);
     }).catch((err) => {
       // console.log('Err from requesting reviews: ', err);
@@ -102,7 +97,7 @@ const Ratings = ({product}) => {
     axios(options).then((response) => {
       setMetaData(response.data);
     }).catch((err) => {
-      // console.log('Error from getting metadata: ', err);
+      console.log('Error from getting metadata: ', err);
     })
   }, [productId]);
 
