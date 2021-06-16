@@ -41,31 +41,26 @@ const Ratings = ({product}) => {
   }
 
   useEffect(() => {
-    //determine if there is a filter or not. If not, don't change the data
     if (reviewData.results.length === 0) {
       var sortedReviews = reviewData.results;
     }
     var sortNeeded = false;
-    var selectedStars = [];
     for (var key in starSort) {
       if (starSort[key] === true) {
         sortNeeded = true;
-        selectedStars.push(parseInt(key));
       }
     }
     if (sortNeeded) {
-      var sortedReviews = reviewData.results.filter(review => selectedStars.includes(review.rating));
+      var sortedReviews = reviewData.results.filter((review) => {
+        return starSort[review.rating] === true;
+      });
     } else {
       var sortedReviews = reviewData.results;
     }
     var dataCopy = reviewData;
-    dataCopy.reviews = sortedReviews.slice(counter);
+    dataCopy.results = sortedReviews.slice(counter);
     setPostSortData(dataCopy);
-
-    // var finalData = newData.slice(counter);
-    // setPostSortData(finalData);
-    console.log('Post sort data: ', postSortData);
-
+    //console.log('Post sort data: ', postSortData);
   }, [reviewData, starSort, counter])
 
   const changeSort = (sortMethod) => {

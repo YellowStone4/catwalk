@@ -9,7 +9,7 @@ const Index = () => {
   const [product, setProduct] = useState()
 
   useEffect(()=> {
-    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089'
+    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19096'
     const config = {
       headers: {
         Authorization: API_KEY,
