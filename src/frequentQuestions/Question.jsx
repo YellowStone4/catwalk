@@ -38,7 +38,22 @@ const Question = ({product, question, update}) => {
 
   // Functionality to Add a new Answer
   const [addingAnswer, setAddingAnswer] = useState(false)
-  const submit = () => {
+  const submit = (data) => {
+    console.log(data)
+    fetch(
+      new Request(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: API_KEY,
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+    )
+    .then(res => {
+      update()
+    })
     setAddingAnswer(false)
   }
 
