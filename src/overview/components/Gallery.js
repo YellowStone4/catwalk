@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './styles.css';
+import './Sass/styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faArrowDown, faArrowUp, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
