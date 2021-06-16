@@ -9,7 +9,7 @@ const Reviews = (props) => {
   return (
     <div>
       <ReviewSort changeSort={props.changeSort} metaData={props.metaData} reviews={props.reviews}/>
-      <ListOfReviews starSort={props.starSort} reviews={props.reviews} product={props.product}/>
+      <ListOfReviews counter={props.counter} starSort={props.starSort} reviews={props.reviews} product={props.product}/>
       <ReviewButtons changeCount={props.changeCount}/>
     </div>
   )

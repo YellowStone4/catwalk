@@ -34,29 +34,6 @@ const Ratings = ({product}) => {
     }
   }
 
-  useEffect(() => {
-    if (reviewData.results.length === 0) {
-      var sortedReviews = reviewData.results;
-    }
-    var sortNeeded = false;
-    for (var key in starSort) {
-      if (starSort[key] === true) {
-        sortNeeded = true;
-      }
-    }
-    if (sortNeeded) {
-      var sortedReviews = reviewData.results.filter((review) => {
-        return starSort[review.rating] === true;
-      });
-    } else {
-      var sortedReviews = reviewData.results;
-    }
-    var dataCopy = reviewData;
-    dataCopy.results = sortedReviews.slice(counter);
-    setPostSortData(dataCopy);
-    console.log('Post sort data: ', postSortData);
-  }, [reviewData, starSort, counter])
-
   const changeSort = (sortMethod) => {
     setReviewSort(sortMethod);
   }
@@ -106,7 +83,7 @@ const Ratings = ({product}) => {
       <h4>RATINGS & REVIEWS</h4>
       <div style={styles.ratingsStyle}>
         <Stars changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
-        <Reviews setStarSort={setStarSort} starSort={starSort} changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
+        <Reviews counter={counter} setStarSort={setStarSort} starSort={starSort} changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
       </div>
     </div>
   )
