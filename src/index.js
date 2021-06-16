@@ -19,7 +19,7 @@ const Index = () => {
     .then(res => setProduct(res.data))
   }, [])
 
-  return <ProductPage product={product}/>
+  return <ProductPage product={product} setProduct={setProduct}/>
 }
 
 render(<Index />, document.getElementById('react-root'));

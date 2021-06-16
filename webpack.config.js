@@ -10,6 +10,7 @@ module.exports = {
 
   module: {
     rules: [
+      //
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
@@ -21,6 +22,7 @@ module.exports = {
           },
         },
       },
+      // CSS AND STYLE LOADER
       {
         test: /\.css$/,
         use: [
@@ -28,12 +30,21 @@ module.exports = {
           'css-loader'
         ]
       },
+      // IMPORT IMAGE LOADER
       {
         test: /\.(png|jpe?g|gif)$/i,
+        use: [ { loader: 'file-loader' } ]
+      },
+      // SASS LOADER
+      {
+        test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: 'file-loader',
-          },
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
         ],
       },
     ],

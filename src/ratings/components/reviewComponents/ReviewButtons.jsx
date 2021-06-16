@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react';
 const ReviewButtons = (props) => {
   const addCount = () => {
     props.changeCount();
-
   }
 
   return (
