@@ -31,12 +31,12 @@ const Ratings = ({product}) => {
       var newSort = starSort;
       newSort[starCount] = false;
       setStarSort(newSort);
-      console.log(starSort);
+      //console.log(starSort);
     } else {
       var newSort = starSort;
       newSort[starCount] = true;
       setStarSort(newSort);
-      console.log(starSort);
+      //console.log(starSort);
     }
   }
 
