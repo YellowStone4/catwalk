@@ -10,7 +10,6 @@ import axios from 'axios';
 const Ratings = ({product}) => {
   const [metaData, setMetaData] = useState({});
   const [reviewSort, setReviewSort] = useState('');
-  const [reviewCount, setCountReview] = useState(2);
   const [productId , setProductId] = useState(19089);
 
   //State to manage star sorting
@@ -38,9 +37,7 @@ const Ratings = ({product}) => {
     setReviewSort(sortMethod);
   }
 
-  const changeCount = () => {
-    setCountReview(reviewCount + 2);
-  }
+
 
   useEffect(() => {
     setProductId(product.id)
@@ -55,12 +52,11 @@ const Ratings = ({product}) => {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews?product_id=' + productId + '&count=' + 3000  + '&sort=' + reviewSort
     }
     axios(options).then((response) => {
-      console.log('Response data: ', response.data);
       setReviewData(response.data);
     }).catch((err) => {
       // console.log('Err from requesting reviews: ', err);
     })
-  }, [reviewSort, reviewCount, productId]);
+  }, [reviewSort, productId]);
 
   //Get Meta Data
   useEffect(() => {
@@ -83,7 +79,7 @@ const Ratings = ({product}) => {
       <h4>RATINGS & REVIEWS</h4>
       <div style={styles.ratingsStyle}>
         <Stars changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
-        <Reviews counter={counter} setStarSort={setStarSort} starSort={starSort} changeCount={changeCount.bind(this)} changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
+        <Reviews counter={counter} setStarSort={setStarSort} starSort={starSort}  changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
       </div>
     </div>
   )
