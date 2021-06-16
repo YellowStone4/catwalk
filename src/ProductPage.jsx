@@ -14,7 +14,7 @@ function ProductPage({ product, setProduct }) {
         <Search />
         <Overview product={product} />
         <RelatedItems product={product} setProduct={setProduct}/>
-        <FrequentQuestions product={product} /> */}
+        <FrequentQuestions product={product} />
         <Ratings product={product} />
       </>
     );

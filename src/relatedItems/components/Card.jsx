@@ -16,8 +16,6 @@ const Card = ({ currentProduct, product, setProduct }) => {
   const [ showModal, setShowModal ] = useState(false)
 
 
-
-
   useEffect(() => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${currentProduct.id}/styles`;
       const config = {
@@ -30,7 +28,7 @@ const Card = ({ currentProduct, product, setProduct }) => {
       };
       axios.get(url, config)
         .then((res) => {
-          console.log(res.data.product_id)
+          // console.log(res.data.product_id)
           setStylePhoto(res.data.results[0].photos[0].thumbnail_url)
           setProductId(res.data.product_id)
         });
@@ -38,23 +36,17 @@ const Card = ({ currentProduct, product, setProduct }) => {
 
 
   return (
-    // <div className='container_slider'>
       <div className="cardGrid" >
-        {/* {console.log(product.name)} */}
-        {/* <Modal show={showModal}/> */}
         <FontAwesomeIcon className="starIcon" icon={ faStar } onClick={() => setShowModal(true)} />
         <div>
-          {/* {style} */}
           <img className="testImage" src={stylePhoto} alt="" onClick={() => setProduct(productId)}/>
-          {/* <FontAwesomeIcon className="starIcon" icon={ faAngleLeft } size = '4x'/> */}
         </div>
-        <div className="row-text">{product.category}</div>
-        <div className="row-text">{product.name}</div>
-        <div className="row-text">${product.default_price}</div>
+        <div className="row-text">{currentProduct.category}</div>
+        <div className="row-text">{currentProduct.name}</div>
+        <div className="row-text">${currentProduct.default_price}</div>
         <div className="row-text">Star Rating</div>
         <Modal currentProduct={currentProduct} product={product} showModal={showModal} setShowModal={setShowModal}/>
       </div>
-    // </div>
   )
 }
 

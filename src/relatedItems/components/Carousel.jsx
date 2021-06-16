@@ -45,7 +45,7 @@ const Carousel = ({product, setProduct, products}) => {
 
       <ul className="carousel_track">
          {cards.map((item, index) => {
-            return <li key={item.id} className='card_slide' > <Card currentProduct={item} product={product} setProduct={setProduct} />
+            return <li key={Math.random() * 100} className='card_slide' > <Card currentProduct={item} product={product} setProduct={setProduct} />
             </li>
         })}
       </ul>
