@@ -4,7 +4,7 @@ import Question from './Question.jsx'
 import AddQuestion from './AddQuestion.jsx'
 import { API_KEY } from '../../config'
 
-const QuestionList = ({questions, update, product}) => {
+const QuestionList = ({product, questions, update}) => {
   const [numberOfVisibleQuestions, setNumberOfVisibleQuestions] = useState(2)
   const visibleQuestions = questions.slice(0, numberOfVisibleQuestions)
   const loadMoreQuestions = () => setNumberOfVisibleQuestions(numberOfVisibleQuestions+2)
@@ -46,7 +46,7 @@ const QuestionList = ({questions, update, product}) => {
   return (
     <>
       <section className="questionList">
-        {visibleQuestions.map((question) => <Question key={question.question_id} question={question} update={update} />)}
+        {visibleQuestions.map((question) => <Question key={question.question_id} product={product} question={question} update={update} />)}
       </section>
         {visibleQuestions.length < questions.length && loadMoreQuesBtn}
         {visibleQuestions.length > 2 && visibleQuestions.length === questions.length && collapseQuesBtn}
