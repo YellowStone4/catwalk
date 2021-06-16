@@ -6,28 +6,41 @@ export default ({submit, cancel, product}) => {
     nickname: '',
     email: ''
   })
-  const [questionIsValid, setQuestionIsValid] = useState(true)
-  const [nicknameIsValid, setNicknameIsValid] = useState(true)
-  const [emailIsValid, setEmailIsValid] = useState(true)
+  const [questionIsValid, setQuestionIsValid] = useState()
+  const [nicknameIsValid, setNicknameIsValid] = useState()
+  const [emailIsValid, setEmailIsValid] = useState()
+
+  const validateForm = () => {
+    validateQuestion() &&
+    validateNickname() &&
+    validateEmail() &&
+    submit()
+  }
 
   const validateQuestion = () => {
-    if (formData.question.length === 0) {
+    if (formData.question.length < 2) {
       setQuestionIsValid(false)
+      return false
     }
-    else setQuestionIsValid(true)
+    setQuestionIsValid(true)
+    return true
   }
   const validateNickname = () => {
-    if (formData.nickname.length === 0) {
+    if (formData.nickname.length < 2) {
       setNicknameIsValid(false)
+      return false
     }
-    else setNicknameIsValid(true)
+    setNicknameIsValid(true)
+    return true
   }
-  const validateEmail = (e) => {
+  const validateEmail = () => {
     const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if(e.target.value.match(mailformat)){
+    if(formData.email.match(mailformat)){
       setEmailIsValid(true)
+      return true
     }
-     else setEmailIsValid(false)
+    setEmailIsValid(false)
+    return false
   }
 
   const onChange = (e) => {
@@ -54,7 +67,7 @@ export default ({submit, cancel, product}) => {
               onChange={onChange}
               onBlur={validateQuestion}
             />
-            {!questionIsValid && <span className="alert">Question cannot be empty</span>}
+            {questionIsValid === false && <span className="alert">Question cannot be empty</span>}
           </label>
           <br />
           <label>
@@ -68,7 +81,7 @@ export default ({submit, cancel, product}) => {
               onChange={onChange}
               onBlur={validateNickname}
             />
-            {!nicknameIsValid && <span className="alert">Nickname cannot be empty</span>}
+            {nicknameIsValid === false && <span className="alert">Nickname cannot be empty</span>}
             <p>For privacy reasons, do not use your full name or email address</p>
           </label>
           <label>
@@ -82,12 +95,12 @@ export default ({submit, cancel, product}) => {
               onChange={onChange}
               onBlur={validateEmail}
             />
-            {!emailIsValid && <span className="alert">email is not valid</span>}
+            {emailIsValid === false && <span className="alert">email is not valid</span>}
             <p>For authentication reasons, you will not be emailed</p>
           </label>
 
-          <button onClick={submit}>submit</button>
-          <button>cancel</button>
+          <button onClick={validateForm}>submit</button>
+          {/*<button>cancel</button>*/}
         </form>
       </div>
     </div>
