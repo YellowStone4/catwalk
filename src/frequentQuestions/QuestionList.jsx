@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import axios from 'axios'
 import Question from './Question.jsx'
 import AddQuestion from './AddQuestion.jsx'
+import { API_KEY } from '../../config'
 
 const QuestionList = ({questions, update, product}) => {
   const [numberOfVisibleQuestions, setNumberOfVisibleQuestions] = useState(2)
@@ -11,10 +13,28 @@ const QuestionList = ({questions, update, product}) => {
   const collapseQuesBtn = <button onClick={collapseQuestions}>Collapse Questions</button>
 
   const [addingQuestion, setAddingQuestion] = useState(false)
-  const submit = () => {
-    console.log('submitted')
-    setAddingQuestion(false)
+  const submit = ({question, nickname, email}) => {
+    axios({
+      method: 'post',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions`,
+      headers: {
+        Authorization: API_KEY,
+      },
+      data: {
+        body: question,
+        name: nickname,
+        email: email,
+        product_id: product.id
+      }
+    })
+    .then(success => {
+      console.log(success)
+      update()
+      setAddingQuestion(false)
+    })
+    .catch(err => console.log(err))
   }
+
   const cancel = (e) => {
     e.preventDefault()
     // console.log(e.target)

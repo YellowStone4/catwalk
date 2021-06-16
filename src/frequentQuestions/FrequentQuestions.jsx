@@ -15,8 +15,8 @@ function FrequentQuestions({product}) {
   }, []);
 
   const fetchQuestions = () => {
-    // const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${product.id}`;
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=19096`;
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${product.id}`;
+    // const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=19096`;
     const config = {
       headers: {
         Authorization: API_KEY,
