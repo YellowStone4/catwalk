@@ -3,18 +3,16 @@ import Carousel from './components/Carousel.jsx';
 import axios from 'axios';
 import { API_KEY } from '/config.js'
 
-const RelatedItems = (props) => {
-  // console.log(props)
+const RelatedItems = ( { product, setProduct, ...rest} ) => {
+  // console.log('edgars:', props.product.id)
 
-  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-
-    //if (notInitialRender.current) {
-      //let promises = [];
-      let styles = [];
-      const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19091/related`;
-      // const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/product_id/styles`;
+      let productsArray = [];
+      let productsInfo = [];
+      const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product.id}/related`;
+      // const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19095/related`;
       const config = {
         headers: {
           Authorization: API_KEY,
@@ -26,25 +24,21 @@ const RelatedItems = (props) => {
       axios.get(url, config)
         .then((res) => {
           // console.log(res.data)
-          let promises = res.data.map(item => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${item}/styles`, config)
+          let promises = res.data.map(item => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${item}`, config)
           .then((res) => {
-            styles.push(res.data.results[0]);
+            // console.log(res.data);
+            productsArray.push(res.data);
           }))
-          Promise.all(promises).then(() => setRelatedProducts(styles));
-          //console.log(promises);
+          Promise.all(promises).then(() => setProducts(productsArray));
         });
-    //} else {
-    //  notInitialRender.current = true
-    //}
-
-  }, [props.products]);
+  }, [product]);
 
 
   return (
     <div>
       {/* {console.log(relatedProducts)} */}
       <h1>Related Items</h1>
-      <Carousel products={relatedProducts}/>
+      <Carousel product={product} setProduct={setProduct} products={products} />
     </div>
   )
 }

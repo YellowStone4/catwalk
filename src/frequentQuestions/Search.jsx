@@ -1,18 +1,14 @@
 import React, {useState} from 'react'
 
 export default ({search}) => {
-  const [searchInput, setSearchInput] = useState('')
-
   const handleChange = (e) => {
-    setSearchInput(e.target.value)
-    if(searchInput.length >= 2) {
-      search(searchInput)
+    if(e.target.value.length >= 3) {
+      search(e.target.value)
     } else {
       search('')
     }
-
   }
   return (
-    <input type="text" placeholder="Search For Question" onChange={handleChange}/>
+    <input type="text" placeholder="Search For Questions" onChange={handleChange}/>
   )
 }

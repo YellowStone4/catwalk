@@ -6,15 +6,15 @@ import Ratings from './ratings/Ratings';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import Search from './Search.jsx';
 
-function ProductPage({ product }) {
+function ProductPage({ product, setProduct }) {
 
   if (product) {
     return (
       <>
         <Search />
         <Overview product={product} />
-        <RelatedItems product={product} />
-        <FrequentQuestions product={product} />
+        <RelatedItems product={product} setProduct={setProduct}/>
+        <FrequentQuestions product={product} /> */}
         <Ratings product={product} />
       </>
     );

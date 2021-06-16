@@ -9,7 +9,7 @@ const Index = () => {
   const [product, setProduct] = useState()
 
   useEffect(()=> {
-    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19096'
+    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19094'
     const config = {
       headers: {
         Authorization: API_KEY,
@@ -19,7 +19,7 @@ const Index = () => {
     .then(res => setProduct(res.data))
   }, [])
 
-  return <ProductPage product={product}/>
+  return <ProductPage product={product} setProduct={setProduct}/>
 }
 
 render(<Index />, document.getElementById('react-root'));

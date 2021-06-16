@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "live-server ./dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --testEnvironment jsdom --coverage",
     "build": "npx webpack -w"
   },
   "repository": {
@@ -25,6 +25,8 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
     "express": "^4.17.1",

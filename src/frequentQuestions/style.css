@@ -1,0 +1,25 @@
+p {
+  color: red
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 70%;
+}
+
+.questionList {
+  max-height: 60vh;
+  overflow: scroll;
+}
