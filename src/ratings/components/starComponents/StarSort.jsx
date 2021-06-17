@@ -14,8 +14,19 @@ const StarSort = (props) => {
   const [percentThree, setPercentThree] = useState(0);
   const [percentTwo, setPercentTwo] = useState(0);
   const [percentOne, setPercentOne] = useState(0);
-
+  const [sortedStars, setSortedStars] = useState([]);
   const [recommendedPercentage, setRecommendedPercentage] = useState(0);
+
+  useEffect(() => {
+    var currentSort = [];
+    for (var key in props.starSort) {
+      if (props.starSort[key] === true) {
+        currentSort.push(key);
+      }
+    }
+
+
+  }, props.starSort)
 
   useEffect(() => {
     if (props.metaData.recommended !== undefined) {
@@ -52,18 +63,17 @@ const StarSort = (props) => {
 
   const starSortClick = (event) => {
     props.changeStarSort(event.target.value);
-
-    // console.log('STAR DOUBLE CLICK: ', setStarDoubleClick);
   }
 
   const liStyle = {
     display: "inline"
   }
 
-
   return (
     <div>
       <p> {recommendedPercentage}% of reviews recommend this product</p>
+
+
       <ul>
         <li style={liStyle}><span className="button" onClick={starSortClick} value={5}>5 Stars:</span> <StarBar number={5} ratings={percentFive} /> </li>
         <br />
