@@ -13,21 +13,23 @@ const StarSort = (props) => {
   const [percentThree, setPercentThree] = useState(0);
   const [percentTwo, setPercentTwo] = useState(0);
   const [percentOne, setPercentOne] = useState(0);
-  //const [sortedStars, setSortedStars] = useState([]);
-  //const [sortExists, setSortExists] = useState(false);
+  const [sortedStars, setSortedStars] = useState([1, 2]);
+  const [sortExists, setSortExists] = useState(false);
   const [recommendedPercentage, setRecommendedPercentage] = useState(0);
 
-  // useEffect(() => {
-  //   console.log('HELLO!');
-  //   var currentSort = [];
-  //   for (var key in props.starSort) {
-  //     if (props.starSort[key] === true) {
-  //       currentSort.push(key);
-  //     }
-  //   }
-  //   setSortedStars(currentSort);
+  useEffect(() => {
+    var currentSort = [];
+    for (var key in props.starSort) {
+      if (props.starSort[key] === true) {
+        currentSort.push(key);
+      }
+    }
+    if (currentSort.length) {
+      setSortExists(true);
+    }
+    setSortedStars(currentSort);
 
-  // }, [props.starSort])
+  }, [props])
 
   useEffect(() => {
     if (props.metaData.recommended !== undefined) {
@@ -74,10 +76,9 @@ const StarSort = (props) => {
   return (
     <div>
       <p> {recommendedPercentage}% of reviews recommend this product</p>
-      {/* {sortedStars.length > 0 && sortedStars.map((star) => {
-        return <span>{star}</span>
-      })} */}
-
+      {sortExists === true && sortedStars.map((star) => {
+        return <span key={star}>{star}</span>
+      })}
       <ul>
         <li style={liStyle}><button className="button" onClick={starSortClick} value={5}>5 Stars:</button> <StarBar number={5} ratings={percentFive} /> </li>
         <br />
@@ -94,3 +95,7 @@ const StarSort = (props) => {
 }
 
 export default StarSort;
+/*
+{sortExists === true && sortedStars.map((star) => {
+  return <p>{star}dog</p>
+})} */
