@@ -12,8 +12,6 @@ function SelectedStyle({setCurrentStyle, currentStyle, productStyles, ...rest}) 
     setCheckedStyle(i);
   }
 
-{console.log('currentStyle: ', currentStyle)}
-
   return (
     <div className='styleSelection'>
       <p><b>STYLE</b> <FontAwesomeIcon icon={faChevronRight}/> {currentStyle.name}</p>
@@ -21,9 +19,9 @@ function SelectedStyle({setCurrentStyle, currentStyle, productStyles, ...rest}) 
           {
             productStyles.map((style, i) => {
               return (
-              <div className='styleIconWrapper'>
+              <div key={i} className='styleIconWrapper'>
                   {/* <input type="radio" name="radioStyle" value="small"/> */}
-                  <div className='styleIcons' key={i} onClick={() => handleClick(style, i)} style={{backgroundImage:`url(${style.photos[0].thumbnail_url})`}} />
+                  <div className='styleIcons' onClick={() => handleClick(style, i)} style={{backgroundImage:`url(${style.photos[0].thumbnail_url})`}} />
                   <span className={clsx({selectedInput: i === checkedStyle})}>
                     <div className={clsx({checkCircle: i === checkedStyle })}></div>
                     <div className={clsx({checkStem: i === checkedStyle })}></div>
