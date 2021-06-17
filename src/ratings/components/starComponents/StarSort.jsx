@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import StarBar from './StarBar.jsx';
+import styles from '../reviewComponents/review.css';
 
 
 
@@ -46,15 +47,15 @@ const StarSort = (props) => {
   return (
     <div>
       <ul>
-        <li style={liStyle}><span onClick={starSortClick} value={5}>5 Stars:</span> <StarBar number={5} ratings={percentFive} /> </li>
+        <li style={liStyle}><span className="button" onClick={starSortClick} value={5}>5 Stars:</span> <StarBar number={5} ratings={percentFive} /> </li>
         <br />
-        <li style={liStyle}><span onClick={starSortClick} value={4}>4 Stars:</span> <StarBar number={4} ratings={percentFour}/></li>
+        <li style={liStyle}><span className="button" onClick={starSortClick} value={4}>4 Stars:</span> <StarBar number={4} ratings={percentFour}/></li>
         <br />
-        <li style={liStyle}><span onClick={starSortClick} value={3}>3 Stars:</span> <StarBar number={3} ratings={percentThree}/></li>
+        <li style={liStyle}><span className="button" onClick={starSortClick} value={3}>3 Stars:</span> <StarBar number={3} ratings={percentThree}/></li>
         <br />
-        <li style={liStyle}><span onClick={starSortClick} value={2}>2 Stars:</span> <StarBar number={2} ratings={percentTwo}/></li>
+        <li style={liStyle}><span className="button" onClick={starSortClick} value={2}>2 Stars:</span> <StarBar number={2} ratings={percentTwo}/></li>
         <br />
-        <li style={liStyle}><span onClick={starSortClick} value={1}>1 Stars:</span> <StarBar number={1} ratings={percentOne}/></li>
+        <li style={liStyle}><span className="button" onClick={starSortClick} value={1}>1 Stars:</span> <StarBar number={1} ratings={percentOne}/></li>
       </ul>
     </div>
   )
