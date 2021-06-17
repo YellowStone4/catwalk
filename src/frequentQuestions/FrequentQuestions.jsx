@@ -31,11 +31,11 @@ function FrequentQuestions({product}) {
   }
 
   return (
-    <>
+    <section className="frequent-questions">
       <h1>Frequent Questions</h1>
       <Search search={setSearchInput}/>
       <QuestionList questions={searchedQuestions} update={fetchQuestions} product={product}/>
-    </>
+    </section>
   );
 }
 
