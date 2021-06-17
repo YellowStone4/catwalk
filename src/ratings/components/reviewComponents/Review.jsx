@@ -10,7 +10,6 @@ import styles from './review.css'
 const {API_KEY} = require('../../../../config.js');
 
 const Review = (props) => {
-  console.log('props in Review.jsx: ', props);
   const [helpfulCount, setHelpfulCount] = useState(0);
   const [timer, setTimer] = useState(0);
   const [helpClicked, setHelpClicked] = useState(false);
