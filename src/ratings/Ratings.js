@@ -11,6 +11,7 @@ const Ratings = ({product}) => {
   const [metaData, setMetaData] = useState({});
   const [reviewSort, setReviewSort] = useState('');
   const [productId , setProductId] = useState(19089);
+  const [helpfulCount, setHelpfulCount] = useState(0);
 
   //State to manage star sorting
   const [reviewData, setReviewData] = useState({results: []});
@@ -37,8 +38,6 @@ const Ratings = ({product}) => {
     setReviewSort(sortMethod);
   }
 
-
-
   useEffect(() => {
     setProductId(product.id)
   }, [product.id])
@@ -56,7 +55,7 @@ const Ratings = ({product}) => {
     }).catch((err) => {
       // console.log('Err from requesting reviews: ', err);
     })
-  }, [reviewSort, productId]);
+  }, [reviewSort, productId, counter]);
 
   //Get Meta Data
   useEffect(() => {
@@ -74,12 +73,14 @@ const Ratings = ({product}) => {
     })
   }, [productId]);
 
+
+
   return (
     <div>
       <h4>RATINGS & REVIEWS</h4>
       <div style={styles.ratingsStyle}>
-        <Stars changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
-        <Reviews counter={counter} setStarSort={setStarSort} starSort={starSort}  changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
+        <Stars starSort={starSort} changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
+        <Reviews setCounter={setCounter.bind(this)} counter={counter} setStarSort={setStarSort} starSort={starSort}  changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
       </div>
     </div>
   )

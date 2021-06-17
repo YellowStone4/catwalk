@@ -10,12 +10,16 @@ const ReviewDate = (props) => {
   };
 
   useEffect(() => {
-    setPostedDate(getFormattedDate(props.date).toString());
+    var preDate = getFormattedDate(props.date).toString();
+    var dateArr = preDate.split(' ');
+    var finDate = dateArr[1] + ' ' + dateArr[2] + ', ' + dateArr[3];
+
+    setPostedDate(finDate);
   }, [props.date]);
 
 
   return (
-    <div>
+    <div style={{display: 'inline'}}>
       {postedDate}
     </div>
   )

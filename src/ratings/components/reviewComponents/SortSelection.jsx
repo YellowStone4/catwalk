@@ -9,21 +9,33 @@ const SortSelection = (props) => {
   }
 
 
+  const select = {
+    'appearance': 'none',
+    'border': 'none',
+    /* needed for Firefox: */
+    'overflow': 'hidden',
+    textDecoration: 'underline',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    fontWeight: 'bold',
+    fontFamily: 'Lato',
+    fontSize: '18px'
+
+  }
+
 
   return (
-    <div>
-      <form>
-        <label>
 
-          <select value={sorter} onChange={handleChange}>
-            <option value="relevant">relevant</option>
+      <form style={{display: 'inline'}}>
+        <label>
+          <select style={select} value={sorter} onChange={handleChange}>
+            <option value="relevant">relevance</option>
             <option value="newest">newest</option>
             <option value="helpful">helpful</option>
           </select>
         </label>
       </form>
 
-    </div>
+
 
   );
 }

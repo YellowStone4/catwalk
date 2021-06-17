@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
 const barStyle = {
-  width: '75%',
-  border: '1px solid black'
+  width: '65%',
+  border: '1px solid black',
+  display: 'inline-block'
 };
 
 
@@ -11,8 +12,8 @@ const StarBar = (props) => {
 
   const insideBar = {
     backgroundColor: 'grey',
-    height: '24px',
-    width: props.ratings + '%'
+    height: '18px',
+    width: props.ratings + '%',
   };
 
 
