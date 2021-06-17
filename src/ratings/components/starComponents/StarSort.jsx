@@ -17,6 +17,19 @@ const StarSort = (props) => {
   const [sortExists, setSortExists] = useState(false);
   const [recommendedPercentage, setRecommendedPercentage] = useState(0);
 
+  const select = {
+    'appearance': 'none',
+    'border': 'none',
+    /* needed for Firefox: */
+    'overflow': 'hidden',
+    textDecoration: 'underline',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    fontWeight: 'bold',
+    fontFamily: 'Lato',
+    fontSize: '18px'
+
+  }
+
   useEffect(() => {
     var currentSort = [];
     for (var key in props.starSort) {
@@ -70,7 +83,22 @@ const StarSort = (props) => {
   }
 
   const liStyle = {
-    display: "inline"
+    display: "inline",
+
+  }
+
+  const removeButtonStyling = {
+    appearance: 'none',
+    'border': 'none',
+    /* needed for Firefox: */
+    'overflow': 'hidden',
+    textDecoration: 'underline',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    fontWeight: 'light',
+    fontFamily: 'Lato',
+    fontSize: '16px',
+    position: 'relative',
+    bottom: '6px'
   }
 
   return (
@@ -80,15 +108,15 @@ const StarSort = (props) => {
         return <span key={star}>{star}</span>
       })}
       <ul>
-        <li style={liStyle}><button className="button" onClick={starSortClick} value={5}>5 Stars:</button> <StarBar number={5} ratings={percentFive} /> </li>
+        <li style={liStyle}><button style={removeButtonStyling} className="button" onClick={starSortClick} value={5}>5 stars:</button> <StarBar number={5} ratings={percentFive} /> </li>
         <br />
-        <li style={liStyle}><button className="button" onClick={starSortClick} value={4}>4 Stars:</button> <StarBar number={4} ratings={percentFour}/></li>
+        <li style={liStyle}><button style={removeButtonStyling} className="button" onClick={starSortClick} value={4}>4 stars:</button> <StarBar number={4} ratings={percentFour}/></li>
         <br />
-        <li style={liStyle}><button className="button" onClick={starSortClick} value={3}>3 Stars:</button> <StarBar number={3} ratings={percentThree}/></li>
+        <li style={liStyle}><button style={removeButtonStyling} className="button" onClick={starSortClick} value={3}>3 stars:</button> <StarBar number={3} ratings={percentThree}/></li>
         <br />
-        <li style={liStyle}><button className="button" onClick={starSortClick} value={2}>2 Stars:</button> <StarBar number={2} ratings={percentTwo}/></li>
+        <li style={liStyle}><button style={removeButtonStyling} className="button" onClick={starSortClick} value={2}>2 stars:</button> <StarBar number={2} ratings={percentTwo}/></li>
         <br />
-        <li style={liStyle}><button className="button" onClick={starSortClick} value={1}>1 Stars:</button> <StarBar number={1} ratings={percentOne}/></li>
+        <li style={liStyle}><button style={removeButtonStyling} className="button" onClick={starSortClick} value={1}>1 stars:</button> <StarBar number={1} ratings={percentOne}/></li>
       </ul>
     </div>
   )
