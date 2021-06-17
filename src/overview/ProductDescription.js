@@ -16,6 +16,7 @@ const articleStyle = {
 }
 
 function ProductDescription({product, ...rest}) {
+  let features = product.features === undefined ? [] : product.features;
 
   return (
     <div style={containerStyle}>
@@ -25,7 +26,7 @@ function ProductDescription({product, ...rest}) {
       </article>
       <aside>
         <ul style={{paddingTop: '10px'}}>
-         {product.features.map(item => <li key={Math.random()}>{item.feature}: {item.value}</li>)}
+         {features.map(item => <li key={Math.random()}>{item.feature}: {item.value}</li>)}
         </ul>
       </aside>
     </div>

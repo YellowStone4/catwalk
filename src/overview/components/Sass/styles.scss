@@ -154,7 +154,7 @@ img {
   background-color: #f5e6ca;
   padding: 10px 40px;
   border-radius: 10px;
-  display: inline-block;
+  // display: inline-block;
   height: 90%;
   flex-shrink: 2;
 }
@@ -229,41 +229,103 @@ a {
 }
 
 /* CART BUTTONS */
-
-.cartButtonContainer {
-  position: relative;
+.cartBtnSection {
   display: grid;
-  grid-template-columns: 250px 100px;
-  grid-gap: 20px;
-  flex-shrink: 2;
+  grid-template-columns: minmax(400px, 75%) 1fr;
 
-  .btn {
+}
+.cartBtnWrapper {
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 5px;
+  flex-shrink: 2;
+  justify-items: start;
+
+  .cartBtn {
     background-color: #343f56;
     color: whitesmoke;
-    padding: 10px;
     border-radius: 10px;
     border: 1px solid #c4c4c4;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    width: 175px;
+    padding: 5px;
+
+    &:hover { transform: scale(1.015) }
+    &:focus {outline: none}
+
+    &:active {
+      box-shadow: inset 0px 0px 5px #000;
+      outline: none;
+      background-color: #343f99;
+      transform: scale(1);
+    }
   }
 
-  .btn.star { margin: 0 auto }
-
-  .btn:hover { transform: scale(1.05) }
-
-  .btn:active {
-    box-shadow: inset 0px 0px 5px #000;
-    outline: none;
-    background-color: #f54748;
-    transform: scale(1);
+  .item4 {
+    width: 50px;
+    margin-right: 0 auto;
   }
 }
 
+.liked {
+  color: fuchsia;
+}
+
+#cart {
+  position:fixed;
+  top:100px;
+  right:60px;
+  width:50px;
+  height:50px;
+  background:#343f56;;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:5px;
+  :first-child {
+    font-size:25px;
+    color:white;
+  }
+  &:before {
+    content:attr(data-count);
+    font-size:12px;
+    font-weight:600;
+    position:absolute;
+    top:-12px;
+    right:-12px;
+    background:#f54748;
+    line-height:24px;
+    padding:0 5px;
+    height:24px;
+    min-width:24px;
+    color:white;
+    text-align:center;
+    border-radius:24px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* SOCIAL MEDIA ICONS */
 .socialWrapper {
-  margin-top: 100px;
+  margin-top: 5%;
   display: inline-flex;
 }
 
@@ -271,7 +333,7 @@ a {
   position: relative;
   background-color: #ffffff;
   border-radius: 50%;
-  padding: 15px;
+  padding: 10px;
   margin: 10px;
   width: 50px;
   height: 50px;
@@ -335,3 +397,12 @@ a {
 
 .pinterest:hover, .pinterest:hover .nameDisplay,
 .pinterest:hover .nameDisplay::before { @include socialHover($bgColor: #e1306c)}
+
+
+// PRICE
+.onSale {
+  text-decoration: line-through;
+  color: gray;
+  margin-left: 8px;
+}
+

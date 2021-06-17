@@ -21,7 +21,7 @@ const Index = () => {
   }, [])
 
   if (product.id === undefined) {
-    return <div></div>
+    return <div style={{backgroundColor: 'blue'}}>This is our very creative 404 page</div>
   }
 
   return <ProductPage product={product} setProduct={setProduct}/>
