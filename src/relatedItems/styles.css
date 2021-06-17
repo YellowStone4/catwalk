@@ -221,5 +221,12 @@
   transform: translateX(450px);
   /* align-items: left; */
   justify-content: left;
-  background: coral;
+  /* background: coral; */
+}
+
+.card_slide-outfit {
+  position: relative;
+  /* width: 100%; */
+  /* padding: 0 10px; */
+  padding-right: 5%;
 }

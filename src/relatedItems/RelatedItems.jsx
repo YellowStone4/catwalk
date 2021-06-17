@@ -5,7 +5,6 @@ import axios from 'axios';
 import { API_KEY } from '/config.js'
 
 const RelatedItems = ( { product, setProduct, ...rest} ) => {
-  // console.log('edgars:', props.product.id)
 
   const [products, setProducts] = useState([]);
 

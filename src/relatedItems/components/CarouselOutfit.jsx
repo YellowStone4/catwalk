@@ -17,12 +17,17 @@ const CarouselOutfit = ({product, setProduct, products}) => {
 
   useEffect(() => {
     var values = [],
-        keys = Object.keys(myStorage),
-        i = keys.length;
+    keys = Object.keys(myStorage),
+    i = keys.length;
     while ( i-- ) {
-        values.push(JSON.parse(myStorage.getItem(keys[i]) ));
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
     }
-    setCards(values);
+    if (values.length > 3) {
+      setCards(values.slice(0, 3));
+    } else {
+      setCards(values);
+    }
+
   }, [product])
 
   // console.log('hey', cards);
@@ -33,17 +38,33 @@ const CarouselOutfit = ({product, setProduct, products}) => {
       return;
     }
 
-    setCurrentIndex(index)
-    setCards(products.slice(index, index + 4));
-  }
-
-  const handleClickNext = (index) => {
-    if (index + 3 > products.length - 1) {
-      return;
+    var values = [],
+    keys = Object.keys(myStorage),
+    i = keys.length;
+    while ( i-- ) {
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
     }
 
     setCurrentIndex(index)
-    setCards(products.slice(index, index + 4));
+    setCards(values.slice(index, index + 3));
+  }
+
+  const handleClickNext = (index) => {
+    var values = [],
+    keys = Object.keys(myStorage),
+    i = keys.length;
+    while ( i-- ) {
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
+    }
+
+    if (index + 2 > values.length - 1) {
+      return;
+    }
+
+
+
+    setCurrentIndex(index)
+    setCards(values.slice(index, index + 3));
   }
 
   const handleClickOutfit = () => {
@@ -54,9 +75,14 @@ const CarouselOutfit = ({product, setProduct, products}) => {
     keys = Object.keys(myStorage),
     i = keys.length;
     while ( i-- ) {
-        values.push(JSON.parse(myStorage.getItem(keys[i]) ));
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
     }
-    setCards(values);
+
+    if (values.length > 3) {
+      setCards(values.slice(0, 3));
+    } else {
+      setCards(values);
+    }
     // setCards(myStorage)
 
     // console.log('retrievedObject: ', myStorage);
@@ -82,7 +108,8 @@ const CarouselOutfit = ({product, setProduct, products}) => {
 
       <ul className="carousel_track-outfit">
          {cards.map((item, index) => {
-            return <li key={Math.random() * 100} className='card_slide' > <CardOutfit currentProduct={item} product={product} setProduct={setProduct} />
+            // console.log('test', item)
+            return <li key={Math.random() * 100} className='card_slide-outfit' > <CardOutfit product={item} setProduct={setProduct} />
             </li>
         })}
       </ul>
