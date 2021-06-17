@@ -9,7 +9,7 @@ const QuestionList = ({product, questions, update}) => {
   const visibleQuestions = questions.slice(0, numberOfVisibleQuestions)
   const loadMoreQuestions = () => setNumberOfVisibleQuestions(numberOfVisibleQuestions+2)
   const collapseQuestions = () => setNumberOfVisibleQuestions(2)
-  const loadMoreQuesBtn = <button onClick={loadMoreQuestions}>Load More Questions</button>
+  const loadMoreQuesBtn = <button onClick={loadMoreQuestions}>More Answered Questions</button>
   const collapseQuesBtn = <button onClick={collapseQuestions}>Collapse Questions</button>
 
   const [addingQuestion, setAddingQuestion] = useState(false)
@@ -45,13 +45,24 @@ const QuestionList = ({product, questions, update}) => {
 
   return (
     <>
-      <section className="questionList">
-        {visibleQuestions.map((question) => <Question key={question.question_id} product={product} question={question} update={update} />)}
+      {addingQuestion && <AddQuestion submit={submit} cancel={cancel} product={product}/>}
+      <section className="question-list">
+        <main>
+          {visibleQuestions.map((question) => (
+            <Question
+              key={question.question_id}
+              product={product}
+              question={question}
+              update={update}
+            />
+          ))}
+        </main>
+        <footer className="questions-footer">
+          {visibleQuestions.length < questions.length && loadMoreQuesBtn}
+         {visibleQuestions.length > 2 && visibleQuestions.length === questions.length && collapseQuesBtn}
+         <button onClick={()=>setAddingQuestion(true)}>Add a Question</button>
+        </footer>
       </section>
-        {visibleQuestions.length < questions.length && loadMoreQuesBtn}
-        {visibleQuestions.length > 2 && visibleQuestions.length === questions.length && collapseQuesBtn}
-        {addingQuestion && <AddQuestion submit={submit} cancel={cancel} product={product}/>}
-      <button onClick={()=>setAddingQuestion(true)}>Add a Question</button>
     </>
   )
 }

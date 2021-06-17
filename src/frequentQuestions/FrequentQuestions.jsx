@@ -12,7 +12,7 @@ function FrequentQuestions({product}) {
 
   useEffect(() => {
     fetchQuestions()
-  }, []);
+  }, [product]);
 
   const fetchQuestions = () => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${product.id}`;
@@ -32,9 +32,13 @@ function FrequentQuestions({product}) {
 
   return (
     <section className="frequent-questions">
-      <h1>Frequent Questions</h1>
-      <Search search={setSearchInput}/>
-      <QuestionList questions={searchedQuestions} update={fetchQuestions} product={product}/>
+      <header>
+        <h2 className="section-title">Frequent Questions</h2>
+      </header>
+      <main>
+        <Search search={setSearchInput}/>
+        <QuestionList questions={searchedQuestions} update={fetchQuestions} product={product}/>
+      </main>
     </section>
   );
 }
