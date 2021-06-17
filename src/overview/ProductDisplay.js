@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import Gallery from './components/Gallery.js';
 import CartSelection from './components/CartSelection.js';
-import './components/styles.css';
+import './components/Sass/styles.scss';
 import clsx from 'clsx';
 import {API_KEY} from '../../config.js';
 import axios from 'axios';
