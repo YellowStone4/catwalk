@@ -10,6 +10,7 @@ import styles from './review.css'
 const {API_KEY} = require('../../../../config.js');
 
 const Review = (props) => {
+  console.log('props in Review.jsx: ', props);
   const [helpfulCount, setHelpfulCount] = useState(0);
   const [timer, setTimer] = useState(0);
   const [helpClicked, setHelpClicked] = useState(false);
@@ -87,10 +88,14 @@ const Review = (props) => {
         return <PhotoDisplay key={photo.id} photo={photo} />
       })
       : <span></span>}
-      <div style={{backgroundColor: '#D3D3D3', margin: '5px 0px', padding: '3px 10px'}}>
-        <h4 style={{fontWeight: 'bold', margin: '10px 0px'}}>Response:</h4>
-        <p>Convert to stateful</p>
-      </div>
+      {props.review.response !== null &&
+        <div style={{backgroundColor: '#D3D3D3', margin: '5px 0px', padding: '3px 10px'}}>
+          <h4 style={{fontWeight: 'bold', margin: '10px 0px'}}>Response:</h4>
+          <p>{props.review.response}</p>
+        </div>
+      }
+
+
       <div>
         <span>Helpful? </span>
         <span className="button" onClick={helpfulClick}>Yes  ({helpfulCount})  </span>
