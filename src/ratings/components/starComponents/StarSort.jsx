@@ -39,14 +39,22 @@ const StarSort = (props) => {
     // console.log('STAR DOUBLE CLICK: ', setStarDoubleClick);
   }
 
+  const liStyle = {
+    display: "inline"
+  }
+
   return (
     <div>
       <ul>
-        <li><button onClick={starSortClick} value={5}>5 Stars:</button> <StarBar number={5} ratings={percentFive} /> </li>
-        <li><button onClick={starSortClick} value={4}>4 Stars:</button> <StarBar number={4} ratings={percentFour}/></li>
-        <li><button onClick={starSortClick} value={3}>3 Stars:</button> <StarBar number={3} ratings={percentThree}/></li>
-        <li><button onClick={starSortClick} value={2}>2 Stars:</button> <StarBar number={2} ratings={percentTwo}/></li>
-        <li><button onClick={starSortClick} value={1}>1 Stars:</button> <StarBar number={1} ratings={percentOne}/></li>
+        <li style={liStyle}><span onClick={starSortClick} value={5}>5 Stars:</span> <StarBar number={5} ratings={percentFive} /> </li>
+        <br />
+        <li style={liStyle}><span onClick={starSortClick} value={4}>4 Stars:</span> <StarBar number={4} ratings={percentFour}/></li>
+        <br />
+        <li style={liStyle}><span onClick={starSortClick} value={3}>3 Stars:</span> <StarBar number={3} ratings={percentThree}/></li>
+        <br />
+        <li style={liStyle}><span onClick={starSortClick} value={2}>2 Stars:</span> <StarBar number={2} ratings={percentTwo}/></li>
+        <br />
+        <li style={liStyle}><span onClick={starSortClick} value={1}>1 Stars:</span> <StarBar number={1} ratings={percentOne}/></li>
       </ul>
     </div>
   )
