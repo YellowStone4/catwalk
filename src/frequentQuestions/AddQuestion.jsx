@@ -14,7 +14,7 @@ export default ({submit, cancel, product}) => {
     validateQuestion() &&
     validateNickname() &&
     validateEmail() &&
-    submit()
+    submit(formData)
   }
 
   const validateQuestion = () => {

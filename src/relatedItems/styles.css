@@ -63,7 +63,7 @@
   margin: 0;
   list-style: none;
   display: inline-flex;
-  width: 100%;
+  width:100%;
   align-items: center;
   justify-content: center;
 
@@ -73,14 +73,15 @@
 .card_slide {
   position: relative;
   /* width: 100%; */
-  padding: 0 50px;
+  /* padding: 0 10px; */
+  padding-right: 3%;
 }
 
 .starIcon {
   position: absolute;
   top: 5px;
   right: 5px;
-  z-index: 2;
+  z-index: 1;
   cursor: pointer;
 }
 
@@ -100,18 +101,19 @@
 .modal-main {
   position: fixed;
   background: white;
-  width: 400px;
+  width: 600px;
   height: 300px;
   top: 50%;
   left: 40%;
   /* transform: translate(-50%,-50%); */
-  z-index: 3;
+  z-index: auto;
   border: 2px solid black;
 }
 
 .display-block {
   display: block;
-
+  position: absolute;
+  z-index: 10;
 }
 
 .display-none {
@@ -119,15 +121,105 @@
 }
 
 .buttonModal {
-  position:absolute;
+  position: absolute;
   top: 5px;
   right: 5px;
 }
 
-.modalGrid {
-  display: grid;
-  grid-template-columns: 200px 200px;
-  grid-template-rows: auto auto auto auto auto auto;
-  /* border: 1px solid, black; */
-  grid-row: auto;
+.modal-main-title {
+  position: absolute;
+  font-style: italic;
+  font-weight: bold;
+  font-size: larger;
+  top: 30px;
+  left: 15px;
+  /* text-align: center; */
+  /* justify-self: center; */
+}
+
+.modal-product-name {
+  font-style: normal;
+  font-size: large;
+  font-weight: 900;
+}
+
+.modal-row-text {
+  display: flex;
+  align-items: center;
+  /* justify-items: center; */
+  overflow-wrap: break-word;
+  /* word-wrap: break-word; */
+  padding: 0 5px;
+}
+
+.modal-product-features-right {
+  position: absolute;
+  top: 100px;
+  left: 310px;
+}
+
+.modal-product-name-right {
+  position: absolute;
+  top: 70px;
+  left: 310px;
+  /* text-align: right; */
+}
+
+.modal-product-features-left {
+  position: absolute;
+  top: 100px;
+  left: 10px;
+}
+
+.modal-product-name-left {
+  position: absolute;
+  top: 70px;
+  left: 10px;
+  /* text-align: right; */
+}
+
+
+
+
+.outfit-card {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  border: 1px solid black;
+  left: 120px;
+  text-align: center;
+  /* align-self: left; */
+  /* left: 100px; */
+}
+
+.add-button {
+  background: transparent;
+  border: 0;
+  position: absolute;
+  top: 40%;
+  left: 105px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  opacity: 50%;
+}
+
+.outfit-text {
+  position: absolute;
+  font-size: larger;
+  left: 95px;
+  top: 65%;
+}
+
+.carousel_track-outfit {
+  white-space: nowrap;
+  margin: 0;
+  list-style: none;
+  display: inline-flex;
+  width: 1100px;
+  transform: translateX(450px);
+  /* align-items: left; */
+  justify-content: left;
+  background: coral;
 }
