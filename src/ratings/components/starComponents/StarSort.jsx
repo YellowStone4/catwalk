@@ -5,6 +5,7 @@ import styles from '../reviewComponents/review.css';
 
 
 const StarSort = (props) => {
+  console.log('Props in starSort: ', props);
 
   const [starPercentage, setStarPercentage] = useState(0);
   const [ratingObj, setRatingObj] = useState({1: "0", 2: "0", 3: "0", 4: "0", 5: "0"});
@@ -44,8 +45,18 @@ const StarSort = (props) => {
     display: "inline"
   }
 
+  const calculatePercentRecommended = () => {
+    if (props.metaData.recommended !== undefined) {
+      var recObj = props.metaData.recommended;
+      var recTrueCount = recObj.true;
+      console.log(recTrueCount);
+    }
+
+  }
+
   return (
     <div>
+      <p> {calculatePercentRecommended()}% of reviews recommend this product</p>
       <ul>
         <li style={liStyle}><span className="button" onClick={starSortClick} value={5}>5 Stars:</span> <StarBar number={5} ratings={percentFive} /> </li>
         <br />
