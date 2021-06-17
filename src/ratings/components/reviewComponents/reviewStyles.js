@@ -4,8 +4,10 @@ const reviewStyle = {
   gridTemplateColumns: 'minmax(150px, 35%) 1fr',
 };
 
+
 const styles = {
-  reviewStyle
+  reviewStyle,
+
 };
 
 export default styles;

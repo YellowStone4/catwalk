@@ -38,7 +38,7 @@ const ListOfReviews = (props) => {
   return (
     <div>
       {finArray.map((review) => {
-        return <Review key={review.review_id} review={review}/>;
+        return <Review setCounter={props.setCounter} product={props.product} key={review.review_id} review={review}/>;
       })}
 
     </div>

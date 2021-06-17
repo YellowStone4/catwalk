@@ -2,17 +2,18 @@ import React, {useState, useEffect} from 'react';
 import SortSelection from './SortSelection.jsx';
 
 const ReviewSort = (props) => {
-  const countReviews = (recommendings) => {
-    var total = 0;
-    for (var key in recommendings) {
-      total += parseInt(recommendings[key])
+  const [reviewCount, setReviewCount] = useState(0);
+
+  useEffect(() => {
+    if (props.reviews !== undefined) {
+      setReviewCount(props.reviews.results.length)
     }
-    return total;
-  }
+  }, [props.reviews.results.length])
+
   return (
     <div>
-      <h3>{countReviews(props.metaData.recommended)} reviews, sorted by </h3>
-      <SortSelection changeSort={props.changeSort} />
+      <h3 style={{display: 'inline'}}>{reviewCount} reviews, sorted by <SortSelection changeSort={props.changeSort} /></h3>
+
     </div>
   )
 }
