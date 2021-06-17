@@ -15,6 +15,21 @@ const StarSort = (props) => {
   const [percentTwo, setPercentTwo] = useState(0);
   const [percentOne, setPercentOne] = useState(0);
 
+  const [recommendedPercentage, setRecommendedPercentage] = useState(0);
+
+  useEffect(() => {
+    if (props.metaData.recommended !== undefined) {
+      var recObj = props.metaData.recommended;
+      var recTrueCount = parseInt(recObj.true);
+      var recFalseCount = parseInt(recObj.false);
+      var both = recTrueCount + recFalseCount;
+      var percentage = Math.floor((recTrueCount / both) * 100);
+      setRecommendedPercentage(percentage);
+    }
+
+  }, [props.metaData.recommended]);
+
+
   const setPercent = (ratingsList) => {
     var totalRatings = parseInt(ratingsList['1']) + parseInt(ratingsList['2']) + parseInt(ratingsList['3']) + parseInt(ratingsList['4']) + parseInt(ratingsList['5']);
 
@@ -45,18 +60,10 @@ const StarSort = (props) => {
     display: "inline"
   }
 
-  const calculatePercentRecommended = () => {
-    if (props.metaData.recommended !== undefined) {
-      var recObj = props.metaData.recommended;
-      var recTrueCount = recObj.true;
-      console.log(recTrueCount);
-    }
-
-  }
 
   return (
     <div>
-      <p> {calculatePercentRecommended()}% of reviews recommend this product</p>
+      <p> {recommendedPercentage}% of reviews recommend this product</p>
       <ul>
         <li style={liStyle}><span className="button" onClick={starSortClick} value={5}>5 Stars:</span> <StarBar number={5} ratings={percentFive} /> </li>
         <br />
