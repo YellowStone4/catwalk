@@ -12,6 +12,8 @@ function ProductDisplay({product, ...rest}) {
   const [sliderOpen, setSlider] = useState(true);
   const toggleSlider = () => setSlider(!sliderOpen);
 
+
+
   useEffect(() => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product.id}/styles`;
     let config = { headers: {'Authorization': API_KEY}, }
@@ -21,7 +23,7 @@ function ProductDisplay({product, ...rest}) {
       setCurrentStyle(res.data.results[0]);
     }
     return getData();
-  }, []);
+  }, [product]);
 
   // Sliding Drawer State and Functionality
    let drawerClasses = clsx('side-drawer', {'close': !sliderOpen});
