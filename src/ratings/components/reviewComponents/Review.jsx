@@ -64,7 +64,7 @@ const Review = (props) => {
 
   return (
     <div style={{margin: '30px'}}>
-      <div style={{clear: 'both'}}>
+      <div style={{clear: 'both', margin: '5px, 0px'}}>
         <div style={{float: 'left'}}>
           <StarCount key={props.review.review_id} id={props.review.review_id} starNumber={props.review.rating}/>
         </div>
@@ -73,12 +73,12 @@ const Review = (props) => {
           <ReviewDate date={props.review.date}/>
         </div>
       </div>
-      <div style={{clear: 'both'}}>
+      <div style={{clear: 'both', marginTop: '5px', padding: '1px 0px'}}>
         <h2>{props.review.summary}</h2>
       </div>
-      <p>{props.review.body}</p>
+      <p style={{fontSize: '18px', margin: '5px 0px 15px 0px'}}>{props.review.body}</p>
 
-      {props.review.recommend ? <div>
+      {props.review.recommend ? <div style={{margin: '15px 0px'}}>
         <span><FontAwesomeIcon icon={faCheck} /></span>
         <span>  I recommend this product</span>
       </div> : <span></span>}
@@ -97,10 +97,10 @@ const Review = (props) => {
 
 
       <div>
-        <span>Helpful? </span>
-        <span className="button" onClick={helpfulClick}>Yes  ({helpfulCount})  </span>
-        <span>|</span>
-        <span className="button" onClick={reportClick}>  Report</span>
+        <span style={{fontSize: '16px'}}>Helpful?  </span>
+        <span style={{textDecoration: 'underline'}}className="button" onClick={helpfulClick}>Yes   ({helpfulCount})  </span>
+        <span style={{textDecoration: 'none'}}>   |  </span>
+        <span style={{textDecoration: 'underline'}} className="button" onClick={reportClick}>   Report</span>
       </div>
       <hr></hr>
     </div>
