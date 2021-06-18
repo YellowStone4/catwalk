@@ -10,7 +10,8 @@ export default ({submit, cancel, product}) => {
   const [nicknameIsValid, setNicknameIsValid] = useState()
   const [emailIsValid, setEmailIsValid] = useState()
 
-  const validateForm = () => {
+  const validateForm = (e) => {
+    e.preventDefault()
     validateQuestion() &&
     validateNickname() &&
     validateEmail() &&
@@ -66,7 +67,7 @@ export default ({submit, cancel, product}) => {
               maxLength="1000"
               onChange={onChange}
               onBlur={validateQuestion}
-              required
+              // required
             />
             </label>
             {questionIsValid === false && <span className="alert">Question cannot be empty</span>}
