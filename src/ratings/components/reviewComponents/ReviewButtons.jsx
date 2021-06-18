@@ -9,8 +9,9 @@ const ReviewButtons = (props) => {
 
   const [addingQuestion, setAddingQuestion] = useState(false)
 
-  const submit = () => {
+  const submit = (data) => {
     console.log('submitted')
+    console.log('submit data: ', data);
     setAddingQuestion(false)
   }
   const cancel = (e) => {

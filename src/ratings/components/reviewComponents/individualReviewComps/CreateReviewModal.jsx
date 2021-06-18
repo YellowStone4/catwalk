@@ -16,7 +16,6 @@ const ReviewModal = ({metaData, submit, cancel, product}) => {
     length: 5,
     quality: 5,
     width: 5
-
   })
   const [nicknameIsValid, setNicknameIsValid] = useState()
   const [emailIsValid, setEmailIsValid] = useState()
@@ -56,11 +55,28 @@ const ReviewModal = ({metaData, submit, cancel, product}) => {
     }
   }, [charsList]);
 
+  const sendPost = (data) => {
+    var bodyObj = {
+      product_id: metaData.product_id,
+      rating: data.rating,
+      summary: data.summary,
+      body: data.body,
+      recommend: data.recommend
+    }
+  }
+
   const validateForm = () => {
-    validateQuestion() &&
-    validateNickname() &&
+    if (validateNickname() &&
     validateEmail() &&
-    submit()
+    validateBody() &&
+    validatePhoto() &&
+    validateSummary() &&
+    validateRecommend()) {
+      submit(formData);
+      console.log('form validated!');
+    } else {
+      console.log('form NOT validated', formData);
+    }
   }
 
   const validateSummary = () => {
@@ -84,6 +100,7 @@ const ReviewModal = ({metaData, submit, cancel, product}) => {
     console.log('formdata recommend: ', formData.recommend);
     if ((formData.recommend === 'true') || (formData.recommend === 'false')) {
       setRecommendIsValid(true);
+      return true;
     } else {
       setRecommendIsValid(false);
     }
