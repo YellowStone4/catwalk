@@ -56,12 +56,18 @@ const ReviewModal = ({metaData, submit, cancel, product}) => {
   }, [charsList]);
 
   const sendPost = (data) => {
+    var recStatus = data.recommend === "true" ? true : false;
+    console.log('recStatus: ', recStatus);
     var bodyObj = {
       product_id: metaData.product_id,
       rating: data.rating,
       summary: data.summary,
       body: data.body,
-      recommend: data.recommend
+      recommend: recStatus,
+      name: data.nickname,
+      email: data.email,
+      photos: data.photos,
+      characteristics: 'fill this out'
     }
   }
 
