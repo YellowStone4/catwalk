@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CardOutfit from './CardOutfit.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight, faAngleLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faArrowLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import '../styles.css';
+import clsx from 'clsx';
 
 const CarouselOutfit = ({product, setProduct, products}) => {
 
@@ -17,57 +18,75 @@ const CarouselOutfit = ({product, setProduct, products}) => {
 
   useEffect(() => {
     var values = [],
-        keys = Object.keys(myStorage),
-        i = keys.length;
+    keys = Object.keys(myStorage),
+    i = keys.length;
     while ( i-- ) {
-        values.push(JSON.parse(myStorage.getItem(keys[i]) ));
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
     }
-    setCards(values);
+    if (values.length > 3) {
+      setCards(values.slice(0, 3));
+    } else {
+      setCards(values);
+    }
   }, [product])
 
   // console.log('hey', cards);
 
+  let prevArrClsx = clsx('carousel_button carousel_button--left arrow-icon', {'hidden': currentIndex === 0 });
+  let nextArrClsx = clsx('carousel_button carousel_button--right arrow-icon', {'hidden': myStorage.length < 3 || currentIndex + 3 === myStorage.length});
+
   const handleClickPrev = (index) => {
-    // console.log(index);
     if (index < 0) {
       return;
     }
-
-    setCurrentIndex(index)
-    setCards(products.slice(index, index + 4));
-  }
-
-  const handleClickNext = (index) => {
-    if (index + 3 > products.length - 1) {
-      return;
-    }
-
-    setCurrentIndex(index)
-    setCards(products.slice(index, index + 4));
-  }
-
-  const handleClickOutfit = () => {
-    myStorage.setItem(`${product.id}`, JSON.stringify(product));
-    // var retrievedObject = localStorage.getItem('testObject');
-    // console.log('retrievedObject: ', myStorage);
     var values = [],
     keys = Object.keys(myStorage),
     i = keys.length;
     while ( i-- ) {
-        values.push(JSON.parse(myStorage.getItem(keys[i]) ));
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
     }
-    setCards(values);
-    // setCards(myStorage)
 
-    // console.log('retrievedObject: ', myStorage);
+    setCurrentIndex(index)
+    setCards(values.slice(index, index + 3));
+  }
+
+  const handleClickNext = (index) => {
+    var values = [],
+    keys = Object.keys(myStorage),
+    i = keys.length;
+    while ( i-- ) {
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
+    }
+    if (index + 2 > values.length - 1) {
+      return;
+    }
+
+    setCurrentIndex(index)
+    setCards(values.slice(index, index + 3));
+  }
+
+  const handleClickOutfit = () => {
+    myStorage.setItem(`${product.id}`, JSON.stringify(product));
+    var values = [],
+    keys = Object.keys(myStorage),
+    i = keys.length;
+    while ( i-- ) {
+      values.push(JSON.parse(myStorage.getItem(keys[i]) ));
+    }
+
+    if (values.length > 3) {
+      setCards(values.slice(0, 3));
+    } else {
+      setCards(values);
+    }
   }
 
 
   return (
     <div className="carousel">
       {/* {console.log(props.products)} */}
-      <button className="carousel_button carousel_button--left" onClick={() => handleClickPrev(currentIndex - 1)}>
-      <FontAwesomeIcon icon={ faAngleLeft } size = '4x'/>
+      <button className={prevArrClsx} onClick={() => handleClickPrev(currentIndex - 1)}>
+      <FontAwesomeIcon icon={ faArrowLeft } />
       </button>
 
 
@@ -82,15 +101,16 @@ const CarouselOutfit = ({product, setProduct, products}) => {
 
       <ul className="carousel_track-outfit">
          {cards.map((item, index) => {
-            return <li key={Math.random() * 100} className='card_slide' > <CardOutfit currentProduct={item} product={product} setProduct={setProduct} />
+            // console.log('test', item)
+            return <li key={Math.random() * 100} className='card_slide-outfit' > <CardOutfit product={item} setProduct={setProduct} storage={myStorage} cards={cards} setCards={setCards}/>
             </li>
         })}
       </ul>
 
 
 
-      <button className="carousel_button carousel_button--right" onClick={() => handleClickNext(currentIndex + 1)}>
-        <FontAwesomeIcon icon={ faAngleRight } size = '4x'/>
+      <button className={nextArrClsx} onClick={() => handleClickNext(currentIndex + 1)}>
+        <FontAwesomeIcon icon={ faArrowRight } />
       </button>
     </div>
   )

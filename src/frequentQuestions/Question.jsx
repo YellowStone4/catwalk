@@ -14,8 +14,8 @@ const Question = ({product, question, update}) => {
   const visibleAnswers = answers.slice(0, numberOfVisibleAnswers)
   const loadMoreAnswers = () => setNumberOfVisibleAnswers(numberOfVisibleAnswers + 2)
   const collapseAnswers = () => setNumberOfVisibleAnswers(2)
-  const loadMoreAnswersBtn = <strong onClick={loadMoreAnswers}>Load More Answers</strong>
-  const collapseAnswersBtn = <strong onClick={collapseAnswers}>Collapse Answers</strong>
+  const loadMoreAnswersBtn = <a onClick={loadMoreAnswers}>Load More Answers</a>
+  const collapseAnswersBtn = <a onClick={collapseAnswers}>Collapse Answers</a>
 
 
   //Handling functionality to Vote Question Helpful
@@ -58,25 +58,38 @@ const Question = ({product, question, update}) => {
   }
 
   return (
-    <section>
-      <strong>Q: {question.question_body} </strong>
-      <span>
-        Helpful?
-        <a onClick={handleVotedHelpful}>Yes</a>
-        ({question.question_helpfulness}) |
-        <a onClick={()=>setAddingAnswer(true)}> Add Answer</a>
-      </span>
-
-      {answers.length > 0 &&
-        <section>
-          <strong>A: </strong>{visibleAnswers.map(answer => <Answer key={answer.id} answer={answer} update={update}/>)}
-        </section>
-      }
-      {visibleAnswers.length < answers.length && loadMoreAnswersBtn}
-      {visibleAnswers.length > 2 && visibleAnswers.length === answers.length && collapseAnswersBtn}
-      {addingAnswer && <AddAnswer submit={submit} product={product} question={question}/>}
-      <hr />
-    </section>
+    <div className="question">
+      <article>
+        {addingAnswer && <AddAnswer submit={submit} product={product} question={question}/>}
+        <header className="title">
+          <strong>Q : </strong>
+          <span> {question.question_body} </span>
+       </header>
+        {answers.length > 0 &&
+          <section className="answer">
+            <header><strong>A : </strong></header>
+            <main>
+              {visibleAnswers.map(answer => (
+                <Answer
+                  key={answer.id}
+                  answer={answer}
+                  update={update}
+                />
+              ))}
+              {visibleAnswers.length < answers.length && loadMoreAnswersBtn}
+              {visibleAnswers.length > 2 && visibleAnswers.length === answers.length && collapseAnswersBtn}
+            </main>
+          </section>
+        }
+      </article>
+      <aside>
+        <header>Helpful?
+          <a onClick={handleVotedHelpful}><u> Yes </u></a>
+          ({question.question_helpfulness}) |
+          <a onClick={()=>setAddingAnswer(true)}><u> Add Answer </u></a>
+        </header>
+      </aside>
+    </div>
   )
 }
 

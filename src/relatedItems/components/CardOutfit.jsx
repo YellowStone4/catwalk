@@ -5,11 +5,11 @@ import { API_KEY } from '/config.js'
 import axios from 'axios';
 import '../styles.css';
 import Modal from './Modal.jsx';
+import defaultImage from '../../../dist/images/default-product-image.png';
 
 
-const CardOutfit = ({ currentProduct, product, setProduct }) => {
+const CardOutfit = ({ currentProduct, product, setProduct, storage, cards, setCards, setCurrentIndex }) => {
 
-  // const [ productId, setProductId ] = useState('')
 
   const [ stylePhoto, setStylePhoto ] = useState('')
 
@@ -17,6 +17,7 @@ const CardOutfit = ({ currentProduct, product, setProduct }) => {
 
 
   useEffect(() => {
+    let mounted = true;
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${product.id}/styles`;
       const config = {
         headers: {
@@ -28,18 +29,40 @@ const CardOutfit = ({ currentProduct, product, setProduct }) => {
       };
       axios.get(url, config)
         .then((res) => {
-          // console.log(res.data.product_id)
-          setStylePhoto(res.data.results[0].photos[0].thumbnail_url)
-          // setProductId(res.data.product_id)
+          if (mounted = true) {
+            // console.log(res.data.product_id)
+            if (res.data.results[0].photos[0].thumbnail_url) {
+              setStylePhoto(res.data.results[0].photos[0].thumbnail_url)
+            } else {
+              setStylePhoto(defaultImage)
+            }
+          }
         });
+        return () => mounted = false;
   }, [product]);
+
+  const handleClick = (key) => {
+    storage.removeItem(key)
+    var values = [],
+    keys = Object.keys(storage),
+    i = keys.length;
+    while ( i-- ) {
+      values.push(JSON.parse(storage.getItem(keys[i]) ));
+    }
+    if (values.length > 3) {
+      setCards(values.slice(0, 3));
+    } else {
+      setCards(values);
+    }
+    // setCurrentIndex(0);
+  }
 
 
   return (
       <div className="cardGrid" >
-        <FontAwesomeIcon className="starIcon" icon={ faTimesCircle } size='2x' onClick={() => handleClick(true)} />
+        <FontAwesomeIcon className="starIcon" icon={ faTimesCircle } size='2x' onClick={() => handleClick(product.id)} />
         <div>
-          <img className="testImage" src={stylePhoto} alt="" onClick={() => setProduct(productId)}/>
+          <img className="productImage-outfit" src={stylePhoto} alt=""/>
         </div>
         <div className="row-text">{product.category}</div>
         <div className="row-text">{product.name}</div>

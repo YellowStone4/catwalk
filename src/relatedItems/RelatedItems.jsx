@@ -3,9 +3,9 @@ import Carousel from './components/Carousel.jsx';
 import CarouselOutfit from './components/CarouselOutfit.jsx';
 import axios from 'axios';
 import { API_KEY } from '/config.js'
+import './styles.css';
 
 const RelatedItems = ( { product, setProduct, ...rest} ) => {
-  // console.log('edgars:', props.product.id)
 
   const [products, setProducts] = useState([]);
 
@@ -36,12 +36,16 @@ const RelatedItems = ( { product, setProduct, ...rest} ) => {
 
 
   return (
-    <div>
+    <div >
+      <div className='realtedItems-container'>
+        <h1 className='section-tittle'>Related Items</h1>
+        <Carousel product={product} setProduct={setProduct} products={products} />
+      </div>
+      <div className='outfit-container'>
+        <h1 className='section-tittle'>Your Outfit</h1>
+        <CarouselOutfit product={product} setProduct={setProduct} products={products}/>
+      </div>
       {/* {console.log(relatedProducts)} */}
-      <h1>Related Items</h1>
-      <Carousel product={product} setProduct={setProduct} products={products} />
-      <h1>Your Outfit</h1>
-      <CarouselOutfit product={product} setProduct={setProduct} products={products}/>
     </div>
   )
 }
