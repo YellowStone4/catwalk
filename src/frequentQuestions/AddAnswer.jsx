@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default ({product, question, submit}) => {
+export default ({product, question, submit, cancel}) => {
   const [formData, setFormData] = useState({
     body: '',
     name: '',
@@ -17,6 +17,7 @@ export default ({product, question, submit}) => {
 
   const validateForm = (e) => {
     e.preventDefault()
+    console.log('validating')
     validateEmail() &&
     submit(formData)
   }
@@ -33,9 +34,9 @@ export default ({product, question, submit}) => {
   }
 
   return (
-    <div className="modal">
+    <div className="modal" onClick={cancel}>
       <div className="modal-content">
-        <h1>Submit your Answer</h1>
+        <h2>Submit your Answer</h2>
         <h3>{product.name}: {question.question_body}</h3>
         <form onSubmit={validateForm}>
           <label>
@@ -46,7 +47,7 @@ export default ({product, question, submit}) => {
             *What is your nickname
             <input type="text" maxLength="60" placeholder="Example: jackson11!" name="name" value={formData.name} onChange={onChange} required/>
           </label>
-          <p>For privacy reasons, do not use your full name or email address</p>
+          <p id="modal-info">For privacy reasons, do not use your full name or email address</p>
           <label>
             *Your email
             <input
@@ -59,12 +60,12 @@ export default ({product, question, submit}) => {
               required />
           </label>
           {emailIsValid === false && <span className="alert">email is not valid</span>}
-          <p>For authentication reasons, you will not be emailed</p>
+          <p id="modal-info">For authentication reasons, you will not be emailed</p>
           <label>
             Upload your photos
             <input type="file" placeholder="photo 1" name="photos"/><br />
           </label>
-          <button className="question-button" type="submit">Submit</button>
+          <button type="submit" >Submit</button>
         </form>
       </div>
     </div>

@@ -66,9 +66,10 @@ export default ({submit, cancel, product}) => {
               maxLength="1000"
               onChange={onChange}
               onBlur={validateQuestion}
+              required
             />
+            </label>
             {questionIsValid === false && <span className="alert">Question cannot be empty</span>}
-          </label>
           <br />
           <label>
             *What is your nickname:
@@ -82,8 +83,8 @@ export default ({submit, cancel, product}) => {
               onBlur={validateNickname}
             />
             {nicknameIsValid === false && <span className="alert">Nickname cannot be empty</span>}
-            <p>For privacy reasons, do not use your full name or email address</p>
-          </label>
+            </label>
+            <p id="modal-info">For privacy reasons, do not use your full name or email address</p>
           <label>
             *Your email:
             <input
@@ -96,8 +97,8 @@ export default ({submit, cancel, product}) => {
               onBlur={validateEmail}
             />
             {emailIsValid === false && <span className="alert">email is not valid</span>}
-            <p>For authentication reasons, you will not be emailed</p>
-          </label>
+            </label>
+            <p id="modal-info">For authentication reasons, you will not be emailed</p>
 
           <button className="question-button" onClick={validateForm}>submit</button>
           {/*<button>cancel</button>*/}

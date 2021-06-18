@@ -9,8 +9,8 @@ export default ({search}) => {
     }
   }
   return (
-    <form className="search-question">
-      <input type="text" placeholder="Have a Question? Search For Answers..." onChange={handleChange}/>
+    <form >
+      <input className="search-question" type="text" placeholder="Have a Question? Search For Answers..." onChange={handleChange}/>
     </form>
   )
 }

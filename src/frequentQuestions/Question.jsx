@@ -56,11 +56,17 @@ const Question = ({product, question, update}) => {
     })
     setAddingAnswer(false)
   }
+  const cancel = (e) => {
+    e.preventDefault()
+    if(e.target.className == 'modal') {
+      setAddingAnswer(false)
+    }
+  }
 
   return (
     <div className="question">
       <article>
-        {addingAnswer && <AddAnswer submit={submit} product={product} question={question}/>}
+        {addingAnswer && <AddAnswer submit={submit} product={product} question={question} cancel={cancel}/>}
         <header className="title">
           <strong>Q : </strong>
           <span> {question.question_body} </span>
