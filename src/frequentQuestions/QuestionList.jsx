@@ -32,9 +32,9 @@ const QuestionList = ({product, questions, visibleQuestions, update, addingQuest
   const cancel = (e) => {
     e.preventDefault()
     // console.log(e.target)
-    if(e.target.className == 'modal') {
+    // if(e.target.className == 'modal' || e.target.className === 'cancel') {
       setAddingQuestion(false)
-    }
+    // }
   }
 
   return (

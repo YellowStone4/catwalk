@@ -58,9 +58,9 @@ const Question = ({product, question, update}) => {
   }
   const cancel = (e) => {
     e.preventDefault()
-    if(e.target.className == 'modal') {
+    // if(e.target.className == 'modal') {
       setAddingAnswer(false)
-    }
+    // }
   }
 
   return (

@@ -51,7 +51,7 @@ export default ({submit, cancel, product}) => {
   }
 
   return (
-    <div className="modal" onClick={cancel}>
+    <div className="modal">
       <div className="modal-content">
         <h1>Add Your Question</h1>
         <h3>About the {product.name}</h3>
@@ -100,7 +100,8 @@ export default ({submit, cancel, product}) => {
             </label>
             <p id="modal-info">For authentication reasons, you will not be emailed</p>
 
-          <button className="question-button" onClick={validateForm}>submit</button>
+          <button className="question-button" onClick={validateForm}>Submit</button>
+          <button className="question-button cancel" onClick={cancel}>Cancel</button>
           {/*<button>cancel</button>*/}
         </form>
       </div>

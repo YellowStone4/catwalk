@@ -34,7 +34,7 @@ export default ({product, question, submit, cancel}) => {
   }
 
   return (
-    <div className="modal" onClick={cancel}>
+    <div className="modal" >
       <div className="modal-content">
         <h2>Submit your Answer</h2>
         <h3>{product.name}: {question.question_body}</h3>
@@ -65,7 +65,8 @@ export default ({product, question, submit, cancel}) => {
             Upload your photos
             <input type="file" placeholder="photo 1" name="photos"/><br />
           </label>
-          <button type="submit" >Submit</button>
+          <button className="question-button" type="submit" >Submit</button>
+          <button className="question-button" onClick={cancel}>Cancel</button>
         </form>
       </div>
     </div>
