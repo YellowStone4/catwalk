@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ReviewModal from './individualReviewComps/CreateReviewModal.jsx';
+import styles from './review.css';
 
 const ReviewButtons = (props) => {
   const addCount = () => {
@@ -20,13 +21,20 @@ const ReviewButtons = (props) => {
     }
   }
 
+  const buttonStyling = {
+    display: 'inline-block',
+    padding: '10px',
+    margin: '0px 20px',
+    backgroundColor: 'white'
+  }
+
   return (
-    <div>
-      <button onClick={addCount}>MORE REVIEWS</button>
+    <div style={{display: 'inline-block'}}>
+      <button className="button" style={buttonStyling} onClick={addCount}>MORE REVIEWS</button>
       {addingQuestion && <ReviewModal metaData={props.metaData} product={props.product} submit={submit} cancel={cancel}/>}
-      <div>
-      <button onClick={() => setAddingQuestion(true)}>Add a question</button>
-      </div>
+
+      <button className="button" style={buttonStyling} onClick={() => setAddingQuestion(true)}>ADD A REVIEW</button>
+
     </div>
   )
 }

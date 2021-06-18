@@ -39,33 +39,36 @@ const StarSliders = (props) => {
 
 
   const h4Style = {
-    margin: '0 auto',
-    position: 'relative'
+    margin: '10px auto',
+    position: 'relative',
+    textAlign: 'center'
   }
 
 
 
+
+
   return (
-    <div>
+    <div style={{width: '50%', left: '5.5%', position: 'relative'}}>
       <div>
         <h4 style={h4Style}>Comfort</h4>
         <Slider val={charObj.Comfort}/>
       </div>
       <div>
-        <h4>Fit</h4>
+        <h4 style={h4Style}>Fit</h4>
         <Slider val={charObj.Fit}/>
       </div>
       <div>
-        <h4>Length</h4>
+        <h4 style={h4Style}>Length</h4>
         <Slider val={charObj.Length}/>
       </div>
       <div>
-        <h4>Quality</h4>
+        <h4 style={h4Style}>Quality</h4>
         <Slider val={charObj.Quality}/>
       </div>
       {
       <div>
-        <h4>Width</h4>
+        <h4 style={h4Style}>Width</h4>
         <Slider val={charObj.Width}/>
       </div>
       }

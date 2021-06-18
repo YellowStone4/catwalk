@@ -103,7 +103,7 @@ const StarSort = (props) => {
 
   return (
     <div>
-      <p> {recommendedPercentage}% of reviews recommend this product</p>
+      <p style={{position: 'relative', left:'5.5%'}}> {recommendedPercentage}% of reviews recommend this product</p>
       {sortExists === true && sortedStars.map((star) => {
         return <span key={star}>{star}</span>
       })}

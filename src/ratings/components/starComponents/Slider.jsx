@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 const sliderStyle = {
-  width: '50%',
+  width: '100%',
   border: '1px solid grey',
   margin: '0 auto'
 };
