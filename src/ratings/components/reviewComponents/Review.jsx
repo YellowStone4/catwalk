@@ -62,7 +62,7 @@ const Review = (props) => {
 
 
   return (
-    <div style={{margin: '30px'}}>
+    <div style={{margin: '30px', backgroundColor:'white', padding:'9px', border:'2px solid rgba(251, 147, 0, 0.5)', boxShadow:'7px 4px rgb(52, 63, 86)'}}>
       <div style={{clear: 'both', margin: '5px, 0px'}}>
         <div style={{float: 'left'}}>
           <StarCount key={props.review.review_id} id={props.review.review_id} starNumber={props.review.rating}/>
@@ -72,10 +72,16 @@ const Review = (props) => {
           <ReviewDate date={props.review.date}/>
         </div>
       </div>
+
+
       <div style={{clear: 'both', marginTop: '5px', padding: '1px 0px'}}>
+        <hr style={{color:'rgb(52, 63, 86)', boxShadow:'1px 1px rgba(251, 147, 0, 0.5)'}}/>
         <h2>{props.review.summary}</h2>
+
       </div>
-      <p style={{fontSize: '18px', margin: '5px 0px 15px 0px'}}>{props.review.body}</p>
+
+      <p style={{fontSize: '18px', margin: '5px 0px 15px 0px', width:'70%'}}>{props.review.body}</p>
+
 
       {props.review.recommend ? <div style={{margin: '15px 0px'}}>
         <span><FontAwesomeIcon icon={faCheck} /></span>
@@ -101,7 +107,7 @@ const Review = (props) => {
         <span style={{textDecoration: 'none'}}>   |  </span>
         <span style={{textDecoration: 'underline'}} className="button" onClick={reportClick}>   Report</span>
       </div>
-      <hr></hr>
+
     </div>
   )
 }
