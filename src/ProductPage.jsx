@@ -11,11 +11,11 @@ function ProductPage({ product, setProduct }) {
   if (product) {
     return (
       <>
-        {/* <Search /> */}
+        <Search />
         <Overview product={product} />
         <RelatedItems product={product} setProduct={setProduct}/>
-        {/* <FrequentQuestions product={product} /> */}
-        {/* <Ratings product={product} /> */}
+        <FrequentQuestions product={product} />
+        <Ratings product={product} />
       </>
     );
   } return null;

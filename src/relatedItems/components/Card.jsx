@@ -5,6 +5,7 @@ import { API_KEY } from '/config.js'
 import axios from 'axios';
 import '../styles.css';
 import Modal from './Modal.jsx';
+import defaultImage from '../../../dist/images/default-product-image.png';
 
 
 const Card = ({ currentProduct, product, setProduct }) => {
@@ -17,6 +18,7 @@ const Card = ({ currentProduct, product, setProduct }) => {
 
 
   useEffect(() => {
+    let mounted = true;
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${currentProduct.id}/styles`;
       const config = {
         headers: {
@@ -28,10 +30,17 @@ const Card = ({ currentProduct, product, setProduct }) => {
       };
       axios.get(url, config)
         .then((res) => {
-          // console.log(res.data.product_id)
-          setStylePhoto(res.data.results[0].photos[0].thumbnail_url)
-          setProductId(res.data.product_id)
-        });
+          if (mounted = true) {
+            // console.log(res.data.product_id)
+            if (res.data.results[0].photos[0].thumbnail_url) {
+              setStylePhoto(res.data.results[0].photos[0].thumbnail_url)
+            } else {
+              setStylePhoto(defaultImage)
+            }
+            setProductId(res.data.product_id)
+          }
+        })
+    return () => mounted = false;
   }, [product]);
 
 
@@ -39,7 +48,7 @@ const Card = ({ currentProduct, product, setProduct }) => {
       <div className="cardGrid" >
         <FontAwesomeIcon className="starIcon" icon={ faStar } onClick={() => setShowModal(true)} />
         <div>
-          <img className="testImage" src={stylePhoto} alt="" onClick={() => setProduct(currentProduct)}/>
+          <img className="productImage" src={stylePhoto} alt="" onClick={() => setProduct(currentProduct)}/>
         </div>
         <div className="row-text">{currentProduct.category}</div>
         <div className="row-text">{currentProduct.name}</div>

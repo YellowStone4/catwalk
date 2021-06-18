@@ -4,7 +4,7 @@ import '../styles.css';
 
 const Modal = ( { currentProduct, product, showModal, setShowModal } ) => {
 
-  const showHideClassName = showModal ? "modal display-block" : "display-none";
+  const showHideClassName = showModal ? "modal display-block" : "modal display-none";
 
   return (
     <div className={showHideClassName}>
