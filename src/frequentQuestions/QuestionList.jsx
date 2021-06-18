@@ -4,15 +4,9 @@ import Question from './Question.jsx'
 import AddQuestion from './AddQuestion.jsx'
 import { API_KEY } from '../../config'
 
-const QuestionList = ({product, questions, update}) => {
-  const [numberOfVisibleQuestions, setNumberOfVisibleQuestions] = useState(2)
-  const visibleQuestions = questions.slice(0, numberOfVisibleQuestions)
-  const loadMoreQuestions = () => setNumberOfVisibleQuestions(numberOfVisibleQuestions+2)
-  const collapseQuestions = () => setNumberOfVisibleQuestions(2)
-  const loadMoreQuesBtn = <button onClick={loadMoreQuestions}>More Answered Questions</button>
-  const collapseQuesBtn = <button onClick={collapseQuestions}>Collapse Questions</button>
+const QuestionList = ({product, questions, visibleQuestions, update, addingQuestion, setAddingQuestion}) => {
 
-  const [addingQuestion, setAddingQuestion] = useState(false)
+
   const submit = ({question, nickname, email}) => {
     axios({
       method: 'post',
@@ -57,11 +51,7 @@ const QuestionList = ({product, questions, update}) => {
             />
           ))}
         </main>
-        <footer className="questions-footer">
-          {visibleQuestions.length < questions.length && loadMoreQuesBtn}
-         {visibleQuestions.length > 2 && visibleQuestions.length === questions.length && collapseQuesBtn}
-         <button onClick={()=>setAddingQuestion(true)}>Add a Question</button>
-        </footer>
+
       </section>
     </>
   )

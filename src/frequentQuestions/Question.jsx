@@ -62,12 +62,12 @@ const Question = ({product, question, update}) => {
       <article>
         {addingAnswer && <AddAnswer submit={submit} product={product} question={question}/>}
         <header className="title">
-          <strong>Q: </strong>
+          <strong>Q : </strong>
           <span> {question.question_body} </span>
        </header>
         {answers.length > 0 &&
           <section className="answer">
-            <header><strong>A: </strong></header>
+            <header><strong>A : </strong></header>
             <main>
               {visibleAnswers.map(answer => (
                 <Answer
@@ -83,11 +83,11 @@ const Question = ({product, question, update}) => {
         }
       </article>
       <aside>
-        <span>Helpful?
+        <header>Helpful?
           <a onClick={handleVotedHelpful}><u> Yes </u></a>
           ({question.question_helpfulness}) |
           <a onClick={()=>setAddingAnswer(true)}><u> Add Answer </u></a>
-        </span>
+        </header>
       </aside>
     </div>
   )
