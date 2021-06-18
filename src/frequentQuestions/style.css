@@ -111,7 +111,7 @@
 /**
  * Reset button styles.
  */
- button {
+ .question-button {
   padding: 10px;
   /* border: 2px solid yellow; */
   color: #fff;

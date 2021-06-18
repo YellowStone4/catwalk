@@ -64,7 +64,7 @@ export default ({product, question, submit}) => {
             Upload your photos
             <input type="file" placeholder="photo 1" name="photos"/><br />
           </label>
-          <button type="submit">Submit</button>
+          <button className="question-button" type="submit">Submit</button>
         </form>
       </div>
     </div>

@@ -14,8 +14,8 @@ function FrequentQuestions({product}) {
   const visibleQuestions = searchedQuestions.slice(0, numberOfVisibleQuestions)
   const loadMoreQuestions = () => setNumberOfVisibleQuestions(numberOfVisibleQuestions+2)
   const collapseQuestions = () => setNumberOfVisibleQuestions(2)
-  const loadMoreQuesBtn = <button onClick={loadMoreQuestions}>More Answered Questions</button>
-  const collapseQuesBtn = <button onClick={collapseQuestions}>Collapse Questions</button>
+  const loadMoreQuesBtn = <button className="question-button" onClick={loadMoreQuestions}>More Answered Questions</button>
+  const collapseQuesBtn = <button className="question-button" onClick={collapseQuestions}>Collapse Questions</button>
 
   const [addingQuestion, setAddingQuestion] = useState(false)
 
@@ -53,7 +53,7 @@ function FrequentQuestions({product}) {
         <footer className="questions-footer">
             {visibleQuestions.length < searchedQuestions.length && loadMoreQuesBtn}
           {visibleQuestions.length > 2 && visibleQuestions.length === searchedQuestions.length && collapseQuesBtn}
-          <button onClick={()=>setAddingQuestion(true)}>Add a Question</button>
+          <button className="question-button" onClick={()=>setAddingQuestion(true)}>Add a Question</button>
           </footer>
       </section>
     </>
