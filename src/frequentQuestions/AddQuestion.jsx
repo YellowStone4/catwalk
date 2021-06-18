@@ -99,7 +99,7 @@ export default ({submit, cancel, product}) => {
             <p>For authentication reasons, you will not be emailed</p>
           </label>
 
-          <button onClick={validateForm}>submit</button>
+          <button className="question-button" onClick={validateForm}>submit</button>
           {/*<button>cancel</button>*/}
         </form>
       </div>

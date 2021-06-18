@@ -4,8 +4,6 @@ import axios from 'axios'
 
 export default ({answer, update}) => {
   const [reported, setReported] = useState(false)
-  const [votedHelpful, setVotedHelpful] = useState(false)
-
   const handleReported = () => {
     axios({
       method: 'put',
@@ -17,6 +15,7 @@ export default ({answer, update}) => {
     .then(setReported(true))
   }
 
+  const [votedHelpful, setVotedHelpful] = useState(false)
   function handleHelpful(e) {
     !votedHelpful && (
       axios({
@@ -31,16 +30,16 @@ export default ({answer, update}) => {
     )
   }
   const username = answer.answerer_name === 'Seller' ? <strong>Seller</strong> : answer.answerer_name
-  const helpfulLink = <span> Helpful? <a onClick={handleHelpful}>Yes</a> ({answer.helpfulness})</span>
-  const report = reported ? <span> Reported </span> : <span onClick={handleReported}> Report </span>
+  const helpfulLink = <span> Helpful? <a onClick={handleHelpful}><u> Yes </u></a> ({answer.helpfulness})</span>
+  const reportLink = reported ? <span> Reported! </span> : <a onClick={handleReported}><u> Report </u></a>
 
   return (
     <>
-      {answer.body} <br />
+      <span>{answer.body}</span>
       {answer.photos.length > 0 &&
         answer.photos.map((photo, index) => <img key={index} src={photo} alt="" />)
       }
-      <p>by {answer.answerer_name}, {new Date(answer.date).toDateString()} | {helpfulLink} | {report}</p>
+      <footer>by {answer.answerer_name}, {new Date(answer.date).toDateString()} | {helpfulLink} | {reportLink}</footer>
     </>
   )
 }

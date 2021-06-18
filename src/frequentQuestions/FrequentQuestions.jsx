@@ -10,9 +10,19 @@ function FrequentQuestions({product}) {
   const [searchInput, setSearchInput] = useState('')
   let searchedQuestions = questions.filter(question => question.question_body.toLowerCase().includes(searchInput))
 
+  const [numberOfVisibleQuestions, setNumberOfVisibleQuestions] = useState(2)
+  const visibleQuestions = searchedQuestions.slice(0, numberOfVisibleQuestions)
+  const loadMoreQuestions = () => setNumberOfVisibleQuestions(numberOfVisibleQuestions+2)
+  const collapseQuestions = () => setNumberOfVisibleQuestions(2)
+  const loadMoreQuesBtn = <button className="question-button" onClick={loadMoreQuestions}>More Answered Questions</button>
+  const collapseQuesBtn = <button className="question-button" onClick={collapseQuestions}>Collapse Questions</button>
+
+  const [addingQuestion, setAddingQuestion] = useState(false)
+
+
   useEffect(() => {
     fetchQuestions()
-  }, []);
+  }, [product]);
 
   const fetchQuestions = () => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions?product_id=${product.id}`;
@@ -32,9 +42,20 @@ function FrequentQuestions({product}) {
 
   return (
     <>
-      <h1>Frequent Questions</h1>
-      <Search search={setSearchInput}/>
-      <QuestionList questions={searchedQuestions} update={fetchQuestions} product={product}/>
+      <header>
+      <h2 className="section-title">Frequent Questions</h2>
+      </header>
+      <section className="frequent-questions">
+        <main>
+          <Search search={setSearchInput}/>
+          <QuestionList questions={searchedQuestions} visibleQuestions={visibleQuestions} update={fetchQuestions} product={product} addingQuestion={addingQuestion} setAddingQuestion={setAddingQuestion}/>
+        </main>
+        <footer className="questions-footer">
+            {visibleQuestions.length < searchedQuestions.length && loadMoreQuesBtn}
+          {visibleQuestions.length > 2 && visibleQuestions.length === searchedQuestions.length && collapseQuesBtn}
+          <button className="question-button" onClick={()=>setAddingQuestion(true)}>Add a Question</button>
+          </footer>
+      </section>
     </>
   );
 }
