@@ -49,7 +49,7 @@ const StarSliders = (props) => {
 
 
   return (
-    <div style={{width: '50%', left: '5.5%', position: 'relative'}}>
+    <div style={{width: '50%', left: '8%', position: 'relative'}}>
       <div>
         <h4 style={h4Style}>Comfort</h4>
         <Slider val={charObj.Comfort}/>

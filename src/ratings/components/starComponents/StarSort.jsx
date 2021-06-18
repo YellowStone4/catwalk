@@ -39,6 +39,8 @@ const StarSort = (props) => {
     }
     if (currentSort.length) {
       setSortExists(true);
+    } else {
+      setSortExists(false);
     }
     setSortedStars(currentSort);
 
@@ -102,12 +104,14 @@ const StarSort = (props) => {
   }
 
   return (
-    <div>
-      <p style={{position: 'relative', left:'5.5%'}}> {recommendedPercentage}% of reviews recommend this product</p>
+    <div style={{position: 'relative', left: '8%'}}>
+      <p> {recommendedPercentage}% of reviews recommend this product</p>
+      {sortExists === true ? <span>Sorted by: </span>
+      : <span></span>}
       {sortExists === true && sortedStars.map((star) => {
-        return <span key={star}>{star}</span>
+        return <span key={star}> {star} stars</span>
       })}
-      <ul>
+      <ul style={{padding: '0px'}}>
         <li style={liStyle}><button style={removeButtonStyling} className="button" onClick={starSortClick} value={5}>5 stars:</button> <StarBar number={5} ratings={percentFive} /> </li>
         <br />
         <li style={liStyle}><button style={removeButtonStyling} className="button" onClick={starSortClick} value={4}>4 stars:</button> <StarBar number={4} ratings={percentFour}/></li>

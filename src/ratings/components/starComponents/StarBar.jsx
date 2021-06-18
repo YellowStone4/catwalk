@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
 const barStyle = {
-  width: '65%',
+  width: '50%',
+  left: '0px',
   border: '1px solid black',
   display: 'inline-block'
 };
