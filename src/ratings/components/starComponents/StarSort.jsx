@@ -100,12 +100,14 @@ const StarSort = (props) => {
     fontFamily: 'Lato',
     fontSize: '16px',
     position: 'relative',
-    bottom: '6px'
+    bottom: '6px',
+    color: 'rgb(52, 63, 86)',
+    textShadow: '1px 5px rgba(251, 147, 0, 0.3)'
   }
 
   return (
     <div style={{position: 'relative', left: '8%'}}>
-      <p> {recommendedPercentage}% of reviews recommend this product</p>
+      <p style={{color: 'black', textShadow:'1px 5px rgba(251, 147, 0, 0.3)'}}> {recommendedPercentage}% of reviews recommend this product</p>
       {sortExists === true ? <span>Sorted by: </span>
       : <span></span>}
       {sortExists === true && sortedStars.map((star) => {

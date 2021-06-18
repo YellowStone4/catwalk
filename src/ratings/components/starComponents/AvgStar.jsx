@@ -40,13 +40,14 @@ const AvgStar = (props) => {
 
   const star = {
     display: 'inline',
-    fontSize: '100px'
+    fontSize: '100px',
+    backgroundColor: 'rgb(52, 63, 86)'
 
   }
 
   return (
-    <div style={{position: 'relative', left:'4%', width: '20', display: 'inline', fontSize:'25px'}}>
-      <h1 style={{display: 'inline', margin: '0px 20px', fontSize:'50px'}}>{avgRating}</h1>
+    <div style={{position: 'relative', left:'4%', width: '20', display: 'inline', fontSize:'25px', textShadow: '4px 1px rgb(251, 147, 0)'}}>
+      <h1 style={{display: 'inline', margin: '0px 20px', fontSize:'50px', color: 'rgb(52, 63, 86)'}}>{avgRating}</h1>
       {listingArray.map((star) => {
         if (star > 0) {
           return <FontAwesomeIcon style={star} key={star} icon={faStar} />

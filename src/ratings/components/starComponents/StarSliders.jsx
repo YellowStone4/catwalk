@@ -22,6 +22,7 @@ const StarSliders = (props) => {
       }
       setCharsList(theseChars);
     }
+
   }, [props.metaData]);
 
   useEffect(() => {
@@ -41,32 +42,37 @@ const StarSliders = (props) => {
   const h4Style = {
     margin: '10px auto',
     position: 'relative',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#343f56'
   }
 
-
-
-
-
   return (
-    <div style={{width: '50%', left: '8%', position: 'relative'}}>
+    <div style={{width: '60%', marginLeft: '5px', left: '8.5%', position: 'relative'}}>
+      {charObj.Comfort > 0 &&
       <div>
         <h4 style={h4Style}>Comfort</h4>
         <Slider val={charObj.Comfort}/>
       </div>
+      }
+      {charObj.Fit > 0 &&
       <div>
         <h4 style={h4Style}>Fit</h4>
         <Slider val={charObj.Fit}/>
       </div>
+      }
+      {charObj.Length > 0 &&
       <div>
         <h4 style={h4Style}>Length</h4>
         <Slider val={charObj.Length}/>
       </div>
+      }
+      {charObj.Quality > 0 &&
       <div>
         <h4 style={h4Style}>Quality</h4>
         <Slider val={charObj.Quality}/>
       </div>
-      {
+      }
+      {charObj.Width > 0 &&
       <div>
         <h4 style={h4Style}>Width</h4>
         <Slider val={charObj.Width}/>

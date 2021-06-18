@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 const sliderStyle = {
   width: '100%',
-  border: '1px solid grey',
+  border: '1px solid rgb(251, 147, 0)',
   margin: '0 auto'
 };
 
@@ -24,7 +24,8 @@ const Slider = (props) => {
     transform: 'rotateZ(45deg)',
     position: 'relative',
     bottom: '8px',
-    left: (props.val * 20) + '%'
+    left: (props.val * 20) + '%',
+    backgroundColor: 'rgb(251, 147, 0)'
   }
 
   const insideBar = {
