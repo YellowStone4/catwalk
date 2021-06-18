@@ -38,11 +38,11 @@ const RelatedItems = ( { product, setProduct, ...rest} ) => {
   return (
     <div >
       <div className='realtedItems-container'>
-        <h1 className='section-tittle'>Related Items</h1>
+        <h1 className='section-title'>Related Items</h1>
         <Carousel product={product} setProduct={setProduct} products={products} />
       </div>
       <div className='outfit-container'>
-        <h1 className='section-tittle'>Your Outfit</h1>
+        <h1 className='section-title' style={{color:'white'}}>Your Outfit</h1>
         <CarouselOutfit product={product} setProduct={setProduct} products={products}/>
       </div>
       {/* {console.log(relatedProducts)} */}
