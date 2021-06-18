@@ -10,7 +10,8 @@ export default ({submit, cancel, product}) => {
   const [nicknameIsValid, setNicknameIsValid] = useState()
   const [emailIsValid, setEmailIsValid] = useState()
 
-  const validateForm = () => {
+  const validateForm = (e) => {
+    e.preventDefault()
     validateQuestion() &&
     validateNickname() &&
     validateEmail() &&
@@ -51,7 +52,7 @@ export default ({submit, cancel, product}) => {
   }
 
   return (
-    <div className="modal" onClick={cancel}>
+    <div className="modal">
       <div className="modal-content">
         <h1>Add Your Question</h1>
         <h3>About the {product.name}</h3>
@@ -66,9 +67,10 @@ export default ({submit, cancel, product}) => {
               maxLength="1000"
               onChange={onChange}
               onBlur={validateQuestion}
+              // required
             />
+            </label>
             {questionIsValid === false && <span className="alert">Question cannot be empty</span>}
-          </label>
           <br />
           <label>
             *What is your nickname:
@@ -82,8 +84,8 @@ export default ({submit, cancel, product}) => {
               onBlur={validateNickname}
             />
             {nicknameIsValid === false && <span className="alert">Nickname cannot be empty</span>}
-            <p>For privacy reasons, do not use your full name or email address</p>
-          </label>
+            </label>
+            <p id="modal-info">For privacy reasons, do not use your full name or email address</p>
           <label>
             *Your email:
             <input
@@ -96,10 +98,11 @@ export default ({submit, cancel, product}) => {
               onBlur={validateEmail}
             />
             {emailIsValid === false && <span className="alert">email is not valid</span>}
-            <p>For authentication reasons, you will not be emailed</p>
-          </label>
+            </label>
+            <p id="modal-info">For authentication reasons, you will not be emailed</p>
 
-          <button className="question-button" onClick={validateForm}>submit</button>
+          <button className="question-button" onClick={validateForm}>Submit</button>
+          <button className="question-button cancel" onClick={cancel}>Cancel</button>
           {/*<button>cancel</button>*/}
         </form>
       </div>
