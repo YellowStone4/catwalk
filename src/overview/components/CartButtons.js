@@ -31,11 +31,13 @@ function CartButtons({currentStyle, ...rest}) {
         <div className='cartBtnWrapper'>
           <select className='cartBtn item1' name="size" >
             <option>SIZE </option>
-
+            <option>Extra Small</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>Extra Large</option>
           </select>
-          <select className='cartBtn item2' name='quant'>
-            <option>QUANTITY</option>
-          </select>
+          <input type="number" className="cartBtn item2" name="quant" min="0" max="15" />
           <button onClick={() => setCartCount(cartCount + 1)} className='cartBtn item3'><span>ADD</span> <FontAwesomeIcon icon={faPlus} /></button>
           <button className={likeClx} onClick={() => setLiked(!liked)}><FontAwesomeIcon className={clsx({'liked': liked})} icon={faStar} /></button>
         </div>
