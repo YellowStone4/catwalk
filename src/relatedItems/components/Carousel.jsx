@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import '../styles.css';
+import clsx from 'clsx';
 
 const Carousel = ({product, setProduct, products}) => {
 
@@ -14,10 +15,13 @@ const Carousel = ({product, setProduct, products}) => {
 
   useEffect(() => {
     setCards(products.slice(0, 4));
+    // setCurrentIndex(0);
   }, [products])
 
+  let prevArrClsx = clsx('carousel_button carousel_button--left arrow-icon', {'hidden': currentIndex === 0 });
+  let nextArrClsx = clsx('carousel_button carousel_button--right arrow-icon', {'hidden': currentIndex + 4 === products.length});
+
   const handleClickPrev = (index) => {
-    // console.log(index);
     if (index < 0) {
       return;
     }
@@ -36,11 +40,12 @@ const Carousel = ({product, setProduct, products}) => {
   }
 
 
+
   return (
     <div className="carousel">
       {/* {console.log(props.products)} */}
-      <button className="carousel_button carousel_button--left" onClick={() => handleClickPrev(currentIndex - 1)}>
-      <FontAwesomeIcon icon={ faAngleLeft } size = '4x'/>
+      <button className={prevArrClsx} onClick={() => handleClickPrev(currentIndex - 1)}>
+      <FontAwesomeIcon icon={ faArrowLeft }/>
       </button>
 
       <ul className="carousel_track">
@@ -50,8 +55,8 @@ const Carousel = ({product, setProduct, products}) => {
         })}
       </ul>
 
-      <button className="carousel_button carousel_button--right" onClick={() => handleClickNext(currentIndex + 1)}>
-        <FontAwesomeIcon icon={ faAngleRight } size = '4x'/>
+      <button className={nextArrClsx} disabled={currentIndex === products.length - 4} onClick={() => handleClickNext(currentIndex + 1)}>
+        <FontAwesomeIcon icon={ faArrowRight } />
       </button>
     </div>
   )
