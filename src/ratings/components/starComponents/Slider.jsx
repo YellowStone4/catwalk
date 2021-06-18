@@ -29,7 +29,8 @@ const Slider = (props) => {
   }
 
   const insideBar = {
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
+    backgroundImage: 'linear-gradient(white, rgba(251, 147, 0, 0.4))',
     height: '10px',
     width: '100%'
   };

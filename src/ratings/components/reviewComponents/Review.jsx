@@ -62,7 +62,7 @@ const Review = (props) => {
 
 
   return (
-    <div style={{margin: '30px', backgroundColor:'white', padding:'9px', border:'2px solid rgba(251, 147, 0, 0.5)', boxShadow:'7px 4px rgb(52, 63, 86)'}}>
+    <div style={{margin: '30px', backgroundImage: 'linear-gradient(white, rgba(251, 147, 0, 0.45))', padding:'9px', border:'2px solid rgba(251, 147, 0, 0.5)', boxShadow:'7px 4px rgb(52, 63, 86)'}}>
       <div style={{clear: 'both', margin: '5px, 0px'}}>
         <div style={{float: 'left'}}>
           <StarCount key={props.review.review_id} id={props.review.review_id} starNumber={props.review.rating}/>
@@ -76,7 +76,7 @@ const Review = (props) => {
 
       <div style={{clear: 'both', marginTop: '5px', padding: '1px 0px'}}>
         <hr style={{color:'rgb(52, 63, 86)', boxShadow:'1px 1px rgba(251, 147, 0, 0.5)'}}/>
-        <h2>{props.review.summary}</h2>
+        <h2 style={{textShadow:'1px 3px rgba(251, 147, 0, 0.1)'}}>{props.review.summary}</h2>
 
       </div>
 

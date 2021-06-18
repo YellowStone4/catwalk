@@ -10,7 +10,7 @@ const Stars = (props) => {
   });
 
   return (
-    <div>
+    <div style={{backgroundColor: 'rgb(245, 230, 202)'}}>
       <AvgStar metaData={props.metaData}/>
       <StarSort starSort={props.starSort} changeStarSort={props.changeStarSort} metaData={props.metaData}/>
       <StarSliders metaData={props.metaData}/>
