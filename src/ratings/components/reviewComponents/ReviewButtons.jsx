@@ -25,8 +25,14 @@ const ReviewButtons = (props) => {
     display: 'inline-block',
     padding: '10px',
     margin: '0px 20px',
-    backgroundColor: 'white'
+    border: '2px solid rgba(52, 63, 86, 0.9)',
+    color: 'rgba(52, 63, 86, 0.9)',
+    //backgroundColor: 'white',
+    backgroundImage: 'linear-gradient(white, rgba(251, 147, 0, 0.45)  )'
   }
+//rgba(251, 147, 0, 0.45)
+//rgba(52, 63, 86, 0.9)
+
 
   return (
     <div style={{display: 'inline-block'}}>

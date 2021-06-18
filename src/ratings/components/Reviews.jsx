@@ -16,7 +16,7 @@ const Reviews = (props) => {
 
 
   return (
-    <div>
+    <div style={{backgroundColor:'rgb(245, 230, 202)'}}>
       <ReviewSort changeSort={props.changeSort} metaData={props.metaData} reviews={props.reviews}/>
       <ListOfReviews setCounter={props.setCounter} reviewCount={reviewCount} counter={props.counter} starSort={props.starSort} reviews={props.reviews} product={props.product}/>
       <ReviewButtons metaData={props.metaData} product={props.product} changeCount={changeCount.bind(this)}/>
