@@ -16,39 +16,45 @@ const Card = ({ currentProduct, product, setProduct }) => {
 
   const [ showModal, setShowModal ] = useState(false)
 
+  if (currentProduct.results[0].photos[0].thumbnail_url) {
+    var stylePic = currentProduct.results[0].photos[0].thumbnail_url;
+  } else {
+    var stylePic = defaultImage;
+  }
 
-  useEffect(() => {
-    let mounted = true;
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${currentProduct.id}/styles`;
-      const config = {
-        headers: {
-          Authorization: API_KEY,
-        }
-        // params: {
-        //   product_id: "19089",
-        // }
-      };
-      axios.get(url, config)
-        .then((res) => {
-          if (mounted = true) {
-            // console.log(res.data.product_id)
-            if (res.data.results[0].photos[0].thumbnail_url) {
-              setStylePhoto(res.data.results[0].photos[0].thumbnail_url)
-            } else {
-              setStylePhoto(defaultImage)
-            }
-            setProductId(res.data.product_id)
-          }
-        })
-    return () => mounted = false;
-  }, [product]);
+
+  // useEffect(() => {
+  //   let mounted = true;
+  //   const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${currentProduct.id}/styles`;
+  //     const config = {
+  //       headers: {
+  //         Authorization: API_KEY,
+  //       }
+  //       // params: {
+  //       //   product_id: "19089",
+  //       // }
+  //     };
+  //     axios.get(url, config)
+  //       .then((res) => {
+  //         if (mounted = true) {
+  //           // console.log(res.data.product_id)
+  //           if (res.data.results[0].photos[0].thumbnail_url) {
+  //             setStylePhoto(res.data.results[0].photos[0].thumbnail_url)
+  //           } else {
+  //             setStylePhoto(defaultImage)
+  //           }
+  //           setProductId(res.data.product_id)
+  //         }
+  //       })
+  //   return () => mounted = false;
+  // }, [product]);
 
 
   return (
       <div className="cardGrid" >
         <FontAwesomeIcon className="starIcon" icon={ faStar } onClick={() => setShowModal(true)} />
         <div>
-          <img className="productImage" src={stylePhoto} alt="" onClick={() => setProduct(currentProduct)}/>
+          <img className="productImage" src={stylePic} alt="" onClick={() => setProduct(currentProduct)}/>
         </div>
         <div className="row-text">{currentProduct.category}</div>
         <div className="row-text">{currentProduct.name}</div>

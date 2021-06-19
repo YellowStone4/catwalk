@@ -10,11 +10,10 @@ const CarouselOutfit = ({product, setProduct, products}) => {
 
   const myStorage = window.localStorage;
 
-  // console.log(myStorage);
-
   const [ currentIndex, setCurrentIndex ] = useState(0)
 
   const [ cards, setCards ] = useState([])
+
 
   useEffect(() => {
     var values = [],
