@@ -77,10 +77,10 @@ const Ratings = ({product}) => {
 
   return (
     <div>
-      <h4>RATINGS & REVIEWS</h4>
+      <h2 style={{margin: '10px 20px'}}>RATINGS & REVIEWS</h2>
       <div style={styles.ratingsStyle}>
         <Stars starSort={starSort} changeStarSort={changeStarSort.bind(this)} metaData={metaData} product={product}/>
-        <Reviews setCounter={setCounter.bind(this)} counter={counter} setStarSort={setStarSort} starSort={starSort}  changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
+        <Reviews style={{backgroundColor: 'orange'}} setCounter={setCounter.bind(this)} counter={counter} setStarSort={setStarSort} starSort={starSort}  changeSort={changeSort.bind(this)} metaData={metaData} reviews={reviewData} product={product} />
       </div>
     </div>
   )

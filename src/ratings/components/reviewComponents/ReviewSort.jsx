@@ -12,7 +12,7 @@ const ReviewSort = (props) => {
 
   return (
     <div>
-      <h3 style={{display: 'inline'}}>{reviewCount} reviews, sorted by <SortSelection changeSort={props.changeSort} /></h3>
+      <h3 style={{display: 'inline', padding:'10px', textShadow:'2px 3px 1px rgba(251, 147, 0, 0.4)', color:'rgb(52, 63, 86)'}}><span>{reviewCount} </span>reviews, sorted by <SortSelection changeSort={props.changeSort} /></h3>
 
     </div>
   )

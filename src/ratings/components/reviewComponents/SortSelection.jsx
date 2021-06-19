@@ -18,7 +18,9 @@ const SortSelection = (props) => {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     fontWeight: 'bold',
     fontFamily: 'Lato',
-    fontSize: '18px'
+    fontSize: '18px',
+    textShadow:'2px 7px 1px rgb(251, 147, 0)',
+    color:'rgb(52, 63, 86)'
 
   }
 
@@ -28,7 +30,7 @@ const SortSelection = (props) => {
       <form style={{display: 'inline'}}>
         <label>
           <select style={select} value={sorter} onChange={handleChange}>
-            <option value="relevant">relevance</option>
+            <option style={select} value="relevant">relevance</option>
             <option value="newest">newest</option>
             <option value="helpful">helpful</option>
           </select>

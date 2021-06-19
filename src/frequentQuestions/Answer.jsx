@@ -39,7 +39,7 @@ export default ({answer, update}) => {
       {answer.photos.length > 0 &&
         answer.photos.map((photo, index) => <img key={index} src={photo} alt="" />)
       }
-      <footer>by {answer.answerer_name}, {new Date(answer.date).toDateString()} | {helpfulLink} | {reportLink}</footer>
+      <footer>by {answer.answerer_name}, {new Date(answer.date).toDateString()} | {helpfulLink} | {reportLink}</footer><hr/>
     </>
   )
 }
