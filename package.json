@@ -4,10 +4,11 @@
   "description": "A e-commerce application",
   "main": "index.js",
   "scripts": {
-    "start": "live-server ./dist",
+    "front": "live-server ./dist",
     "test": "jest --testEnvironment jsdom --coverage",
     "build": "npx webpack -w",
-    "sass": "sass src/overview/components/Sass:src/Css --watch --no-source-map"
+    "sass": "sass src/overview/components/Sass:src/Css --watch --no-source-map",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
