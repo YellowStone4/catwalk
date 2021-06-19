@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+const {API_KEY} = require('../../../../../config.js');
 
 const ReviewModal = ({metaData, submit, cancel, product}) => {
-  console.log('product prop: ', metaData);
+
   const [formData, setFormData] = useState({
     summary: '',
     question: '',
@@ -37,14 +39,12 @@ const ReviewModal = ({metaData, submit, cancel, product}) => {
       }
       setCharsList(theseChars);
     }
-    console.log('char obj in MODAL: ', charObj);
-    console.log('CHAR LIST: ', charsList);
+
 
   }, [metaData]);
 
   useEffect(() => {
     if (charsList.length) {
-
       var charObjectList = {};
         for (var i = 0; i < charsList.length; i++) {
           if (metaData.characteristics[charsList[i]] !== undefined) {
@@ -57,19 +57,57 @@ const ReviewModal = ({metaData, submit, cancel, product}) => {
 
   const sendPost = (data) => {
     var recStatus = data.recommend === "true" ? true : false;
-    console.log('recStatus: ', recStatus);
+    console.log('sendPost prop: ', metaData);
+    var characterObj = {};
+    var photosArray = [];
+    for (var key in charObj) {
+      var charId = metaData.characteristics[key].id;
+      console.log('CHAR ID: ', charId);
+      var charValue = formData[key.toLowerCase()];
+      console.log('Char value: charValue');
+      characterObj[charId] = charValue;
+
+    }
+    console.log('character ob: ', characterObj);
     var bodyObj = {
-      product_id: metaData.product_id,
+      product_id: parseInt(metaData.product_id),
       rating: data.rating,
       summary: data.summary,
       body: data.body,
       recommend: recStatus,
       name: data.nickname,
       email: data.email,
-      photos: data.photos,
-      characteristics: 'fill this out'
+      photos: photosArray,
+      characteristics: characterObj
     }
+    console.log('Body OBJ: ', bodyObj);
+    var options = {
+      method: 'post',
+      headers: {
+        'Authorization': API_KEY
+      },
+      data: {
+        product_id: parseInt(metaData.product_id),
+        rating: data.rating,
+        summary: data.summary,
+        body: data.body,
+        recommend: recStatus,
+        name: data.nickname,
+        email: data.email,
+        photos: photosArray,
+        characteristics: characterObj
+      },
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews'
+    }
+    axios(options).then((response) => {
+      console.log('Response from post request for sending post');
+    }).catch((err) => {
+      console.log('Error: ', err);
+    });
+
+
   }
+
 
   const validateForm = () => {
     if (validateNickname() &&
@@ -79,6 +117,7 @@ const ReviewModal = ({metaData, submit, cancel, product}) => {
     validateSummary() &&
     validateRecommend()) {
       submit(formData);
+      sendPost(formData);
       console.log('form validated!');
     } else {
       console.log('form NOT validated', formData);
